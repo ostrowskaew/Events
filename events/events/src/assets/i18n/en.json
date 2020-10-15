@@ -1,0 +1,18 @@
+{
+  "About": "About",
+  "Login": "Login",
+  "Contact": "Contact Us",
+  "Events": "Events",
+  "Register": "Register",
+  "Edit": "Edit",
+  "Add Event": "Add Event",
+  "Event Name": "Event's name:",
+  "Event date": "Event's date:",
+  "Meeting place": "Meeting place:",
+  "Not Inc Price": "Not included in the price:",
+  "Inc Price": "Included in the price:",
+  "Places Num": "Places number:",
+  "Schedule": "Schedule:",
+  "Desc": "Description:",
+  "Upl Img": "Add image"
+}

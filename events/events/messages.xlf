@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f68efc3784e42e67a2c4bbe459f3a180209afc9d" datatype="html">
+        <source><x id="START_UNORDERED_LIST" equiv-text="&quot;\uFFFD#8\uFFFD&quot;"/><x id="START_LIST_ITEM" equiv-text="&quot;[\uFFFD#9\uFFFD|\uFFFD#11\uFFFD|\uFFFD#13\uFFFD|\uFFFD#15\uFFFD]&quot;"/><x id="START_LINK" equiv-text="&quot;\uFFFD#10\uFFFD&quot;"/>Home<x id="CLOSE_LINK" equiv-text="&quot;[\uFFFD/#10\uFFFD|\uFFFD/#12\uFFFD|\uFFFD/#14\uFFFD|\uFFFD/#16\uFFFD]&quot;"/><x id="CLOSE_LIST_ITEM" equiv-text="&quot;[\uFFFD/#9\uFFFD|\uFFFD/#11\uFFFD|\uFFFD/#13\uFFFD|\uFFFD/#15\uFFFD]&quot;"/><x id="START_LIST_ITEM" equiv-text="&quot;[\uFFFD#9\uFFFD|\uFFFD#11\uFFFD|\uFFFD#13\uFFFD|\uFFFD#15\uFFFD]&quot;"/><x id="START_LINK_1" equiv-text="&quot;\uFFFD#12\uFFFD&quot;"/>About<x id="CLOSE_LINK" equiv-text="&quot;[\uFFFD/#10\uFFFD|\uFFFD/#12\uFFFD|\uFFFD/#14\uFFFD|\uFFFD/#16\uFFFD]&quot;"/><x id="CLOSE_LIST_ITEM" equiv-text="&quot;[\uFFFD/#9\uFFFD|\uFFFD/#11\uFFFD|\uFFFD/#13\uFFFD|\uFFFD/#15\uFFFD]&quot;"/><x id="START_LIST_ITEM" equiv-text="&quot;[\uFFFD#9\uFFFD|\uFFFD#11\uFFFD|\uFFFD#13\uFFFD|\uFFFD#15\uFFFD]&quot;"/><x id="START_LINK_2" equiv-text="&quot;\uFFFD#14\uFFFD&quot;"/>Blog<x id="CLOSE_LINK" equiv-text="&quot;[\uFFFD/#10\uFFFD|\uFFFD/#12\uFFFD|\uFFFD/#14\uFFFD|\uFFFD/#16\uFFFD]&quot;"/><x id="CLOSE_LIST_ITEM" equiv-text="&quot;[\uFFFD/#9\uFFFD|\uFFFD/#11\uFFFD|\uFFFD/#13\uFFFD|\uFFFD/#15\uFFFD]&quot;"/><x id="START_LIST_ITEM" equiv-text="&quot;[\uFFFD#9\uFFFD|\uFFFD#11\uFFFD|\uFFFD#13\uFFFD|\uFFFD#15\uFFFD]&quot;"/><x id="START_LINK_3" equiv-text="&quot;\uFFFD#16\uFFFD&quot;"/>Portfolio<x id="CLOSE_LINK" equiv-text="&quot;[\uFFFD/#10\uFFFD|\uFFFD/#12\uFFFD|\uFFFD/#14\uFFFD|\uFFFD/#16\uFFFD]&quot;"/><x id="CLOSE_LIST_ITEM" equiv-text="&quot;[\uFFFD/#9\uFFFD|\uFFFD/#11\uFFFD|\uFFFD/#13\uFFFD|\uFFFD/#15\uFFFD]&quot;"/><x id="CLOSE_UNORDERED_LIST" equiv-text="&quot;\uFFFD/#8\uFFFD&quot;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.js</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

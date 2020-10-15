@@ -1,0 +1,40 @@
+
+<!-- Modal -->
+<div class="modal fade right" id="exampleModalPreview" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalPreviewLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span style="font-size: 25px;">Drop your files here</span>
+        <div
+           style="width: 90%; height: 150px; text-align: center;"
+           appImageDrag
+           (files)="filesDropped($event)"
+           >
+           <div class="file-upload-wrapper">
+            <input type="file" id="input-file-now" class="file-upload" style="margin-top: 150px;"/>
+          </div>
+     </div>
+     <div style="margin-top: 5px; width: 100%; height: 100px;">
+         <div *ngFor="let file of uploadedFiles">
+             <img [src]="file.url" style="width: 100px; height: 100px;" />
+         </div>
+     </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.file-upload').file_upload();
+
+</script>
