@@ -1,18 +1,10 @@
-package io.bootapp;
-
-import java.util.ArrayList;
-import java.util.List;
+package spring.eventsapi;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
@@ -31,6 +23,7 @@ public class Reservation {
 
 
     public Reservation() {
+        //empty constructor
     }
 
 

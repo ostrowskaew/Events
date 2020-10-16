@@ -1,23 +1,10 @@
-package io.bootapp;
+package spring.eventsapi;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="Users")
@@ -50,7 +37,9 @@ public class User {
     
 
     public User() {
+        //empty constructor
     }
+
 
 
     public Number getIdUser() {
@@ -121,11 +110,8 @@ public class User {
     @Override
     public String toString() {
         return 
-        getNameUser() + " " + getSurname();
-\      
-\      
+        getNameUser() + " " + getSurname();          
     }
 
-
-    
+   
 }

@@ -1,19 +1,11 @@
-package io.bootapp;
+package spring.eventsapi;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
@@ -53,6 +45,7 @@ public class Event {
 	
 
 	public Event() {
+		//empty constructor
 	}
 	
 
@@ -140,7 +133,7 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return getNameEvent()										
+		return getNameEvent();							
 			
 	}
 
