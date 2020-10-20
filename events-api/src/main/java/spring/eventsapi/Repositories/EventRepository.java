@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EventRepository extends CrudRepository<Event, String> {
 
-	public List<Event> findByName(String name);
+	public List<Event> findByNameIgnoreCaseContaining(String name);
 
 }

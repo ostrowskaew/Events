@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, String> {
 
-	public List<User> findByName(String name);
+	public List<User> findByNameIgnoreCaseContaining(String name);
 
 }

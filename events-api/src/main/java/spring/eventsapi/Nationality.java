@@ -21,6 +21,13 @@ public class Nationality {
         //empty constructor
     }
 
+
+    public Nationality(Number idNationality, String country) {
+        this.idNationality = idNationality;
+        this.country = country;
+    }
+
+
     public Number getIdNationality() {
         return this.idNationality;
     }

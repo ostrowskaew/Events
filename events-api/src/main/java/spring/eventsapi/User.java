@@ -41,6 +41,17 @@ public class User {
     }
 
 
+    public User(Number idUser, String nameUser, String surname, String cardNum, String sex, String idPassport, String phoneNum, Nationality nationality) {
+        this.idUser = idUser;
+        this.nameUser = nameUser;
+        this.surname = surname;
+        this.cardNum = cardNum;
+        this.sex = sex;
+        this.idPassport = idPassport;
+        this.phoneNum = phoneNum;
+        this.nationality = nationality;
+    }
+    
 
     public Number getIdUser() {
         return this.idUser;

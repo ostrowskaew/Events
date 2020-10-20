@@ -27,6 +27,13 @@ public class Reservation {
     }
 
 
+    public Reservation(Number idReservation, User user, Event event) {
+        this.idReservation = idReservation;
+        this.user = user;
+        this.event = event;
+    }
+
+
     public Number getIdReservation() {
         return this.idReservation;
     }

@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface NationalityRepository extends CrudRepository<Nationality, String> {
 
-	public List<Nationality> findByCoutry(String name);
+	public List<Nationality> findByCoutryIgnoreCaseContaining(String name);
 
 }

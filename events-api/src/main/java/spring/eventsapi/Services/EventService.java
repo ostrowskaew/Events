@@ -35,8 +35,13 @@ public class EventService {
 	public void addEvent(Event event) {
 		eventRepository.save(event);
 	}
+
 	
 	public void deleteEvent(String id) {
 		eventRepository.deleteById(id);
+	}
+
+	public List<Event> getEventByName(String name) {
+		return eventRepository.findByNameIgnoreCaseContaining(name);
 	}
 }

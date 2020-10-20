@@ -44,10 +44,25 @@ public class Event {
 	private String description;
 	
 
+
 	public Event() {
-		//empty constructor
 	}
-	
+
+
+	public Event(Number idEvent, String nameEvent, Date dateStart, Date dateEnd, String meetingPlace, String notIncluded, String included, Number numPlaces, String schedule, String description) {
+		this.idEvent = idEvent;
+		this.nameEvent = nameEvent;
+		this.dateStart = dateStart;
+		this.dateEnd = dateEnd;
+		this.meetingPlace = meetingPlace;
+		this.notIncluded = notIncluded;
+		this.included = included;
+		this.numPlaces = numPlaces;
+		this.schedule = schedule;
+		this.description = description;
+	}
+
+
 
 	public Number getIdEvent() {
 		return this.idEvent;

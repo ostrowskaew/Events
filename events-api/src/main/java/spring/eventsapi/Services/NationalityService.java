@@ -32,11 +32,15 @@ public class NationalityService {
 			return null;
 		}
 	}
+
+	public List<Nationality> getNationalityByCountry(String name) {
+		return nationalityRepository.findByCoutryIgnoreCaseContaining(name);
+	}
 	
 	public void addNationality(Nationality nationality) {
 		nationalityRepository.save(nationality);
 	}
-	
+
 	
 	public void deleteNationality(String id) {
 		nationalityRepository.deleteById(id);
