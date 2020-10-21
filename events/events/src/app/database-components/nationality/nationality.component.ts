@@ -27,11 +27,10 @@ export class NationalityComponent implements OnInit {
   }
 
 
-  addNationality(country: string): void {
+  addNationality(country: String): void {
     country = country.trim();
-    let idNationality = 0;
     if (!country) { return; }
-    this.nationalityService.addNationality({idNationality, country} as Nationality)
+    this.nationalityService.addNationality({ country } as Nationality)
       .subscribe(nationality => {
         this.nationalities.push(nationality);
       });

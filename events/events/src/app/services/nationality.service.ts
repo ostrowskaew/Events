@@ -11,7 +11,7 @@ import { summaryFileName } from '@angular/compiler/src/aot/util';
 export class NationalityService {
 
  private nationalityUrl = 'http://localhost:8080/nationality';
- private nationalitiesUrl = 'http://localhost:8080/nationality'
+ private nationalitiesUrl = 'http://localhost:8080/nationalities'
 
 
   httpOptions = {
@@ -40,7 +40,6 @@ export class NationalityService {
   deleteNationality(idNationality: number): Observable<Nationality> {
     const url = `${this.nationalityUrl}/${idNationality}`;
     return this.http.delete<Nationality>(url, this.httpOptions);
-    );
   }
 
 }
