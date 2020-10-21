@@ -26,7 +26,7 @@ public class NationalityController {
 	}
 	
 	@RequestMapping("/nationality/{id}")
-	public Nationality getNationality(@PathVariable String id) {
+	public Nationality getNationality(@PathVariable Number id) {
 		return nationalityService.getNationality(id);
 	}
 	
@@ -38,7 +38,7 @@ public class NationalityController {
 	
 
 	@RequestMapping(method=RequestMethod.DELETE, value="/nationality/{id}")
-	public void deleteNationality(@PathVariable String id) {
+	public void deleteNationality(@PathVariable Number id) {
 		nationalityService.deleteNationality(id);
 	}
 }

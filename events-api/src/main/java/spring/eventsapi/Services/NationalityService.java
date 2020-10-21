@@ -22,7 +22,7 @@ public class NationalityService {
 		return nationalities;
 	}
 	
-	public Nationality getNationality(String id) {
+	public Nationality getNationality(Number id) {
 		Optional<Nationality> optNationality = nationalityRepository.findById(id);
 		if (optNationality.isPresent()){
 		    Nationality pers = optNationality.get();
@@ -34,7 +34,7 @@ public class NationalityService {
 	}
 
 	public List<Nationality> getNationalityByCountry(String name) {
-		return nationalityRepository.findByCoutryIgnoreCaseContaining(name);
+		return nationalityRepository.findByCountryIgnoreCaseContaining(name);
 	}
 	
 	public void addNationality(Nationality nationality) {
@@ -42,7 +42,7 @@ public class NationalityService {
 	}
 
 	
-	public void deleteNationality(String id) {
+	public void deleteNationality(Number id) {
 		nationalityRepository.deleteById(id);
 	}
 }

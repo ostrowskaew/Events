@@ -28,7 +28,7 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/reservation/{id}")
-	public Reservation getReservation(@PathVariable String id) {
+	public Reservation getReservation(@PathVariable Number id) {
 		return reservationService.getReservation(id);
 	}
 	
@@ -42,7 +42,7 @@ public class ReservationController {
 	
 
 	@RequestMapping(method=RequestMethod.DELETE, value="/reservation/{id}")
-	public void deleteReservation(@PathVariable String id) {
+	public void deleteReservation(@PathVariable Number id) {
 		reservationService.deleteReservation(id);
 	}
 }

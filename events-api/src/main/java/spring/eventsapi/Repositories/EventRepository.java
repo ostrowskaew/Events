@@ -4,9 +4,11 @@ import spring.eventsapi.Event;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface EventRepository extends CrudRepository<Event, String> {
+@Repository
+public interface EventRepository extends CrudRepository<Event, Number> {
 
-	public List<Event> findByNameIgnoreCaseContaining(String name);
+	public List<Event> findByNameEventIgnoreCaseContaining(String name);
 
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EventService {
+	
     @Autowired
 	private EventRepository eventRepository;
 	
@@ -21,7 +22,7 @@ public class EventService {
 		return events;
 	}
 	
-	public Event getEvent(String id) {
+	public Event getEvent(Number id) {
 		Optional<Event> optEvent = eventRepository.findById(id);
 		if (optEvent.isPresent()){
 		    Event pers = optEvent.get();
@@ -37,11 +38,11 @@ public class EventService {
 	}
 
 	
-	public void deleteEvent(String id) {
+	public void deleteEvent(Number id) {
 		eventRepository.deleteById(id);
 	}
 
 	public List<Event> getEventByName(String name) {
-		return eventRepository.findByNameIgnoreCaseContaining(name);
+		return eventRepository.findByNameEventIgnoreCaseContaining(name);
 	}
 }

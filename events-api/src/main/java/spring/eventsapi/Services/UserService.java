@@ -22,7 +22,7 @@ public class UserService {
 		return users;
 	}
 	
-	public User getUser(String id) {
+	public User getUser(Number id) {
 		Optional<User> optUser = userRepository.findById(id);
 		if (optUser.isPresent()){
 		    User pers = optUser.get();
@@ -38,7 +38,7 @@ public class UserService {
 	}
 
 	
-	public void deleteUser(String id) {
+	public void deleteUser(Number id) {
 		userRepository.deleteById(id);
 	}
 }

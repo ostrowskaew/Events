@@ -4,15 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="Events")
 public class Event {
 	
 	@Id
+	@GeneratedValue
 	@Column(name="idEvent")
 	private Number idEvent;
 	

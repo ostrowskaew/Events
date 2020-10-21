@@ -2,6 +2,7 @@ package spring.eventsapi;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,7 +10,8 @@ import javax.persistence.Table;
 @Table(name="Nationalities")
 public class Nationality {
 	
-	@Id
+    @Id
+    @GeneratedValue
 	@Column(name="idNationality")
 	private Number idNationality;
 	
