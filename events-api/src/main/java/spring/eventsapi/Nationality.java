@@ -13,7 +13,7 @@ public class Nationality {
     @Id
     @GeneratedValue
 	@Column(name="idNationality")
-	private Number idNationality;
+	private int idNationality;
 	
 	@Column(name="country")
 	private String country;
@@ -24,17 +24,17 @@ public class Nationality {
     }
 
 
-    public Nationality(Number idNationality, String country) {
+    public Nationality(int idNationality, String country) {
         this.idNationality = idNationality;
         this.country = country;
     }
 
 
-    public Number getIdNationality() {
+    public int getIdNationality() {
         return this.idNationality;
     }
 
-    public void setIdNationality(Number idNationality) {
+    public void setIdNationality(int idNationality) {
         this.idNationality = idNationality;
     }
 

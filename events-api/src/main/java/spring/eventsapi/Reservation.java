@@ -15,7 +15,7 @@ public class Reservation {
     @Id
     @GeneratedValue
 	@Column(name="idReservation")
-	private Number idReservation;
+	private int idReservation;
 
     @ManyToOne
     private User user;
@@ -23,24 +23,26 @@ public class Reservation {
     @ManyToOne
     private Event event;  
 
+    private boolean payed;
 
     public Reservation() {
         //empty constructor
     }
 
 
-    public Reservation(Number idReservation, User user, Event event) {
+    public Reservation(int idReservation, boolean payed, User user, Event event) {
         this.idReservation = idReservation;
         this.user = user;
         this.event = event;
+        this.payed = payed;
     }
 
 
-    public Number getIdReservation() {
+    public int getIdReservation() {
         return this.idReservation;
     }
 
-    public void setIdReservation(Number idReservation) {
+    public void setIdReservation(int idReservation) {
         this.idReservation = idReservation;
     }
 
@@ -50,6 +52,14 @@ public class Reservation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean getPayed() {
+        return this.payed;
+    }
+
+    public void setPayed(boolean payed) {
+        this.payed = payed;
     }
 
     public Event getEvent() {

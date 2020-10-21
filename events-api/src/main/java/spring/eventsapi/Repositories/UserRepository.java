@@ -4,6 +4,6 @@ import spring.eventsapi.User;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Number> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 	
 }

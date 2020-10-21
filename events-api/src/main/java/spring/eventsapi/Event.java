@@ -15,7 +15,7 @@ public class Event {
 	@Id
 	@GeneratedValue
 	@Column(name="idEvent")
-	private Number idEvent;
+	private int idEvent;
 	
 	@Column(name="nameEvent")
 	private String nameEvent;
@@ -36,7 +36,7 @@ public class Event {
 	private String included;	
 
 	@Column(name="numPlaces")
-	private Number numPlaces;
+	private int numPlaces;
 
 	@Column(name="schedule")
 	private String schedule;
@@ -50,7 +50,7 @@ public class Event {
 	}
 
 
-	public Event(Number idEvent, String nameEvent, Date dateStart, Date dateEnd, String meetingPlace, String notIncluded, String included, Number numPlaces, String schedule, String description) {
+	public Event(int idEvent, String nameEvent, Date dateStart, Date dateEnd, String meetingPlace, String notIncluded, String included, int numPlaces, String schedule, String description) {
 		this.idEvent = idEvent;
 		this.nameEvent = nameEvent;
 		this.dateStart = dateStart;
@@ -65,11 +65,11 @@ public class Event {
 
 
 
-	public Number getIdEvent() {
+	public int getIdEvent() {
 		return this.idEvent;
 	}
 
-	public void setIdEvent(Number id) {
+	public void setIdEvent(int id) {
 		this.idEvent = id;
 	}
 
@@ -121,11 +121,11 @@ public class Event {
 		this.included = included;
 	}
 
-	public Number getNumPlaces() {
+	public int getNumPlaces() {
 		return this.numPlaces;
 	}
 
-	public void setNumPlaces(Number numPlaces) {
+	public void setNumPlaces(int numPlaces) {
 		this.numPlaces = numPlaces;
 	}
 

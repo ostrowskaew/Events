@@ -4,6 +4,6 @@ import spring.eventsapi.Reservation;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ReservationRepository extends CrudRepository<Reservation, Number> {
+public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
 
 }

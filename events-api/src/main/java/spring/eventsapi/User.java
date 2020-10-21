@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue
 	@Column(name="userId")
-	private Number idUser;
+	private int idUser;
 	
 	@Column(name="nameUser")
 	private String nameUser;
@@ -43,7 +43,7 @@ public class User {
     }
 
 
-    public User(Number idUser, String nameUser, String surname, String cardNum, String sex, String idPassport, String phoneNum, Nationality nationality) {
+    public User(int idUser, String nameUser, String surname, String cardNum, String sex, String idPassport, String phoneNum, Nationality nationality) {
         this.idUser = idUser;
         this.nameUser = nameUser;
         this.surname = surname;
@@ -55,11 +55,11 @@ public class User {
     }
     
 
-    public Number getIdUser() {
+    public int getIdUser() {
         return this.idUser;
     }
 
-    public void setIdUser(Number idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 

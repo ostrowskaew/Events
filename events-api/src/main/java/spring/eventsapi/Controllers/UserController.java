@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	@Autowired
@@ -27,19 +26,19 @@ public class UserController {
 	}
 	
 	@RequestMapping("/users/{id}")
-	public User getUser(@PathVariable Number id) {
+	public User getUser(@PathVariable int id) {
 		return userService.getUser(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/users/country/{countryId}/")
-	public void addUser(@RequestBody User user, @PathVariable Number countryId) {
+	@RequestMapping(method=RequestMethod.POST, value="/users/country/{countryId}")
+	public void addUser(@RequestBody User user, @PathVariable int countryId) {
 		user.setNationality(new Nationality(countryId,""));
 		userService.addUser(user);
 	}
 	
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/users/{id}")
-	public void deleteUser(@PathVariable Number id) {
+	public void deleteUser(@PathVariable int id) {
 		userService.deleteUser(id);
 	}
 }

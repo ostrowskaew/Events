@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class NationalityController {
 	
 	@Autowired
@@ -26,7 +25,7 @@ public class NationalityController {
 	}
 	
 	@RequestMapping("/nationality/{id}")
-	public Nationality getNationality(@PathVariable Number id) {
+	public Nationality getNationality(@PathVariable int id) {
 		return nationalityService.getNationality(id);
 	}
 	
@@ -38,7 +37,7 @@ public class NationalityController {
 	
 
 	@RequestMapping(method=RequestMethod.DELETE, value="/nationality/{id}")
-	public void deleteNationality(@PathVariable Number id) {
+	public void deleteNationality(@PathVariable int id) {
 		nationalityService.deleteNationality(id);
 	}
 }

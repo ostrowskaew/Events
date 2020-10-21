@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class EventController {
 	
 	@Autowired
@@ -26,7 +25,7 @@ public class EventController {
 	}
 	
 	@RequestMapping("/events/{id}")
-	public Event getEvent(@PathVariable Number id) {
+	public Event getEvent(@PathVariable int id) {
 		return eventService.getEvent(id);
 	}
 	
@@ -43,7 +42,7 @@ public class EventController {
 	
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/events/{id}")
-	public void deleteEvent(@PathVariable Number id) {
+	public void deleteEvent(@PathVariable int id) {
 		eventService.deleteEvent(id);
 	}
 }

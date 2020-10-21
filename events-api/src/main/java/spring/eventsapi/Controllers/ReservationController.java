@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class ReservationController {
 	
 	@Autowired
@@ -28,13 +27,13 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/reservation/{id}")
-	public Reservation getReservation(@PathVariable Number id) {
+	public Reservation getReservation(@PathVariable int id) {
 		return reservationService.getReservation(id);
 	}
 	
 	
     @RequestMapping(method=RequestMethod.POST, value="/reservations/{eventId}/{userId}")
-	public void addReservation(@RequestBody Reservation reservation, @PathVariable Number eventId, @PathVariable Number userId) {
+	public void addReservation(@RequestBody Reservation reservation, @PathVariable int eventId, @PathVariable int userId) {
         reservation.setEvent(new Event(eventId,"",null,null,"","","",0,"",""));
         reservation.setUser(new User(userId,"","","","","","",null));
 		reservationService.addReservation(reservation);
@@ -42,7 +41,7 @@ public class ReservationController {
 	
 
 	@RequestMapping(method=RequestMethod.DELETE, value="/reservation/{id}")
-	public void deleteReservation(@PathVariable Number id) {
+	public void deleteReservation(@PathVariable int id) {
 		reservationService.deleteReservation(id);
 	}
 }

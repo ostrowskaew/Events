@@ -22,7 +22,7 @@ public class ReservationService {
 		return reservations;
 	}
 	
-	public Reservation getReservation(Number id) {
+	public Reservation getReservation(int id) {
 		Optional<Reservation> optReservation = reservationRepository.findById(id);
 		if (optReservation.isPresent()){
 		    Reservation pers = optReservation.get();
@@ -38,7 +38,7 @@ public class ReservationService {
 	}
 	
 	
-	public void deleteReservation(Number id) {
+	public void deleteReservation(int id) {
 		reservationRepository.deleteById(id);
 	}
 }

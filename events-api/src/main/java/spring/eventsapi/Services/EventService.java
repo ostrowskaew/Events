@@ -22,7 +22,7 @@ public class EventService {
 		return events;
 	}
 	
-	public Event getEvent(Number id) {
+	public Event getEvent(int id) {
 		Optional<Event> optEvent = eventRepository.findById(id);
 		if (optEvent.isPresent()){
 		    Event pers = optEvent.get();
@@ -38,7 +38,7 @@ public class EventService {
 	}
 
 	
-	public void deleteEvent(Number id) {
+	public void deleteEvent(int id) {
 		eventRepository.deleteById(id);
 	}
 
