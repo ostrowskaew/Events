@@ -30,9 +30,13 @@ import { UploadPicComponent } from './admin/upload-pic/upload-pic.component';
 import { ImageDragDirective } from './admin/image-drag.directive';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { TextUploadComponent} from './admin/text-upload/text-upload.component';
-  import { from } from 'rxjs';
 import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
 import { AdminAddEventComponent } from './admin/admin-add-event/admin-add-event.component';
+import { FormsModule } from '@angular/forms';
+import { NationalityComponent } from './database-components/nationality/nationality.component';
+import { UserComponent } from './database-components/user/user.component';
+import { EventComponent } from './database-components/event/event.component';
+import { ReservationComponent } from './database-components/reservation/reservation.component';
 
 
 @NgModule({
@@ -56,7 +60,11 @@ import { AdminAddEventComponent } from './admin/admin-add-event/admin-add-event.
     AdminContactComponent,
     TextUploadComponent,
     AdminEventDetailComponent,
-    AdminAddEventComponent
+    AdminAddEventComponent,
+    NationalityComponent,
+    UserComponent,
+    EventComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +76,7 @@ import { AdminAddEventComponent } from './admin/admin-add-event/admin-add-event.
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
