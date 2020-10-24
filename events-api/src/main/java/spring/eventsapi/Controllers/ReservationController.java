@@ -34,9 +34,9 @@ public class ReservationController {
 	
 	
     @RequestMapping(method=RequestMethod.POST, value="/reservations/{eventId}/{userId}")
-	public void addReservation(@RequestBody Reservation reservation, @PathVariable int eventId, @PathVariable int userId) {
+	public void addReservation(@RequestBody Reservation reservation, @PathVariable int eventId, @PathVariable String userId) {
         reservation.setEvent(new Event(eventId,"",null,null,"","","",0,"",""));
-        reservation.setUser(new User(userId,"","","","","","",null));
+        reservation.setUser(new User(userId,"", "","","","","","",null));
 		reservationService.addReservation(reservation);
 	}
 	

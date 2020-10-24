@@ -1,7 +1,8 @@
 import { Nationality } from '../nationality/Nationality';
 
 export interface User {
-  idUser: number;
+  email: String;
+  password: String;
   nameUser: String;
   surname: String;
   idPassport: String;

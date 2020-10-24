@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AdminAboutComponent } from './admin/admin-about/admin-about.component';
-import { AdminAddEventComponent } from './admin/admin-add-event/admin-add-event.component';
+import { AdminAddEventoComponent } from './admin/admin-add-evento/admin-add-evento.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
 import { ContactComponent } from './contact/contact.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'news', pathMatch: 'full'},
   { path: 'admin/admin-contact', component: AdminContactComponent},
   { path: 'admin/admin-news', component: AdminAboutComponent},
-  { path: 'admin/admin-add-event', component: AdminAddEventComponent},
+  { path: 'admin/admin-add-event', component: AdminAddEventoComponent},
   { path: 'admin/admin-event/:id', component: AdminEventDetailComponent},
   { path: 'register', component: RegisterComponent}
 

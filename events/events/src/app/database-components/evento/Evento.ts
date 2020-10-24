@@ -1,7 +1,7 @@
 
-export interface Event {
-  idEvent : number;
-  nameEvent : String;
+export interface Evento {
+  idEvento : number;
+  nameEvento : String;
   dateStart : Date;
   dateEnd: Date;
   meetingPlace: String;

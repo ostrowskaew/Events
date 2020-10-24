@@ -31,12 +31,14 @@ import { ImageDragDirective } from './admin/image-drag.directive';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { TextUploadComponent} from './admin/text-upload/text-upload.component';
 import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
-import { AdminAddEventComponent } from './admin/admin-add-event/admin-add-event.component';
+import { AdminAddEventoComponent } from './admin/admin-add-evento/admin-add-evento.component';
 import { FormsModule } from '@angular/forms';
 import { NationalityComponent } from './database-components/nationality/nationality.component';
 import { UserComponent } from './database-components/user/user.component';
-import { EventComponent } from './database-components/event/event.component';
+import { EventoComponent } from './database-components/evento/evento.component';
 import { ReservationComponent } from './database-components/reservation/reservation.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -60,11 +62,12 @@ import { ReservationComponent } from './database-components/reservation/reservat
     AdminContactComponent,
     TextUploadComponent,
     AdminEventDetailComponent,
-    AdminAddEventComponent,
+    AdminAddEventoComponent,
     NationalityComponent,
     UserComponent,
-    EventComponent,
-    ReservationComponent
+    EventoComponent,
+    ReservationComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -94,3 +97,4 @@ export class AppModule { }
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+platformBrowserDynamic().bootstrapModule(AppModule);

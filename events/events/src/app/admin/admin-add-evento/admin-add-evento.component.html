@@ -1,4 +1,9 @@
-
+<ul class="eventos">
+  <h2>Events: </h2>
+  <li *ngFor="let evento of eventos" >
+    <a>{{evento.idEvento}}</a>
+  </li>
+</ul>
 
   <!-- Full Page Intro -->
   <section style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/90.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -7,7 +12,7 @@
       <!-- Content -->
       <div class="container my-5">
 
-        <h1 class="font-weight-bold text-center white-text pb-2"><label>{{'Add Event' | translate}}</label></h1>
+        <h1 class="font-weight-bold text-center white-text pb-2"><label>{{'Add Evento' | translate}}</label></h1>
 
         <!--Grid row-->
         <div class="row d-flex align-items-center justify-content-center">
@@ -21,39 +26,45 @@
                   <div class="col-md-6">
                     <form>
                 <div class="form-group row">
-                  <label for="event_name" class="col-3 col-form-label"><label>{{'Event Name' | translate}}</label></label>
+                  <label for="event_name" class="col-3 col-form-label"><label>{{'Evento Name' | translate}}</label></label>
                   <div class="col-9">
-                    <input id="event_name" name="event_name" type="text" class="form-control">
+                    <input #nameEvento class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="event_date" class="col-3 col-form-label"><label>{{'Event date' | translate}}</label></label>
+                  <label for="event_date_start" class="col-3 col-form-label"><label>{{'Evento date' | translate}}</label></label>
                   <div class="col-9">
-                    <input id="event_date" name="event_date" type="text" class="form-control">
+                    <input #dateStart class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="event_date_end" class="col-3 col-form-label"><label>{{'Evento date' | translate}}</label></label>
+                  <div class="col-9">
+                    <input #dateEnd class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="meeting_place" class="col-3 col-form-label"><label>{{'Meeting place' | translate}}</label></label>
                   <div class="col-9">
-                    <input id="meeting_place" name="meeting_place" type="text" class="form-control">
+                    <input #meetingPlace class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="not_included_price" class="col-3 col-form-label"><label>{{'Not Inc Price' | translate}}</label></label>
                   <div class="col-9">
-                    <input id="not_included_price" name="not_included_price" type="text" class="form-control">
+                    <input #notIncuded class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="included_price" class="col-3 col-form-label"><label>{{'Inc Price' | translate}}</label></label>
                   <div class="col-9">
-                    <input id="included_price" name="included_price" type="text" class="form-control">
+                    <input #included class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="places_num" class="col-3 col-form-label"><label>{{'Places Num' | translate}}</label></label>
                   <div class="col-9">
-                    <input id="places_num" name="places_num" type="text" class="form-control">
+                    <input #numPlaces class="form-control">
                   </div>
                 </div>
 
@@ -65,14 +76,14 @@
                     <div class="form-group row">
                       <label for="schedule" class="col-3 col-form-label"><label>{{'Schedule' | translate}}</label>:</label>
                       <div class="col-9">
-                        <textarea id="schedule" name="schedule" cols="40" rows="5" class="form-control"></textarea>
+                        <textarea #schedule cols="40" rows="5" class="form-control"></textarea>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                  <label for="desc" class="col-3 col-form-label"><label>{{'Desc' | translate}}</label></label>
+                  <label for="description" class="col-3 col-form-label"><label>{{'Desc' | translate}}</label></label>
                   <div class="col-9">
-                    <textarea id="desc" name="desc" cols="40" rows="5" class="form-control"></textarea>
+                    <textarea #description cols="40" rows="5" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -84,7 +95,9 @@
                 </div>
 
                 <div class="text-center my-3">
-                  <button class="btn btn-dark btn-block"><label>{{'Add Event' | translate}}</label></button>
+                  <button (click)="addEvento(nameEvento.value, dateStart.value, dateEnd.value, meetingPlace.value, numPlaces.value,
+                  included.value, notIncuded.value, schedule.value, description.value);refreshPage();"class="btn btn-dark btn-block"><label>{{'Add Evento' | translate}}</label>
+                  </button>
                 </div>
               </div>
             </div>
