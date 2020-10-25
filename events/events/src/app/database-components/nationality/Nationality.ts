@@ -1,4 +1,4 @@
-export interface Nationality {
+export class Nationality {
   idNationality: number;
-  country: String;
+  country: string;
 }

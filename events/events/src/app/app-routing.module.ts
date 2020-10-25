@@ -9,7 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { EventoComponent } from './database-components/evento/evento.component';
 import { NationalityComponent } from './database-components/nationality/nationality.component';
 import { ReservationComponent } from './database-components/reservation/reservation.component';
-import { UserComponent, UserComponent } from './database-components/user/user.component';
+import { UserComponent } from './database-components/user/user.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsGalleryComponent } from './events-gallery/events-gallery.component';
 import { FormularDataComponent } from './formular-data/formular-data.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'events', component: EventoComponent},
   { path: 'users', component: UserComponent},
   { path: 'reservations', component: ReservationComponent},
-  { path: 'natinalities', component: NationalityComponent}
+  { path: 'nationalities', component: NationalityComponent}
 ];
 
 @NgModule({

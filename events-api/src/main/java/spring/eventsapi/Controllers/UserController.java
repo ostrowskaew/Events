@@ -1,7 +1,7 @@
 package spring.eventsapi.Controllers;
 
-import spring.eventsapi.Nationality;
 import spring.eventsapi.User;
+import spring.eventsapi.Services.NationalityService;
 import spring.eventsapi.Services.UserService;
 
 import java.util.List;
@@ -20,6 +20,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private NationalityService NationalityService;
 	
 	@RequestMapping("/users")
 	public List<User> getAllUsers() {
@@ -33,7 +36,7 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/users/country/{countryId}")
 	public void addUser(@RequestBody User user, @PathVariable int countryId) {
-		user.setNationality(new Nationality(countryId,""));
+		user.setNationality(NationalityService.getNationality(countryId));
 		userService.addUser(user);
 	}
 	

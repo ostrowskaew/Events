@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Nationality } from './nationality';
 import { NationalityService } from '../../services/nationality.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nationalities',
@@ -9,31 +10,43 @@ import { NationalityService } from '../../services/nationality.service';
 })
 export class NationalityComponent implements OnInit {
 
- nationalities: Nationality[];
+  nationalities: Observable<Nationality[]>;
+  submitted = false;
+  nationality: Nationality = new Nationality();
 
-  constructor(private nationalityService: NationalityService) {}
+  constructor(private nationalityService: NationalityService) { }
 
   ngOnInit() {
-    this.getNationalities();
+    this.reloadData();
   }
 
-  getNationalities(): void {
-    this.nationalityService.getNationalities()
-    .subscribe(nationalities => this.nationalities = nationalities);
+  newNationality(): void {
+    this.submitted = false;
+    this.nationality = new Nationality();
   }
 
-  getNationalityList(): Nationality[] {
-    return this.nationalities;
+  save() {
+    this.nationalityService.addNationality(this.nationality)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.nationality = new Nationality();
   }
 
-
-  addNationality(country: String): void {
-    country = country.trim();
-    if (!country) { return; }
-    this.nationalityService.addNationality({ country } as Nationality)
-      .subscribe(nationality => {
-        this.nationalities.push(nationality);
-      });
+  onSubmit() {
+    this.submitted = true;
+    this.save();
   }
 
+  reloadData() {
+    this.nationalities = this.nationalityService.getNationalities();
+  }
+
+  deleteNationality(id: number) {
+    this.nationalityService.deleteNationality(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
+  }
 }

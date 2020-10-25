@@ -20,26 +20,26 @@ export class NationalityService {
 
   constructor(private http: HttpClient) { }
 
-  getNationalities(): Observable<Nationality[]> {
-  return this.http.get<Nationality[]>(this.nationalitiesUrl);
+  getNationalities(): Observable<any> {
+  return this.http.get(this.nationalitiesUrl);
 }
 
-  getNationality(id: number): Observable<Nationality> {
+  getNationality(id: number): Observable<Object> {
      const url = `${this.nationalityUrl}/${id}`;
      return this.http.get<Nationality>(url);
   }
 
 
 /** POST: add a new nationality to the server */
-  addNationality(nationality: Nationality): Observable<Nationality> {
-    return this.http.post<Nationality>(this.nationalityUrl, nationality, this.httpOptions);
+  addNationality(nationality: Object): Observable<Object> {
+    return this.http.post(this.nationalityUrl, nationality);
   }
 
 
 
-  deleteNationality(idNationality: number): Observable<Nationality> {
+  deleteNationality(idNationality: number): Observable<any> {
     const url = `${this.nationalityUrl}/${idNationality}`;
-    return this.http.delete<Nationality>(url, this.httpOptions);
+    return this.http.delete<Nationality>(url);
   }
 
 }

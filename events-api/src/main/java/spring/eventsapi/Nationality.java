@@ -24,8 +24,7 @@ public class Nationality {
     }
 
 
-    public Nationality(int idNationality, String country) {
-        this.idNationality = idNationality;
+    public Nationality(String country) {
         this.country = country;
     }
 
