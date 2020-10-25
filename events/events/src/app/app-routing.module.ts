@@ -7,6 +7,9 @@ import { AdminContactComponent } from './admin/admin-contact/admin-contact.compo
 import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
 import { ContactComponent } from './contact/contact.component';
 import { EventoComponent } from './database-components/evento/evento.component';
+import { NationalityComponent } from './database-components/nationality/nationality.component';
+import { ReservationComponent } from './database-components/reservation/reservation.component';
+import { UserComponent, UserComponent } from './database-components/user/user.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsGalleryComponent } from './events-gallery/events-gallery.component';
 import { FormularDataComponent } from './formular-data/formular-data.component';
@@ -28,7 +31,10 @@ const routes: Routes = [
   { path: 'admin/admin-add-event', component: AdminAddEventoComponent},
   { path: 'admin/admin-event/:id', component: AdminEventDetailComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'events', component: EventoComponent}
+  { path: 'events', component: EventoComponent},
+  { path: 'users', component: UserComponent},
+  { path: 'reservations', component: ReservationComponent},
+  { path: 'natinalities', component: NationalityComponent}
 ];
 
 @NgModule({
