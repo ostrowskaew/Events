@@ -13,7 +13,6 @@ export class UserComponent implements OnInit {
   users: Observable<User[]>;
   submitted = false;
   user: User = new User();
-  idCountry : number;
 
   constructor(private userService: UserService) { }
 
@@ -41,8 +40,8 @@ export class UserComponent implements OnInit {
     this.users = this.userService.getUsers();
   }
 
-  deleteUser(id: string) {
-    this.userService.deleteUser(id)
+  deleteUser(idUser: number) {
+    this.userService.deleteUser(idUser)
       .subscribe(
         data => {
           console.log(data);

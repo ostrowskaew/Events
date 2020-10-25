@@ -2,6 +2,7 @@ package spring.eventsapi;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -10,7 +11,12 @@ import javax.persistence.Table;
 @Table(name="Users")
 public class User {
 	
+    
     @Id
+    @GeneratedValue
+	@Column(name="idUser")
+    private int idUser;
+
 	@Column(name="email")
     private String email;
     
@@ -66,6 +72,14 @@ public class User {
         this.idPassport ="";
         this.phoneNum = "";
         this.nationality = null;
+    }
+
+    public int getIdUser() {
+        return this.idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getEmail() {

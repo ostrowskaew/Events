@@ -29,7 +29,7 @@ export class ReservationService {
 
 
 /** POST: add a new reservation to the server */
-addReservation(reservation: Reservation, idEvent : number, idUser : string): Observable<Object> {
+addReservation(reservation: Reservation, idEvent : number, idUser : number): Observable<Object> {
   const url = `${this.reservationsUrl}/${idEvent}/${idUser}`;
   return this.http.post(url, reservation);
 }

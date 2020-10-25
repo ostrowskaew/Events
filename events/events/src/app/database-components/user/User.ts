@@ -1,6 +1,7 @@
 import { Nationality } from '../nationality/Nationality';
 
 export class User {
+  idUser: number;
   email: string;
   password: string;
   nameUser: string;

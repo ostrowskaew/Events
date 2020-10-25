@@ -14,7 +14,7 @@ export class ReservationComponent implements OnInit {
   reservations: Observable<Reservation[]>;
   submitted = false;
   reservation: Reservation = new Reservation();
-  idUser : string;
+  idUser : number;
   idEvento : number;
 
   constructor(private reservationService: ReservationService) { }

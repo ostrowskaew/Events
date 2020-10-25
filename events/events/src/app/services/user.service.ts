@@ -21,7 +21,7 @@ export class UserService {
     return this.http.get(this.usersUrl);
   }
 
-    getUser(id: string): Observable<Object> {
+    getUser(id: number): Observable<Object> {
        const url = `${this.usersUrl}/${id}`;
        return this.http.get<User>(url);
     }
@@ -34,8 +34,8 @@ export class UserService {
     }
 
 
-    deleteUser(idUser: string): Observable<any> {
+    deleteUser(idUser: number): Observable<any> {
       const url = `${this.usersUrl}/${idUser}`;
-      return this.http.delete<User>(url);
+      return this.http.delete<any>(url);
     }
 }
