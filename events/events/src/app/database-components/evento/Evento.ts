@@ -1,13 +1,13 @@
 
 export interface Evento {
-  idEvento : number;
-  nameEvento : String;
+  idEvento : string;
+  nameEvento : string;
   dateStart : Date;
   dateEnd: Date;
-  meetingPlace: String;
+  meetingPlace: string;
   numPlaces: number;
-  included: String;
-  notIncluded: String;
-  schedule: String;
-  description: String;
+  included: string;
+  notIncluded: string;
+  schedule: string;
+  description: string;
 }

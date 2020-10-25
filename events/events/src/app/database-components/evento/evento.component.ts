@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventoService } from 'src/app/services/evento.service';
+import { MessageService } from 'src/app/services/messages.service';
 import { Evento } from './evento';
 
 
@@ -11,11 +13,19 @@ export class EventoComponent implements OnInit {
 
  eventos: Evento[];
 
-  constructor() {}
+ constructor(private eventoService: EventoService, private messageService: MessageService) {}
 
-  ngOnInit() {
-  }
+ ngOnInit() {
+   this.getEventos();
+ }
 
+ getEventos(): void {
+   this.eventoService.getEventos()
+   .subscribe(eventos => this.eventos = eventos);
+ }
 
-
+ getEventoList(): Evento[] {
+   return this.eventos;
+ }
 }
+

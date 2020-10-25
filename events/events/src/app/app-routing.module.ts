@@ -6,6 +6,7 @@ import { AdminAddEventoComponent } from './admin/admin-add-evento/admin-add-even
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
 import { ContactComponent } from './contact/contact.component';
+import { EventoComponent } from './database-components/evento/evento.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsGalleryComponent } from './events-gallery/events-gallery.component';
 import { FormularDataComponent } from './formular-data/formular-data.component';
@@ -26,8 +27,8 @@ const routes: Routes = [
   { path: 'admin/admin-news', component: AdminAboutComponent},
   { path: 'admin/admin-add-event', component: AdminAddEventoComponent},
   { path: 'admin/admin-event/:id', component: AdminEventDetailComponent},
-  { path: 'register', component: RegisterComponent}
-
+  { path: 'register', component: RegisterComponent},
+  { path: 'events', component: EventoComponent}
 ];
 
 @NgModule({

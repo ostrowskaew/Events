@@ -13,18 +13,21 @@ import { MessageService } from 'src/app/services/messages.service';
 
 export class AdminAddEventoComponent implements OnInit {
   eventos: Evento[];
-  idEvento : number;
+  idEvento : string;
 
   constructor(
-    public translate: TranslateService, private eventoService: EventoService, private messageService: MessageService
+    public translate: TranslateService,
+    private eventoService: EventoService,
+    private messageService: MessageService
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
   }
 
 
+
   ngOnInit(): void {
-    this.getEventos();
+   this.getEventos();
   }
 
   switchLang(lang: string) {
@@ -40,13 +43,10 @@ export class AdminAddEventoComponent implements OnInit {
     .subscribe(eventos => this.eventos = eventos);
   }
 
-  getEventoList(): Evento[] {
-    return this.eventos;
-  }
 
-  addEvento(nameEvento: String, dateStart: Date, dateEnd: Date, meetingPlace: String, numPlaces : Number,
-    included : String, notIncluded: String, schedule : String, description: String): void {
-    let idEvento = this.idEvento = 0;
+  addEvento(nameEvento: string, dateStart: Date, dateEnd: Date, meetingPlace: string, numPlaces : number,
+    included : string, notIncluded: string, schedule : string, description: string): void {
+    let idEvento = this.idEvento = '0';
     if (!nameEvento || !numPlaces) { return; }
     this.eventoService.addEvento({ idEvento, nameEvento,
         dateStart, dateEnd, meetingPlace, numPlaces,

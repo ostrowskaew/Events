@@ -1,0 +1,27 @@
+
+.li {
+  position: relative;
+  cursor: pointer;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+.li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  width: 250px;
+}
+
+.a:hover {
+  color: #607D8B;
+}

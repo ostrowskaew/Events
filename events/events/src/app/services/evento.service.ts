@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Evento } from '../database-components/evento/evento';
+import { Evento } from '../database-components/evento/Evento';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './messages.service';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventoService {
 
- private eventosUrl = 'http://localhost:8080/events'
-
+ private eventosUrl = 'http://localhost:8080/events';
 
   httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient , private messageService: MessageService) { }
+  constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getEventos(): Observable<Evento[]> {
   return this.http.get<Evento[]>(this.eventosUrl)
@@ -27,7 +26,15 @@ export class EventoService {
   );
 }
 
-private log(message: string) {
+  getEvento(id: number): Observable<Evento> {
+     const url = `${this.eventosUrl}/${id}`;
+     return this.http.get<Evento>(url).pipe(
+     tap(_ => this.log(`fetched evento id=${id}`)),
+     catchError(this.handleError<Evento>(`getEvento id=${id}`))
+  );
+  }
+
+  private log(message: string) {
   this.messageService.add(`EventoService: ${message}`);
   }
 
@@ -40,15 +47,6 @@ private log(message: string) {
   };
   }
 
-  getEvento(id: number): Observable<Evento> {
-     const url = `${this.eventosUrl}/${id}`;
-     return this.http.get<Evento>(url).pipe(
-      tap(_ => this.log(`fetched evento id=${id}`)),
-      catchError(this.handleError<Evento>(`getEvento id=${id}`))
-   );
-  }
-
-
 /** POST: add a new evento to the server */
   addEvento(evento: Evento): Observable<Evento> {
     return this.http.post<Evento>(this.eventosUrl, evento, this.httpOptions).pipe(
@@ -59,9 +57,12 @@ private log(message: string) {
 
 
 
-  deleteEvento(idEvento: number): Observable<Evento> {
+  deleteEvento(idEvento: string): Observable<Evento> {
     const url = `${this.eventosUrl}/${idEvento}`;
-    return this.http.delete<Evento>(url, this.httpOptions);
+    return this.http.delete<Evento>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted evento id=${idEvento}`)),
+      catchError(this.handleError<Evento>('deleteEvento'))
+    );
   }
 
 }

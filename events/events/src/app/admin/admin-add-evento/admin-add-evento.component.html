@@ -1,9 +1,3 @@
-<ul class="eventos">
-  <h2>Events: </h2>
-  <li *ngFor="let evento of eventos" >
-    <a>{{evento.idEvento}}</a>
-  </li>
-</ul>
 
   <!-- Full Page Intro -->
   <section style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/90.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -93,12 +87,12 @@
                 </div>
                   </div>
                 </div>
-
                 <div class="text-center my-3">
                   <button (click)="addEvento(nameEvento.value, dateStart.value, dateEnd.value, meetingPlace.value, numPlaces.value,
                   included.value, notIncuded.value, schedule.value, description.value);refreshPage();"class="btn btn-dark btn-block"><label>{{'Add Evento' | translate}}</label>
                   </button>
                 </div>
+
               </div>
             </div>
             <!--/.Form-->
