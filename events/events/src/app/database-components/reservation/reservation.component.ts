@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from './reservation';
 import { ReservationService } from '../../services/reservation.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reservations',
@@ -9,29 +10,50 @@ import { ReservationService } from '../../services/reservation.service';
 })
 export class ReservationComponent implements OnInit {
 
- reservations: Reservation[];
 
-  constructor(private reservationService: ReservationService) {}
+  reservations: Observable<Reservation[]>;
+  submitted = false;
+  reservation: Reservation = new Reservation();
+  idUser : string;
+  idEvento : number;
+
+  constructor(private reservationService: ReservationService) { }
 
   ngOnInit() {
-    this.getReservations();
+    this.reloadData();
   }
 
-  getReservations(): void {
-    this.reservationService.getReservations()
-    .subscribe(reservations => this.reservations = reservations);
+  newReservation(): void {
+    this.submitted = false;
+    this.reservation = new Reservation();
   }
 
-  getReservationList(): Reservation[] {
-    return this.reservations;
+  save() {
+    this.reservationService.addReservation(this.reservation, this.idEvento, this.idUser)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.reservation = new Reservation();
   }
 
-
-  addReservation(payed: boolean, idEvent : number, idUser : number): void {
-    this.reservationService.addReservation({ payed } as Reservation, idEvent, idUser)
-      .subscribe(reservation => {
-        this.reservations.push(reservation);
-      });
+  onSubmit() {
+    this.submitted = true;
+    this.save();
   }
 
+  refreshPage(): void {
+    window.location.reload();
+  }
+
+  reloadData() {
+    this.reservations = this.reservationService.getReservations();
+  }
+
+  deleteReservation(id: number) {
+    this.reservationService.deleteReservation(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
+  }
 }

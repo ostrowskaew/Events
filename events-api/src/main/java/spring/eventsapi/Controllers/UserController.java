@@ -22,7 +22,7 @@ public class UserController {
 	private UserService userService;
 
 	@Autowired
-	private NationalityService NationalityService;
+	private NationalityService nationalityService;
 	
 	@RequestMapping("/users")
 	public List<User> getAllUsers() {
@@ -36,7 +36,7 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/users/country/{countryId}")
 	public void addUser(@RequestBody User user, @PathVariable int countryId) {
-		user.setNationality(NationalityService.getNationality(countryId));
+		user.setNationality(nationalityService.getNationality(countryId));
 		userService.addUser(user);
 	}
 	

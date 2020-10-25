@@ -44,7 +44,8 @@ public class User {
     }
 
 
-    public User(String email, String password, String nameUser, String surname, String cardNum, String sex, String idPassport, String phoneNum, Nationality nationality) {
+    public User(String email, String password, String nameUser, String surname, String cardNum,
+     String sex, String idPassport, String phoneNum, Nationality nationality) {
         this.email = email;
         this.password = password;
         this.nameUser = nameUser;

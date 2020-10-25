@@ -30,8 +30,7 @@ public class Reservation {
     }
 
 
-    public Reservation(int idReservation, boolean payed, User user, Event event) {
-        this.idReservation = idReservation;
+    public Reservation(boolean payed, User user, Event event) {
         this.user = user;
         this.event = event;
         this.payed = payed;

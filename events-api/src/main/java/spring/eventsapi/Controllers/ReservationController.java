@@ -1,9 +1,9 @@
 package spring.eventsapi.Controllers;
 
+import spring.eventsapi.Services.EventService;
 import spring.eventsapi.Services.ReservationService;
-import spring.eventsapi.Event;
+import spring.eventsapi.Services.UserService;
 import spring.eventsapi.Reservation;
-import spring.eventsapi.User;
 
 import java.util.List;
 
@@ -21,6 +21,12 @@ public class ReservationController {
 	
 	@Autowired
 	private ReservationService reservationService;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired 
+	private EventService eventService;
 	
 	@RequestMapping("/reservations")
 	public List<Reservation> getAllReservations() {
@@ -35,8 +41,8 @@ public class ReservationController {
 	
     @RequestMapping(method=RequestMethod.POST, value="/reservations/{eventId}/{userId}")
 	public void addReservation(@RequestBody Reservation reservation, @PathVariable int eventId, @PathVariable String userId) {
-        reservation.setEvent(new Event(eventId,"",null,null,"","","",0,"",""));
-        reservation.setUser(new User(userId,"", "","","","","","",null));
+        reservation.setEvent(eventService.getEvent(eventId));
+        reservation.setUser(userService.getUser(userId));
 		reservationService.addReservation(reservation);
 	}
 	

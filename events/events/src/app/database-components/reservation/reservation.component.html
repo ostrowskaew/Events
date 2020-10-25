@@ -1,1 +1,53 @@
-<p>reservation works!</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h1>reservationss</h1>
+  </div>
+  <div class="panel-body">
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>payed</th>
+                  <th>User</th>
+                  <th>Event</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let reservation of reservations | async">
+                  <td>{{reservation.idReservation}}</td>
+                  <td>{{reservation.payed}}</td>
+                  <td>{{reservation.user.email}}</td>
+                  <td>{{reservation.evento.idEvento}}</td>
+                  <td><button (click)="deleteReservation(reservation.idReservation)">Delete</button></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<h3>Create reservations</h3>
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit(); refreshPage()">
+        <div class="form-group">
+            <label for="name">payed</label>
+            <input type="text" class="form-control" id="payed" required [(ngModel)]="reservation.payed" name="payed">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Event</label>
+          <input type="text" class="form-control" id="event" required [(ngModel)]="idEvento" name="event">
+      </div>
+
+      <div class="form-group">
+        <label for="name">user</label>
+        <input type="text" class="form-control" id="user" required [(ngModel)]="idUser" name="user">
+       </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+</div>

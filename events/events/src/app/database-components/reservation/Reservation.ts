@@ -1,8 +1,9 @@
+import { Evento } from '../evento/Evento';
 import { User } from '../user/User';
 
-export interface Reservation {
+export class Reservation {
   idReservation: number;
-  payed: boolean,
-  event: Event;
+  payed: boolean;
+  evento: Evento;
   user: User;
 }
