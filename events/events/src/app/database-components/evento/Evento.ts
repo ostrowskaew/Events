@@ -1,9 +1,9 @@
 
-export interface Evento {
-  idEvento : string;
-  nameEvento : string;
-  dateStart : Date;
-  dateEnd: Date;
+export class Evento {
+  idEvent : number;
+  nameEvent : string;
+  dateStart : string;
+  dateEnd: string;
   meetingPlace: string;
   numPlaces: number;
   included: string;

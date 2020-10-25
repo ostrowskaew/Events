@@ -1,6 +1,5 @@
 package spring.eventsapi;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,10 +20,10 @@ public class Event {
 	private String nameEvent;
 	
 	@Column(name="dateStart")
-	private Date dateStart;
+	private String dateStart;
 
 	@Column(name="dateEnd")
-	private Date dateEnd;
+	private String dateEnd;
 
 	@Column(name="meetingPlace")
 	private String meetingPlace;
@@ -50,8 +49,8 @@ public class Event {
 	}
 
 
-	public Event(int idEvent, String nameEvent, Date dateStart, Date dateEnd, String meetingPlace, String notIncluded, String included, int numPlaces, String schedule, String description) {
-		this.idEvent = idEvent;
+	public Event(String nameEvent, String dateStart, String dateEnd, String meetingPlace, 
+	String notIncluded, String included, int numPlaces, String schedule, String description) {
 		this.nameEvent = nameEvent;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
@@ -81,19 +80,19 @@ public class Event {
 		this.nameEvent = name;
 	}
 
-	public Date getDateStart() {
+	public String getStringStart() {
 		return this.dateStart;
 	}
 
-	public void setDateStart(Date dateStart) {
+	public void setStringStart(String dateStart) {
 		this.dateStart = dateStart;
 	}
 
-	public Date getDateEnd() {
+	public String getStringEnd() {
 		return this.dateEnd;
 	}
 
-	public void setDateEnd(Date dateEnd) {
+	public void setStringEnd(String dateEnd) {
 		this.dateEnd = dateEnd;
 	}
 

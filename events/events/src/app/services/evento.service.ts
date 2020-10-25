@@ -18,51 +18,25 @@ export class EventoService {
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
-  getEventos(): Observable<Evento[]> {
-  return this.http.get<Evento[]>(this.eventosUrl)
-  .pipe(
-    tap(_ => this.log('fetched eventos')),
-    catchError(this.handleError<Evento[]>('getEventos', []))
-  );
-}
-
-  getEvento(id: number): Observable<Evento> {
-     const url = `${this.eventosUrl}/${id}`;
-     return this.http.get<Evento>(url).pipe(
-     tap(_ => this.log(`fetched evento id=${id}`)),
-     catchError(this.handleError<Evento>(`getEvento id=${id}`))
-  );
+  getEventos(): Observable<any> {
+    return this.http.get(this.eventosUrl);
   }
 
-  private log(message: string) {
-  this.messageService.add(`EventoService: ${message}`);
-  }
+    getEvento(id: number): Observable<Object> {
+       const url = `${this.eventosUrl}/${id}`;
+       return this.http.get<Evento>(url);
+    }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
 
-    this.log(`${operation} failed: ${error.message}`);
-
-    return of(result as T);
-  };
-  }
-
-/** POST: add a new evento to the server */
-  addEvento(evento: Evento): Observable<Evento> {
-    return this.http.post<Evento>(this.eventosUrl, evento, this.httpOptions).pipe(
-      tap((newEvento: Evento) => this.log(`added evento w/ id=${newEvento.idEvento}`)),
-      catchError(this.handleError<Evento>('addEvento'))
-    );
-  }
+  /** POST: add a new evento to the server */
+    addEvento(evento: Object): Observable<Object> {
+      return this.http.post(this.eventosUrl, evento);
+    }
 
 
 
-  deleteEvento(idEvento: string): Observable<Evento> {
-    const url = `${this.eventosUrl}/${idEvento}`;
-    return this.http.delete<Evento>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted evento id=${idEvento}`)),
-      catchError(this.handleError<Evento>('deleteEvento'))
-    );
-  }
-
+    deleteEvento(idEvento: number): Observable<any> {
+      const url = `${this.eventosUrl}/${idEvento}`;
+      return this.http.delete<Evento>(url);
+    }
 }

@@ -24,17 +24,17 @@ export class RegisterComponent implements OnInit {
     this.userService.getUsers()
     .subscribe(users => this.users = users);
   }
-
+/*
   addUser(email : String, password: String): void {
     email = email.trim();
     password = password.trim();
     if (!email || !password ) { return; }
-    this.userService.addUser({ email, password} as User, 0)
+    this.userService.addUser({ email, password} as User)
     .subscribe( user => {
     this.users.push(user);
     });
 }
-
+*/
 
 
 }

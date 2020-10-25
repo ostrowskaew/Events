@@ -43,7 +43,7 @@ export class AdminAddEventoComponent implements OnInit {
     .subscribe(eventos => this.eventos = eventos);
   }
 
-
+/*
   addEvento(nameEvento: string, dateStart: Date, dateEnd: Date, meetingPlace: string, numPlaces : number,
     included : string, notIncluded: string, schedule : string, description: string): void {
     let idEvento = this.idEvento = '0';
@@ -56,5 +56,5 @@ export class AdminAddEventoComponent implements OnInit {
         this.eventos.push(evento);
       });
   }
-
+*/
 }

@@ -35,10 +35,9 @@ public class User {
     @Column(name="phoneNum")
 	private String phoneNum;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Nationality nationality;
     
-
     public User() {
         //empty constructor
     }
@@ -60,6 +59,13 @@ public class User {
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+        this.nameUser = "" ;
+        this.surname = "";
+        this.cardNum = "";
+        this.sex = "";
+        this.idPassport ="";
+        this.phoneNum = "";
+        this.nationality = null;
     }
 
     public String getEmail() {

@@ -1,13 +1,13 @@
 import { Nationality } from '../nationality/Nationality';
 
-export interface User {
-  email: String;
-  password: String;
-  nameUser: String;
-  surname: String;
-  idPassport: String;
-  cardNum: String;
-  phoneNum: String;
-  sex: String;
+export class User {
+  email: string;
+  password: string;
+  nameUser: string;
+  surname: string;
+  idPassport: string;
+  cardNum: string;
+  phoneNum: string;
+  sex: string;
   nationality: Nationality;
 }

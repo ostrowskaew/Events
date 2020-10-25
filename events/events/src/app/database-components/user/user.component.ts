@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user';
+import { User } from './User';
 import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -9,36 +10,45 @@ import { UserService } from '../../services/user.service';
 })
 export class UserComponent implements OnInit {
 
- users: User[];
+  users: Observable<User[]>;
+  submitted = false;
+  user: User = new User();
+  idCountry : number;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.reloadData();
   }
 
-  getUsers(): void {
-    this.userService.getUsers()
-    .subscribe(users => this.users = users);
+  newUser(): void {
+    this.submitted = false;
+    this.user = new User();
   }
 
-  getUserList(): User[] {
-    return this.users;
+  save() {
+    this.userService.addUser(this.user, 0)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.user = new User();
   }
 
+  onSubmit() {
+    this.submitted = true;
+    this.save();
+  }
 
-  addUser(nameUser: String, surname : String, idPassport: String, cardNum : String, phoneNum: String,
-     sex: String, idCountry: number): void {
-    nameUser = nameUser.trim();
-    idPassport = idPassport.trim();
-    cardNum = cardNum.trim();
-    phoneNum = phoneNum.trim();
-    sex = sex.trim();
-    if (!nameUser || !surname) { return; }
-    this.userService.addUser({ nameUser, surname, idPassport, cardNum, phoneNum, sex } as User, idCountry)
-      .subscribe(user => {
-        this.users.push(user);
-      });
+  reloadData() {
+    this.users = this.userService.getUsers();
+  }
+
+  deleteUser(id: string) {
+    this.userService.deleteUser(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
   }
 
 }

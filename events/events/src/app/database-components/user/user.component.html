@@ -1,1 +1,47 @@
-<p>user works!</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h1>Users</h1>
+  </div>
+  <div class="panel-body">
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Email</th>
+                  <th>Name</th>
+                  <th>Surname</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users | async">
+                  <td>{{user.email}}</td>
+                  <td>{{user.nameUser}}</td>
+                  <td>{{user.surname}}</td>
+                  <td><button (click)="deleteUser(user.email)">Delete</button></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+
+<h3>Create User</h3>
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" id="email" required [(ngModel)]="user.email" name="email">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input type="text" class="form-control" id="password" required [(ngModel)]="user.password" name="password">
+      </div>
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+</div>

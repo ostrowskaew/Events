@@ -17,27 +17,25 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.usersUrl);
-}
-
-  getUser(id: number): Observable<User> {
-     const url = `${this.usersUrl}/${id}`;
-     return this.http.get<User>(url);
+  getUsers(): Observable<any> {
+    return this.http.get(this.usersUrl);
   }
 
-
-/** POST: add a new user to the server */
-addUser(user: User, idCountry : number): Observable<User> {
-  const url = `${this.usersUrl}/${idCountry}`;
-  return this.http.post<User>(url, user, this.httpOptions);
-}
+    getUser(id: string): Observable<Object> {
+       const url = `${this.usersUrl}/${id}`;
+       return this.http.get<User>(url);
+    }
 
 
+  /** POST: add a new user to the server */
+    addUser(user: Object, idCountry : number): Observable<Object> {
+      const url = `${this.usersUrl}/country/${idCountry}`;
+      return this.http.post(url, user);
+    }
 
-  deleteUser(idUser: number): Observable<User> {
-    const url = `${this.usersUrl}/${idUser}`;
-    return this.http.delete<User>(url, this.httpOptions);
-  }
 
+    deleteUser(idUser: string): Observable<any> {
+      const url = `${this.usersUrl}/${idUser}`;
+      return this.http.delete<User>(url);
+    }
 }
