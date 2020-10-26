@@ -1,7 +1,7 @@
 package spring.eventsapi.Services;
 
 import spring.eventsapi.Repositories.ReservationRepository;
-import spring.eventsapi.Reservation;
+import spring.eventsapi.Models.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;

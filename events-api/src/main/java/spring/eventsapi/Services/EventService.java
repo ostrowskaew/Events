@@ -1,7 +1,7 @@
 package spring.eventsapi.Services;
 
 import spring.eventsapi.Repositories.EventRepository;
-import spring.eventsapi.Event;
+import spring.eventsapi.Models.Event;
 
 import java.util.ArrayList;
 import java.util.List;

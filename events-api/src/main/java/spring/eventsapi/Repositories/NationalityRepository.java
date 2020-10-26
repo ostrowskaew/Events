@@ -1,6 +1,6 @@
 package spring.eventsapi.Repositories;
 
-import spring.eventsapi.Nationality;
+import spring.eventsapi.Models.Nationality;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;

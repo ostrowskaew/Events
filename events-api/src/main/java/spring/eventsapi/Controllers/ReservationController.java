@@ -3,7 +3,7 @@ package spring.eventsapi.Controllers;
 import spring.eventsapi.Services.EventService;
 import spring.eventsapi.Services.ReservationService;
 import spring.eventsapi.Services.UserService;
-import spring.eventsapi.Reservation;
+import spring.eventsapi.Models.Reservation;
 
 import java.util.List;
 

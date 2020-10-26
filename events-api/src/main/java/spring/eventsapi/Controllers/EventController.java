@@ -1,6 +1,6 @@
 package spring.eventsapi.Controllers;
 
-import spring.eventsapi.Event;
+import spring.eventsapi.Models.Event;
 import spring.eventsapi.Services.EventService;
 
 import java.util.List;

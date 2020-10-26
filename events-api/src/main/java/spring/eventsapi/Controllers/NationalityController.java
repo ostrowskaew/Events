@@ -1,7 +1,7 @@
 package spring.eventsapi.Controllers;
 
 import spring.eventsapi.Services.NationalityService;
-import spring.eventsapi.Nationality;
+import spring.eventsapi.Models.Nationality;
 
 import java.util.List;
 

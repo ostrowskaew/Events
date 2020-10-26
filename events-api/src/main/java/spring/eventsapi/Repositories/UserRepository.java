@@ -1,6 +1,6 @@
 package spring.eventsapi.Repositories;
 
-import spring.eventsapi.User;
+import spring.eventsapi.Models.User;
 
 import org.springframework.data.repository.CrudRepository;
 

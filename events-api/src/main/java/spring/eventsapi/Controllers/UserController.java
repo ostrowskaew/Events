@@ -1,6 +1,6 @@
 package spring.eventsapi.Controllers;
 
-import spring.eventsapi.User;
+import spring.eventsapi.Models.User;
 import spring.eventsapi.Services.NationalityService;
 import spring.eventsapi.Services.UserService;
 

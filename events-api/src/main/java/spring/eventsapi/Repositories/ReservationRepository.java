@@ -1,6 +1,6 @@
 package spring.eventsapi.Repositories;
 
-import spring.eventsapi.Reservation;
+import spring.eventsapi.Models.Reservation;
 
 import org.springframework.data.repository.CrudRepository;
 

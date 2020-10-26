@@ -1,4 +1,4 @@
-package spring.eventsapi;
+package spring.eventsapi.Models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

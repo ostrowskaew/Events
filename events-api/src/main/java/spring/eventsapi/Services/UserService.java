@@ -1,6 +1,6 @@
 package spring.eventsapi.Services;
 
-import spring.eventsapi.User;
+import spring.eventsapi.Models.User;
 import spring.eventsapi.Repositories.UserRepository;
 
 import java.util.ArrayList;
