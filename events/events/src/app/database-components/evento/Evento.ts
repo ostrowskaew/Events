@@ -3,7 +3,7 @@ export class Evento {
   idEvent : number;
   nameEvent : string;
   dateStart : string;
-  dateEnd: string;
+  dateEnd : string;
   meetingPlace: string;
   numPlaces: number;
   included: string;

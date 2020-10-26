@@ -14,70 +14,59 @@
           <div class="col-md-10 col-xl-10">
             <!--Form-->
             <div class="card">
-              <div class="card-body z-depth-2 px-4">
-
+              <div [hidden]="submitted" class="card-body z-depth-2 px-4">
+                <form (ngSubmit)="onSubmit()">
                 <div class="row mt-4">
                   <div class="col-md-6">
-                    <form>
+
                 <div class="form-group row">
                   <label for="event_name" class="col-3 col-form-label"><label>{{'Evento Name' | translate}}</label></label>
                   <div class="col-9">
-                    <input #nameEvento class="form-control">
+                    <input type="text" class="form-control" id="nameEvent" required [(ngModel)]="evento.nameEvent" name="nameEvent">
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="event_date_start" class="col-3 col-form-label"><label>{{'Evento date' | translate}}</label></label>
-                  <div class="col-9">
-                    <input #dateStart class="form-control">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="event_date_end" class="col-3 col-form-label"><label>{{'Evento date' | translate}}</label></label>
-                  <div class="col-9">
-                    <input #dateEnd class="form-control">
-                  </div>
-                </div>
+
+
                 <div class="form-group row">
                   <label for="meeting_place" class="col-3 col-form-label"><label>{{'Meeting place' | translate}}</label></label>
                   <div class="col-9">
-                    <input #meetingPlace class="form-control">
+                    <input type="text" class="form-control" id="meetingPlace" required [(ngModel)]="evento.meetingPlace" name="meetingPlace">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="not_included_price" class="col-3 col-form-label"><label>{{'Not Inc Price' | translate}}</label></label>
                   <div class="col-9">
-                    <input #notIncuded class="form-control">
+                    <input type="text" class="form-control" id="notIncluded" required [(ngModel)]="evento.notIncluded" name="notIncluded">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="included_price" class="col-3 col-form-label"><label>{{'Inc Price' | translate}}</label></label>
                   <div class="col-9">
-                    <input #included class="form-control">
+                    <input type="text" class="form-control" id="included" required [(ngModel)]="evento.included" name="included">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="places_num" class="col-3 col-form-label"><label>{{'Places Num' | translate}}</label></label>
                   <div class="col-9">
-                    <input #numPlaces class="form-control">
+                    <input type="text" class="form-control" id="numPlaces" required [(ngModel)]="evento.numPlaces" name="numPlaces">
                   </div>
                 </div>
 
 
-              </form>
+
                   </div>
                   <div class="col-md-6">
 
                     <div class="form-group row">
                       <label for="schedule" class="col-3 col-form-label"><label>{{'Schedule' | translate}}</label>:</label>
                       <div class="col-9">
-                        <textarea #schedule cols="40" rows="5" class="form-control"></textarea>
-                      </div>
+                        <textarea  cols="40" rows="5" class="form-control" id="schedule" required [(ngModel)]="evento.schedule" name="schedule"></textarea>                      </div>
                     </div>
 
                     <div class="form-group row">
                   <label for="description" class="col-3 col-form-label"><label>{{'Desc' | translate}}</label></label>
                   <div class="col-9">
-                    <textarea #description cols="40" rows="5" class="form-control"></textarea>
+                    <textarea cols="40" rows="5" class="form-control" id="description" required [(ngModel)]="evento.description" name="description"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -88,9 +77,10 @@
                   </div>
                 </div>
                 <div class="text-center my-3">
-                  <button class="btn btn-dark btn-block"><label>{{'Add Evento' | translate}}</label>
+                  <button type = "submit" class = "btn btn-dark btn-block"><label>{{'Add Evento' | translate}}</label>
                   </button>
                 </div>
+              </form>
 
               </div>
             </div>
@@ -105,3 +95,6 @@
     <!-- Mask & flexbox options-->
   </section>
   <!-- Full Page Intro -->
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+</div>

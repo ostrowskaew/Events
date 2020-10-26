@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { EventoService } from 'src/app/services/evento.service';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { MessageService } from 'src/app/services/messages.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-add-evento',
@@ -12,8 +13,9 @@ import { MessageService } from 'src/app/services/messages.service';
 })
 
 export class AdminAddEventoComponent implements OnInit {
-  eventos: Evento[];
-  idEvento : string;
+  eventos: Observable<Evento[]>;
+  submitted = false;
+  evento: Evento = new Evento();
 
   constructor(
     public translate: TranslateService,
@@ -27,7 +29,7 @@ export class AdminAddEventoComponent implements OnInit {
 
 
   ngOnInit(): void {
-   this.getEventos();
+   this.reloadData();
   }
 
   switchLang(lang: string) {
@@ -38,23 +40,19 @@ export class AdminAddEventoComponent implements OnInit {
     window.location.reload();
   }
 
-  getEventos(): void {
-    this.eventoService.getEventos()
-    .subscribe(eventos => this.eventos = eventos);
+  save() {
+    this.eventoService.addEvento(this.evento)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.evento = new Evento();
   }
 
-/*
-  addEvento(nameEvento: string, dateStart: Date, dateEnd: Date, meetingPlace: string, numPlaces : number,
-    included : string, notIncluded: string, schedule : string, description: string): void {
-    let idEvento = this.idEvento = '0';
-    if (!nameEvento || !numPlaces) { return; }
-    this.eventoService.addEvento({ idEvento, nameEvento,
-        dateStart, dateEnd, meetingPlace, numPlaces,
-        included, notIncluded, schedule, description
-      } as Evento)
-      .subscribe(evento => {
-        this.eventos.push(evento);
-      });
+  onSubmit() {
+    this.submitted = true;
+    this.save();
   }
-*/
+
+  reloadData() {
+    this.eventos = this.eventoService.getEventos();
+  }
+
 }
