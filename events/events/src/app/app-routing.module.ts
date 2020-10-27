@@ -5,6 +5,7 @@ import { AdminAboutComponent } from './admin/admin-about/admin-about.component';
 import { AdminAddEventoComponent } from './admin/admin-add-evento/admin-add-evento.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
+import { UploadPicComponent } from './admin/upload-pic/upload-pic.component';
 import { ContactComponent } from './contact/contact.component';
 import { EventoComponent } from './database-components/evento/evento.component';
 import { NationalityComponent } from './database-components/nationality/nationality.component';
@@ -15,6 +16,7 @@ import { EventsGalleryComponent } from './events-gallery/events-gallery.componen
 import { FormularDataComponent } from './formular-data/formular-data.component';
 import { NewsComponent } from './news/news.component';
 import { RegisterComponent } from './register/register.component';
+import { UploadFileService } from './services/upload-file.service';
 
 
 const routes: Routes = [
@@ -34,7 +36,8 @@ const routes: Routes = [
   { path: 'events', component: EventoComponent},
   { path: 'users', component: UserComponent},
   { path: 'reservations', component: ReservationComponent},
-  { path: 'nationalities', component: NationalityComponent}
+  { path: 'nationalities', component: NationalityComponent},
+  { path: 'upload-pic', component: UploadPicComponent}
 ];
 
 @NgModule({

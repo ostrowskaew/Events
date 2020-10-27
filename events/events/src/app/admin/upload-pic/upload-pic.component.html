@@ -10,22 +10,36 @@
         </button>
       </div>
       <div class="modal-body">
-        <span style="font-size: 25px;">Drop your files here</span>
-        <div
-           style="width: 90%; height: 150px; text-align: center;"
-           appImageDrag
-           (files)="filesDropped($event)"
-           >
-           <div class="file-upload-wrapper">
-            <input type="file" id="input-file-now" class="file-upload" style="margin-top: 150px;"/>
+
+        <div *ngIf="currentFile" class="progress">
+          <div
+            class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            attr.aria-valuenow="{{ progress }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }"
+          >
+            {{ progress }}%
           </div>
-     </div>
-     <div style="margin-top: 5px; width: 100%; height: 100px;">
-         <div *ngFor="let file of uploadedFiles">
-             <img [src]="file.url" style="width: 100px; height: 100px;" />
-         </div>
-     </div>
-      </div>
+        </div>
+
+        <label class="btn btn-default">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+
+        <div class="alert alert-light" role="alert">{{ message }}</div>
+
+        <div class="card">
+          <div class="card-header">Uploaded file</div>
+          {{currentFile.name}}
+        </div>
+
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>

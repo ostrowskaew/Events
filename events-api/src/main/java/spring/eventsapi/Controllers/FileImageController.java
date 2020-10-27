@@ -22,7 +22,7 @@ import spring.eventsapi.Models.FileImage;
 import spring.eventsapi.Services.FileImageService;
 
 @Controller
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("http://localhost:4200")
 public class FileImageController {
     
     @Autowired
