@@ -13,14 +13,12 @@ export class UploadPicComponent implements OnInit {
   selectedFiles: FileList;
   progressInfos = [];
   message = '';
-
+  uploadedImg : any;
   fileInfos: Observable<any>;
 
   constructor(private uploadService: UploadFileService) { }
 
-  ngOnInit() {
-    this.fileInfos = this.uploadService.getFiles();
-  }
+
   selectFiles(event) {
     this.progressInfos = [];
 
@@ -45,11 +43,15 @@ export class UploadPicComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.fileInfos = this.uploadService.getFiles();
+  }
+
 
   uploadFiles() {
     this.message = '';
 
-    for (let i = 0; i < this.selectedFiles.length; i++) {
+    for (let i = this.selectedFiles.length-1; i < this.selectedFiles.length; i++) {
       this.upload(i, this.selectedFiles[i]);
     }
   }
@@ -63,11 +65,11 @@ export class UploadPicComponent implements OnInit {
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.fileInfos = this.uploadService.getFiles();
+          this.uploadedImg = this.uploadService.getLastFile();
         }
       },
       err => {
         this.progressInfos[idx].percentage = 0;
-        this.message = 'Could not upload the file:' + file.name;
       });
   }
 }

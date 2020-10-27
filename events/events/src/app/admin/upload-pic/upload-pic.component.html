@@ -1,69 +1,27 @@
-
-<!-- Modal -->
-<div class="modal fade right" id="exampleModalPreview" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalPreviewLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-        <div *ngFor="let progressInfo of progressInfos" class="mb-2">
-          <span>{{ progressInfo.fileName }}</span>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-info progress-bar-striped"
-              role="progressbar"
-              attr.aria-valuenow="{{ progressInfo.percentage }}"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              [ngStyle]="{ width: progressInfo.percentage + '%' }"
-            >
-              {{ progressInfo.percentage }}%
-            </div>
-          </div>
-        </div>
-
-        <label class="btn btn-default">
-          <input type="file" accept="image/*" multiple (change)="selectFiles($event)" />
-        </label>
-
-        <button
-          class="btn btn-success"
-          [disabled]="!selectedFiles"
-          (click)="uploadFiles()"
-        >
-          Upload
-        </button>
-
-        <div class="alert alert-light" role="alert">{{ message }}</div>
-
-        <div class="card">
-          <div class="card-header">List of Images</div>
-          <ul
-            class="list-group list-group-flush"
-            *ngFor="let file of fileInfos | async"
-          >
-            <li class="list-group-item">
-              <p><a href="{{ file.url }}">{{ file.name }}</a></p>
-              <img src="{{ file.url }}" alt="{{ file.name }}" height="80px">
-            </li>
-          </ul>
-        </div>
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div *ngFor="let progressInfo of progressInfos" class="mb-2">
+  <span>{{ progressInfo.fileName }}</span>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progressInfo.percentage }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progressInfo.percentage + '%' }"
+    >
+      {{ progressInfo.percentage }}%
     </div>
   </div>
 </div>
 
-<script>
-  $('.file-upload').file_upload();
+<label class="btn btn-default">
+  <input type="file" accept="image/*" (change)="selectFiles($event)" />
+</label>
 
-</script>
+<button
+  class="btn btn-success"
+  [disabled]="!selectedFiles"
+  (click)="uploadFiles()"
+>
+  Upload
+</button>

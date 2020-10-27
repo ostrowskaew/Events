@@ -68,7 +68,7 @@ public class FileImage {
 
     @Override
     public String toString() {
-        return Integer.toString(get);
+        return Integer.toString(getId());
     }
 
 }
