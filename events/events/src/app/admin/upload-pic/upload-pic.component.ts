@@ -11,44 +11,63 @@ import { FileHandle } from '../file-handle';
 export class UploadPicComponent implements OnInit {
 
   selectedFiles: FileList;
-  currentFile: File;
-  progress = 0;
+  progressInfos = [];
   message = '';
-  idAdded : number ;
 
   fileInfos: Observable<any>;
 
   constructor(private uploadService: UploadFileService) { }
 
-
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
-  }
-
   ngOnInit() {
     this.fileInfos = this.uploadService.getFiles();
   }
+  selectFiles(event) {
+    this.progressInfos = [];
 
-  upload() {
-    this.progress = 0;
+    const files = event.target.files;
+    let isImage = true;
 
-    this.currentFile = this.selectedFiles.item(0);
-    this.uploadService.upload(this.currentFile).subscribe(
+    for (let i = 0; i < files.length; i++) {
+      if (files.item(i).type.match('image.*')) {
+        continue;
+      } else {
+        isImage = false;
+        alert('invalid format!');
+        break;
+      }
+    }
+
+    if (isImage) {
+      this.selectedFiles = event.target.files;
+    } else {
+      this.selectedFiles = undefined;
+      event.srcElement.percentage = null;
+    }
+  }
+
+
+  uploadFiles() {
+    this.message = '';
+
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      this.upload(i, this.selectedFiles[i]);
+    }
+  }
+
+  upload(idx, file) {
+    this.progressInfos[idx] = { value: 0, fileName: file.name };
+
+    this.uploadService.upload(file).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round(100 * event.loaded / event.total);
+          this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.message = event.body.message;
           this.fileInfos = this.uploadService.getFiles();
         }
       },
       err => {
-        this.progress = 0;
-        this.message = 'Could not upload the file!';
-        this.currentFile = undefined;
+        this.progressInfos[idx].percentage = 0;
+        this.message = 'Could not upload the file:' + file.name;
       });
-
-    this.selectedFiles = undefined;
-  
   }
 }

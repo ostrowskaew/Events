@@ -61,6 +61,16 @@ public class FileImageController {
       return ResponseEntity.status(HttpStatus.OK).body(files);
     }
   
+    @GetMapping("/files/last")
+    public ResponseEntity<byte[]> getLastFile() {
+        FileImage file = fileImageService.getLastFile();
+  
+      return ResponseEntity.ok()
+          .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
+          .body(file.getData());
+    }
+
+
     @GetMapping("/files/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable int id) {
         FileImage file = fileImageService.getFile(id);

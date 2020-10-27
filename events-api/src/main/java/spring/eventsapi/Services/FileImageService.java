@@ -30,4 +30,12 @@ public class FileImageService {
       public Stream<FileImage> getAllFiles() {
         return fileImageRepository.findAll().stream();
       }
+
+      public FileImage getLastFile() {
+        return fileImageRepository.findTopByOrderByIdDesc();
+      }
+
+      public int getLastFileId() {
+        return fileImageRepository.findTopByOrderByIdDesc().getId();
+      }
 }

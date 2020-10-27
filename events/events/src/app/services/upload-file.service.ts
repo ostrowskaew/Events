@@ -27,4 +27,8 @@ export class UploadFileService {
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`);
   }
+
+  getLastFile(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/files/last`);
+  }
 }

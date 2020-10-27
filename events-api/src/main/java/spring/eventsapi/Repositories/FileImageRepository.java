@@ -8,4 +8,5 @@ import spring.eventsapi.Models.FileImage;
 @Repository
 public interface FileImageRepository extends JpaRepository<FileImage, Integer> {
     
+    public FileImage findTopByOrderByIdDesc();
 }
