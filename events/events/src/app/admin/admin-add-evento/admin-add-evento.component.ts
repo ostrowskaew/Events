@@ -5,6 +5,7 @@ import { EventoService } from 'src/app/services/evento.service';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { MessageService } from 'src/app/services/messages.service';
 import { Observable } from 'rxjs';
+import { NgbDate, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin-add-evento',
@@ -16,11 +17,14 @@ export class AdminAddEventoComponent implements OnInit {
   eventos: Observable<Evento[]>;
   submitted = false;
   evento: Evento = new Evento();
+  dateStart: NgbDate;
+  dateEnd: NgbDate;
 
   constructor(
     public translate: TranslateService,
     private eventoService: EventoService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private modalService: NgbModal
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
@@ -41,6 +45,8 @@ export class AdminAddEventoComponent implements OnInit {
   }
 
   save() {
+    this.evento.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day + 1 )
+    this.evento.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day + 1 )
     this.eventoService.addEvento(this.evento)
       .subscribe(data => console.log(data), error => console.log(error));
     this.evento = new Evento();

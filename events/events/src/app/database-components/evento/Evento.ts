@@ -2,8 +2,8 @@
 export class Evento {
   idEvent : number;
   nameEvent : string;
-  dateStart : string;
-  dateEnd : string;
+  dateStart : Date;
+  dateEnd : Date;
   meetingPlace: string;
   numPlaces: number;
   included: string;

@@ -39,6 +39,9 @@ import { EventoComponent } from './database-components/evento/evento.component';
 import { ReservationComponent } from './database-components/reservation/reservation.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { MessagesComponent } from './messages/messages.component';
+import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { DatepickerComponent } from './admin/datepicker/datepicker.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -67,7 +70,8 @@ import { MessagesComponent } from './messages/messages.component';
     UserComponent,
     EventoComponent,
     ReservationComponent,
-    MessagesComponent
+    MessagesComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +83,7 @@ import { MessagesComponent } from './messages/messages.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    NgxMaterialTimepickerModule,
     FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -87,7 +92,8 @@ import { MessagesComponent } from './messages/messages.component';
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 package spring.eventsapi.Models;
 
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,22 +9,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Events")
+@Table(name = "Events")
 public class Event {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="idEvent")
+	@Column(name = "idEvent")
 	private int idEvent;
-	
-	@Column(name="nameEvent")
+
+	@Column(name = "nameEvent")
 	private String nameEvent;
-	
-	@Column(name="dateStart")
-	private String dateStart;
+
+	@Column(name = "dateStart")
+	private Date dateStart;
 
 	@Column(name="dateEnd")
-	private String dateEnd;
+	private Date dateEnd;
 
 	@Column(name="meetingPlace")
 	private String meetingPlace;
@@ -49,7 +50,7 @@ public class Event {
 	}
 
 
-	public Event(String nameEvent, String dateStart, String dateEnd, String meetingPlace, 
+	public Event(String nameEvent, Date dateStart, Date dateEnd, String meetingPlace,
 	String notIncluded, String included, int numPlaces, String schedule, String description) {
 		this.nameEvent = nameEvent;
 		this.dateStart = dateStart;
@@ -80,19 +81,19 @@ public class Event {
 		this.nameEvent = name;
 	}
 
-	public String getStringStart() {
+	public Date getDateStart() {
 		return this.dateStart;
 	}
 
-	public void setStringStart(String dateStart) {
+	public void seDateStart(Date dateStart) {
 		this.dateStart = dateStart;
 	}
 
-	public String getStringEnd() {
+	public Date getDateEnd() {
 		return this.dateEnd;
 	}
 
-	public void setStringEnd(String dateEnd) {
+	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
 
