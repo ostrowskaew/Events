@@ -5,7 +5,7 @@ import { EventoService } from 'src/app/services/evento.service';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { MessageService } from 'src/app/services/messages.service';
 import { Observable } from 'rxjs';
-import { NgbDate, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin-add-evento',
@@ -23,8 +23,7 @@ export class AdminAddEventoComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     private eventoService: EventoService,
-    private messageService: MessageService,
-    private modalService: NgbModal
+    private messageService: MessageService
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
