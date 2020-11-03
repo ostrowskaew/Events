@@ -1,9 +1,16 @@
 package spring.eventsapi.Models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -17,6 +24,9 @@ public class User {
 	@Column(name="idUser")
     private int idUser;
 
+	@Column(name="username")
+    private String username;
+    
 	@Column(name="email")
     private String email;
     
@@ -42,16 +52,23 @@ public class User {
 	private String phoneNum;
 
 	@ManyToOne(optional = true)
-	private Nationality nationality;
+    private Nationality nationality;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles", 
+				joinColumns = @JoinColumn(name = "user_id"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
     
     public User() {
         //empty constructor
     }
 
 
-    public User(String email, String password, String nameUser, String surname, String cardNum,
+    public User(String email, String username, String password, String nameUser, String surname, String cardNum,
      String sex, String idPassport, String phoneNum, Nationality nationality) {
         this.email = email;
+        this.username = username;
         this.password = password;
         this.nameUser = nameUser;
         this.surname = surname;
@@ -62,8 +79,9 @@ public class User {
         this.nationality = nationality;
     }
 
-    public User(String email, String password) {
+    public User(String email, String username, String password) {
         this.email = email;
+        this.username = username;
         this.password = password;
         this.nameUser = "" ;
         this.surname = "";
@@ -94,10 +112,17 @@ public class User {
         return this.password;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
-
     
 
     public String getNameUser() {
@@ -156,6 +181,13 @@ public class User {
         this.nationality = nationality;
     }
 
+    public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 
     @Override
     public String toString() {
