@@ -80,8 +80,8 @@ public class User {
     }
 
     public User(String email, String username, String password) {
-        this.email = email;
-        this.username = username;
+        this.email = username;
+        this.username = email;
         this.password = password;
         this.nameUser = "" ;
         this.surname = "";

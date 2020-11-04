@@ -4,16 +4,19 @@ import spring.eventsapi.Models.User;
 
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
-    
-    
-    Optional<User> findByEmail(String email);
 
-    Optional<User> findByUsername(String username);
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+	Optional<User> findByUsername(String username);
 
-    Boolean existsByUsername(String username);
+	boolean existsByUsername(String username);
 
-	Boolean existsByEmail(String email);
+	boolean existsByEmail(String email);
+
+	Optional<User> findByEmail(String email);
+
+	long count();
 }
