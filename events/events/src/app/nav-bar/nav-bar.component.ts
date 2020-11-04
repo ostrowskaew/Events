@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,8 +11,12 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  @Input() isLoggedIn: boolean;
+  @Input() showAdminBoard: boolean;
+  @Input() username: String;
+
   constructor(
-    public translate: TranslateService, private breakpointObserver: BreakpointObserver
+    public translate: TranslateService, private breakpointObserver: BreakpointObserver, private tokenStorageService: TokenStorageService
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
@@ -31,4 +36,8 @@ export class NavBarComponent {
   }
 
 
+  logout() {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
 }

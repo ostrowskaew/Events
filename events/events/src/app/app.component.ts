@@ -13,7 +13,6 @@ export class AppComponent {
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
-  showModeratorBoard = false;
   username: string;
 
   constructor(
@@ -31,7 +30,6 @@ export class AppComponent {
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
     }
@@ -45,8 +43,4 @@ export class AppComponent {
   }
   title = 'events';
 
-  logout() {
-    this.tokenStorageService.signOut();
-    window.location.reload();
-  }
 }
