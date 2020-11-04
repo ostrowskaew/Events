@@ -42,7 +42,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { DatepickerComponent } from './admin/datepicker/datepicker.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { BoardAdminComponent } from './admin/board-admin/board-admin.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { authInterceptorProviders} from './helpers/auth.interceptor';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EventoComponent,
     ReservationComponent,
     MessagesComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    BoardAdminComponent,
+    BoardUserComponent,
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +103,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     NgbModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

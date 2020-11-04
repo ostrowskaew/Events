@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../database-components/user/user';
+import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,8 +10,12 @@ import { UserService } from '../services/user.service';
 })
 export class RegisterComponent implements OnInit {
   users: User[];
+  form: any = {};
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -23,6 +28,20 @@ export class RegisterComponent implements OnInit {
   getUsers(): void {
     this.userService.getUsers()
     .subscribe(users => this.users = users);
+  }
+
+  onSubmit() {
+    this.authService.register(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 /*
   addUser(email : String, password: String): void {
