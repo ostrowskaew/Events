@@ -1,23 +1,31 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
-    <form
+<div class="container z-depth-1">
+
+
+  <!--Section: Content-->
+  <section class=" text-center text-lg-left dark-grey-text">
+
+
+    <!--Grid row-->
+    <div class="row d-flex justify-content-center">
+
+      <!--Grid column-->
+      <div class="col-md-12">
+
+    <form class="text-center"
       *ngIf="!isLoggedIn"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
       novalidate
     >
-      <div class="form-group">
-        <label for="username">Username</label>
+    <p class="h4 ">Sign in</p>
+
         <input
           type="text"
-          class="form-control"
+          class="form-control mb-4"
           name="username"
+          style="width: 200px;"
+          placeholder="Username"
           [(ngModel)]="form.username"
           required
           #username="ngModel"
@@ -29,13 +37,11 @@
         >
           Username is required!
         </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
         <input
           type="password"
-          class="form-control"
+          class="form-control mb-4"
           name="password"
+          placeholder="Password"
           [(ngModel)]="form.password"
           required
           minlength="6"
@@ -51,12 +57,10 @@
             Password must be at least 6 characters
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
-        </button>
-      </div>
+
+
+        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
       <div class="form-group">
         <div
           class="alert alert-danger"
@@ -68,8 +72,7 @@
       </div>
     </form>
 
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
-    </div>
+      </div>
+      </div>
+  </section>
   </div>
-</div>
