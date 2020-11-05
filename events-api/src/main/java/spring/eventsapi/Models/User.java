@@ -21,8 +21,8 @@ public class User {
     
     @Id
     @GeneratedValue
-	@Column(name="idUser")
-    private int idUser;
+	@Column(name="id")
+    private int id;
 
 	@Column(name="username")
     private String username;
@@ -93,11 +93,11 @@ public class User {
     }
 
     public int getIdUser() {
-        return this.idUser;
+        return this.id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setIdUser(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
