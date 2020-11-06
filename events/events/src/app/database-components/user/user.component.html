@@ -13,7 +13,6 @@
           </thead>
           <tbody>
               <tr *ngFor="let user of users | async">
-                  <td>{{user.email}}</td>
                   <td>{{user.nameUser}}</td>
                   <td>{{user.surname}}</td>
                   <td><button (click)="deleteUser(user.idUser)">Delete</button></td>
@@ -25,7 +24,6 @@
 
 id: {{id}}
 username: {{currentUser.username}}
-token: {{tok}}
 <h3>Create User</h3>
 <div [hidden]="submitted" style="width: 400px;">
     <form (ngSubmit)="onSubmit()">
