@@ -47,6 +47,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders} from './helpers/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
+import { MatRadioModule } from '@angular/material/radio'
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatRadioModule,
     MatIconModule,
     MatListModule,
     NgxMaterialTimepickerModule,
