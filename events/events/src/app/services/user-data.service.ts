@@ -23,7 +23,7 @@ export class UserDataService {
     return this.http.get(this.usersUrl);
   }
 
-    getUser(id: number): Observable<User> {
+    getUser(id: number): Observable<Object> {
        const url = `${this.usersUrl}/${id}`;
        return this.http.get<User>(url);
     }
