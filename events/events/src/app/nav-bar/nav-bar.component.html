@@ -44,8 +44,10 @@
                   <li class="nav-item" *ngIf="showAdminBoard">
                     <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
                   </li>
+                </ul>
+                <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item">
-                    <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+                    <a href="/user-events" class="nav-link" *ngIf="isLoggedIn" routerLink="user-events">My events</a>
                   </li>
                 </ul>
 
