@@ -13,10 +13,12 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class NavBarComponent {
   @Input() isLoggedIn: boolean;
   @Input() showAdminBoard: boolean;
-  @Input() username: String;
+  @Input() username: string;
 
   constructor(
-    public translate: TranslateService, private breakpointObserver: BreakpointObserver, private tokenStorageService: TokenStorageService
+    public translate: TranslateService,
+    private breakpointObserver: BreakpointObserver,
+    private tokenStorageService: TokenStorageService
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');

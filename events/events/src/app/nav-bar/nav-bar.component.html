@@ -23,7 +23,7 @@
 						<li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
                 <div class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-                    {{ username }}
+                    My profile
                 </div>
                 <div class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
                   Log In
@@ -38,7 +38,7 @@
                   </li>
                 </ul>
                 <li class="nav-item">
-                  <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+                  <a href="/profile" class="nav-link" routerLink="profile">My data</a>
                 </li>
                 <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item" *ngIf="showAdminBoard">

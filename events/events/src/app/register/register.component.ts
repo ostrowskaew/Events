@@ -18,16 +18,10 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUsers();
   }
 
   refreshPage(): void {
     window.location.reload();
-  }
-
-  getUsers(): void {
-    this.userService.getUsers()
-    .subscribe(users => this.users = users);
   }
 
   onSubmit() {

@@ -17,11 +17,11 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsGalleryComponent } from './events-gallery/events-gallery.component';
 import { FormularDataComponent } from './formular-data/formular-data.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { NewsComponent } from './news/news.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { UploadFileService } from './services/upload-file.service';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
