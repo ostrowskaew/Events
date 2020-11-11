@@ -1,8 +1,9 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/upload-file.service';
 import { FileHandle } from '../file-handle';
+import { ImageFile } from './ImageFile';
 @Component({
   selector: 'app-upload-pic',
   templateUrl: './upload-pic.component.html',
@@ -13,8 +14,12 @@ export class UploadPicComponent implements OnInit {
   selectedFiles: FileList;
   progressInfos = [];
   message = '';
-  uploadedImg : any;
-  fileInfos: Observable<any>;
+  fileInfos: Observable<ImageFile>;
+  images: ImageFile[];
+  response : string;
+
+  @Output() lastId : number;
+  @Output() idChanged: EventEmitter<number> =   new EventEmitter();
 
   constructor(private uploadService: UploadFileService) { }
 
@@ -44,7 +49,13 @@ export class UploadPicComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fileInfos = this.uploadService.getFiles();
+    this.findLastId();
+  }
+
+  findLastId() {
+    this.images.forEach(element => {
+      this.lastId = element.id;
+    });
   }
 
 
@@ -56,20 +67,26 @@ export class UploadPicComponent implements OnInit {
     }
   }
 
+
   upload(idx, file) {
     this.progressInfos[idx] = { value: 0, fileName: file.name };
 
-    this.uploadService.upload(file).subscribe(
+    this.uploadService.upload(file)
+    .subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-          this.fileInfos = this.uploadService.getFiles();
-          this.uploadedImg = this.uploadService.getLastFile();
+         this.response = HttpResponse.toString();
+         this.fileInfos = this.uploadService.getFiles();
+         this.lastId = +event.body.message;
+         this.idChanged.emit(this.lastId);
+
         }
       },
       err => {
         this.progressInfos[idx].percentage = 0;
-      });
+      })
+      ;
   }
 }

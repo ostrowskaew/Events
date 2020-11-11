@@ -10,4 +10,5 @@ export class Evento {
   notIncluded: string;
   schedule: string;
   description: string;
+  imageId: number;
 }

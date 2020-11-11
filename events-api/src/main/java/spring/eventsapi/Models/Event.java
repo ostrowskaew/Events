@@ -44,6 +44,8 @@ public class Event {
 	@Column(name="description")
 	private String description;
 	
+	@Column(name="imageId")
+	private int imageId;
 
 
 	public Event() {
@@ -51,7 +53,7 @@ public class Event {
 
 
 	public Event(String nameEvent, Date dateStart, Date dateEnd, String meetingPlace,
-	String notIncluded, String included, int numPlaces, String schedule, String description) {
+	String notIncluded, String included, int numPlaces, String schedule, String description, int imageId) {
 		this.nameEvent = nameEvent;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
@@ -61,6 +63,7 @@ public class Event {
 		this.numPlaces = numPlaces;
 		this.schedule = schedule;
 		this.description = description;
+		this.imageId = imageId;
 	}
 
 
@@ -145,6 +148,13 @@ public class Event {
 		this.description = description;
 	}
 
+	public int getImageId() {
+		return this.imageId;
+	}
+
+	public void setImageId(int image) {
+		this.imageId = image;
+	}
 
 
 	@Override

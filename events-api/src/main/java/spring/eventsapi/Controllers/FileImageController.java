@@ -32,7 +32,7 @@ public class FileImageController {
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
       String message = "";
       try {
-        fileImageService.store(file);
+        message = "" +fileImageService.store(file).getId();
   
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
       } catch (Exception e) {

@@ -21,10 +21,12 @@ export class BoardAdminComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.token.getUser();
     this.reloadData();
+
   }
 
   reloadData() {
     this.eventos = this.eventoService.getEventos();
+
   }
 
   deleteEvento(id: number) {
