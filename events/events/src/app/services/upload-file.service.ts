@@ -10,6 +10,9 @@ export class UploadFileService {
   private baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
 
   upload(file: File): Observable<HttpEvent<any>>{
     const uploadImageData = new FormData();
@@ -28,7 +31,16 @@ export class UploadFileService {
     return this.http.get(`${this.baseUrl}/files`);
   }
 
-  getFile(idImg: number): Observable<Object>{
-    return this.http.get('http://localhost:8080/files/' + idImg);
+  getFile(idImg: number): any{
+    this.http.get('http://localhost:8080/files/' + idImg)
+    .subscribe(
+      res => {
+        this.retrieveResonse = res;
+        this.base64Data = this.retrieveResonse.picByte;
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+      }
+    );
+    return this.retrievedImage;
+
   }
 }

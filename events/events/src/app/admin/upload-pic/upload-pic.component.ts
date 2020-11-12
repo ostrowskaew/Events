@@ -49,13 +49,6 @@ export class UploadPicComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.findLastId();
-  }
-
-  findLastId() {
-    this.images.forEach(element => {
-      this.lastId = element.id;
-    });
   }
 
 

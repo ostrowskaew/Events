@@ -39,7 +39,7 @@ public class FileImageController {
 	}
 
 	@GetMapping(path = { "/files/{imageId}" })
-	public FileImage getImage(@PathVariable("imageName") int imageId) throws IOException {
+	public FileImage getImage(@PathVariable("imageId") int imageId) throws IOException {
 		final Optional<FileImage> retrievedImage = imageRepository.findById(imageId);
 		FileImage img = new FileImage(retrievedImage.get().getName(), retrievedImage.get().getType(),
 				decompressBytes(retrievedImage.get().getPicByte()));

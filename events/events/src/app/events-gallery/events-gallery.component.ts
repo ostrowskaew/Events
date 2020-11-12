@@ -11,8 +11,6 @@ export class EventsGalleryComponent implements OnInit {
 
   selectedFile: File;
   retrievedImage: any;
-  base64Data: any;
-  retrieveResonse: any;
 
   constructor(private imageService: UploadFileService, private httpClient: HttpClient) { }
 
@@ -24,16 +22,9 @@ export class EventsGalleryComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-
     getImage(idImg : number) {
     //Make a call to Sprinf Boot to get the Image Bytes.
-    this.imageService.getFile(idImg)
-      .subscribe(
-        res => {
-          this.retrieveResonse = res;
-          this.base64Data = this.retrieveResonse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-      );
+    this.retrievedImage = this.imageService.getFile(idImg);
+
   }
 }
