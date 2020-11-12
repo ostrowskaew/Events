@@ -31,4 +31,8 @@ export class UploadFileService {
   getLastFile(): Observable<any>{
     return this.http.get(`${this.baseUrl}/files/last`);
   }
+
+  getFile(idImg: number): Observable<Blob>{
+    return this.http.get(`${this.baseUrl}/files/${idImg}`, { responseType: 'blob' });
+  }
 }

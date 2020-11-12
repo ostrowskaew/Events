@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -21,8 +22,8 @@ import spring.eventsapi.Messages.ResponseMessage;
 import spring.eventsapi.Models.FileImage;
 import spring.eventsapi.Services.FileImageService;
 
-@Controller
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RestController
 public class FileImageController {
     
     @Autowired
@@ -59,15 +60,7 @@ public class FileImageController {
       return ResponseEntity.status(HttpStatus.OK).body(files);
     }
   
-    @GetMapping("/files/last")
-    public ResponseEntity<byte[]> getLastFile() {
-        FileImage file = fileImageService.getLastFile();
-  
-      return ResponseEntity.ok()
-          .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
-          .body(file.getData());
-    }
-
+    
 
     @GetMapping("/files/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable int id) {
