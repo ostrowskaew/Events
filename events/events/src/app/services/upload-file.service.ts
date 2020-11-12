@@ -11,12 +11,12 @@ export class UploadFileService {
 
   constructor(private http: HttpClient) { }
 
-  upload(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
+  upload(file: File): Observable<HttpEvent<any>>{
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', file);
 
-    formData.append('file', file);
-
-    const req = new HttpRequest('POST', `${this.baseUrl}/files`, formData, {
+    //Make a call to the Spring Boot Application to save the image
+    const req = new HttpRequest('POST','http://localhost:8080/files', uploadImageData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -28,11 +28,7 @@ export class UploadFileService {
     return this.http.get(`${this.baseUrl}/files`);
   }
 
-  getLastFile(): Observable<any>{
-    return this.http.get(`${this.baseUrl}/files/last`);
-  }
-
-  getFile(idImg: number): Observable<Blob>{
-    return this.http.get(`${this.baseUrl}/files/${idImg}`, { responseType: 'blob' });
+  getFile(idImg: number): Observable<Object>{
+    return this.http.get('http://localhost:8080/files/' + idImg);
   }
 }

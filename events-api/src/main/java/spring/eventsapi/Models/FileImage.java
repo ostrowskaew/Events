@@ -1,74 +1,57 @@
 package spring.eventsapi.Models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "files")
+@Table(name = "images")
 public class FileImage {
-    
-  @Id
-  @GeneratedValue
-  private int id;
+	public FileImage() {
+		super();
+	}
+	public FileImage(String name, String type, byte[] picByte) {
+		this.name = name;
+		this.type = type;
+		this.picByte = picByte;
+	}
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "type")
+	private String type;
+    //image bytes can have large lengths so we specify a value
+    //which is more than the default length for picByte column
+	@Column(name = "picByte", length = 100000)
+	private byte[] picByte;
 
-  private String name;
-
-  private String type;
-
-  @Lob
-  private byte[] data;
-
-
-    public FileImage() {
-    }
-
-
-    public FileImage(String name, String type, byte[] data) {
-        this.name = name;
-        this.type = type;
-        this.data = data;
-    }
-
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public byte[] getData() {
-        return this.data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-    
-
-    @Override
-    public String toString() {
-        return Integer.toString(getId());
-    }
-
+	public int getId() {
+		return this.id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public byte[] getPicByte() {
+		return picByte;
+	}
+	public void setPicByte(byte[] picByte) {
+		this.picByte = picByte;
+	}
 }
