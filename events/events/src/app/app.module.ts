@@ -15,7 +15,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
-import { NewsComponent } from './news/news.component';
 import { NewsItemComponent } from './news-item/news-item.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
@@ -25,12 +24,9 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormularDataComponent } from './formular-data/formular-data.component';
-import { AdminAboutComponent } from './admin/admin-about/admin-about.component';
 import { UploadPicComponent } from './admin/upload-pic/upload-pic.component';
 import { ImageDragDirective } from './admin/image-drag.directive';
-import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { TextUploadComponent} from './admin/text-upload/text-upload.component';
-import { AdminEventDetailComponent } from './admin/admin-event-detail/admin-event-detail.component';
 import { AdminAddEventoComponent } from './admin/admin-add-evento/admin-add-evento.component';
 import { FormsModule } from '@angular/forms';
 import { NationalityComponent } from './database-components/nationality/nationality.component';
@@ -38,7 +34,6 @@ import { UserComponent } from './database-components/user/user.component';
 import { EventoComponent } from './database-components/evento/evento.component';
 import { ReservationComponent } from './database-components/reservation/reservation.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { MessagesComponent } from './messages/messages.component';
 import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { DatepickerComponent } from './admin/datepicker/datepicker.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -54,7 +49,6 @@ import { MatRadioModule } from '@angular/material/radio';
     AppComponent,
     NavBarComponent,
     AboutComponent,
-    NewsComponent,
     NewsItemComponent,
     FooterComponent,
     ContactComponent,
@@ -64,18 +58,14 @@ import { MatRadioModule } from '@angular/material/radio';
     LoginComponent,
     RegisterComponent,
     FormularDataComponent,
-    AdminAboutComponent,
     UploadPicComponent,
     ImageDragDirective,
-    AdminContactComponent,
     TextUploadComponent,
-    AdminEventDetailComponent,
     AdminAddEventoComponent,
     NationalityComponent,
     UserComponent,
     EventoComponent,
     ReservationComponent,
-    MessagesComponent,
     DatepickerComponent,
     BoardAdminComponent,
     BoardUserComponent,

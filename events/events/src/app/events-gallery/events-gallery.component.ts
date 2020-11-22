@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Evento } from '../database-components/evento/Evento';
+import { EventoService } from '../services/evento.service';
 import { UploadFileService } from '../services/upload-file.service';
 
 @Component({
@@ -9,22 +11,15 @@ import { UploadFileService } from '../services/upload-file.service';
 })
 export class EventsGalleryComponent implements OnInit {
 
-  selectedFile: File;
-  retrievedImage: any;
+  constructor(private eventService: EventoService) { }
+  events: Evento[] = [];
 
-  constructor(private imageService: UploadFileService, private httpClient: HttpClient) { }
-
-  ngOnInit(): void {
-
+  ngOnInit() {
+    this.getMovies();
   }
 
-  public onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-  }
-
-    getImage(idImg : number) {
-    //Make a call to Sprinf Boot to get the Image Bytes.
-    this.retrievedImage = this.imageService.getFile(idImg);
-
+  getMovies(): void {
+    this.eventService.getEventos()
+      .subscribe(ev => this.events = ev);
   }
 }

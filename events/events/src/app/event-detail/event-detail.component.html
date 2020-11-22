@@ -25,9 +25,9 @@
           <div class="card-body card-body-cascade text-center">
 
             <!-- Title -->
-            <h3 class="font-weight-bold"><a>Title of the news</a></h3>
+            <h3 class="font-weight-bold"><a>{{event.nameEvent}}</a></h3>
             <!-- Data -->
-            <p>Written by 26/08/2018</p>
+            <p>{{event.dateStart | date: 'dd/MM/yyyy'}} - {{event.dateEnd | date: 'dd/MM/yyyy'}}</p>
 
 
           </div>
@@ -42,21 +42,24 @@
 			<div class="row">
 				<div class="col-md-6">
           <address>
-				 <strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
+         <strong>Price: </strong> <br>
+         <strong>Avaible places: </strong> {{event.numPlaces}} <br>
+         <strong>Meeting place: </strong> {{event.meetingPlace}} <br>
+         <strong>Included in the price: </strong> {{event.included}} <br>
+         <strong>Not included in the price: </strong> {{event.notIncluded}} <br>
+
 			</address>
 				</div>
 				<div class="col-md-6">
           <address>
-				 <strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
+         <strong>Schedule: </strong><br>
+         {{event.schedule}}
 			</address>
 				</div>
 			</div>
 			<div class="row bg-light mt-4">
 				<div class="col-md-10 pt-4">
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui praesentium voluptatum deleniti atque
-            corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
-            sunt in culpa nemo enim ipsam voluptatem quia voluptas sit qui officia deserunt mollitia animi, id
-            est laborum et dolorum fuga quidem rerum facilis est distinctio.
+          <p> {{event.description}}
           </p>
 				</div>
 				<div class="col-md-2">

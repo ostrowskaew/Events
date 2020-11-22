@@ -22,7 +22,7 @@ export class EventoService {
     return this.http.get(this.eventosUrl);
   }
 
-    getEvento(id: number): Observable<Object> {
+    getEvento(id: number): Observable<Evento> {
        const url = `${this.eventosUrl}/${id}`;
        return this.http.get<Evento>(url);
     }

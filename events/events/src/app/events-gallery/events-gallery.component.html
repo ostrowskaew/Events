@@ -1,31 +1,14 @@
 <br>
-
-<h1 class="font-weight-bold text-center dark-grey-text pb-2 ">Product Designs</h1>
+<h1 class="font-weight-bold text-center dark-grey-text pb-2 ">Events</h1>
   <hr class="w-header my-6">
-  <p class="lead text-center text-muted pt-2 mb-5">You can find several product design by our professional team in
-    this section.</p>
+  <p class="lead text-center text-muted pt-2 mb-5">You can find all events in this section</p>
 
 <br>
 
-<hr />
-<div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=message>{{message}}</div>
-    </div>
+<div class="grid grid-pad">
+  <a *ngFor="let event of events"
+  routerLink="/event-detail/{{event.idEvent}}">
+  <div class="gallery">
+    <div class="desc">{{event.nameEvent}}</div>
 </div>
-<div class="container row">
-    <div class="col-md-6">
-        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
-            name="name" />
-    </div>
-    <div class="col-md-6">
-        <input type="button" (click)="getImage(2)" value="Get Image">
-    </div>
-</div>
-<div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=retrievedImage>
-            <img [src]="retrievedImage">
-        </div>
-    </div>
-</div>
+
