@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Evento } from '../database-components/evento/Evento';
+import { Reservation } from '../database-components/reservation/Reservation';
 import { CurrentUser } from '../database-components/user/CurrentUser';
 import { User } from '../database-components/user/user';
 import { EventoService } from '../services/evento.service';
+import { ReservationService } from '../services/reservation.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
 
@@ -21,12 +23,14 @@ export class DataCheckComponent implements OnInit {
   currentUser: CurrentUser;
   users: Observable<User[]>;
   currUser : User;
+  reservation: Reservation;
 
   constructor(
     private router: Router,
     private eventoService: EventoService,
     private token: TokenStorageService,
-    private userService: UserDataService) { }
+    private userService: UserDataService,
+    private reservationService: ReservationService) { }
 
 
 
@@ -55,6 +59,12 @@ export class DataCheckComponent implements OnInit {
     this.userService.getUser(this.currentUser.id).subscribe((res: User) => {
       this.currUser = res;
     });
+  }
+
+  makeReservation() {
+    this.reservation = new Reservation();
+    this.reservationService.addReservation(this.reservation, this.id, this.currUser.idUser)
+    .subscribe(data => console.log(data), error => console.log(error));
   }
 
 }
