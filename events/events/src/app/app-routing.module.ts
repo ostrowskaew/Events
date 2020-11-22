@@ -16,8 +16,8 @@ import { FormularDataComponent } from './formular-data/formular-data.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
-import { UploadFileService } from './services/upload-file.service';
 import { LoginComponent } from './login/login.component';
+import { DataCheckComponent } from './data-check/data-check.component';
 
 
 const routes: Routes = [
@@ -37,6 +37,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'data-check/:id', component: DataCheckComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user-events', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },

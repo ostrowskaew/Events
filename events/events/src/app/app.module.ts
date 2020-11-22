@@ -43,6 +43,7 @@ import { authInterceptorProviders} from './helpers/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { DataCheckComponent } from './data-check/data-check.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { MatRadioModule } from '@angular/material/radio';
     BoardAdminComponent,
     BoardUserComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    DataCheckComponent
   ],
   imports: [
     BrowserModule,

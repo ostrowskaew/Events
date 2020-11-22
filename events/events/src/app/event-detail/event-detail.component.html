@@ -42,10 +42,10 @@
 			<div class="row">
 				<div class="col-md-6">
           <address>
-         <strong>Price: </strong> <br>
-         <strong>Avaible places: </strong> {{event.numPlaces}} <br>
-         <strong>Meeting place: </strong> {{event.meetingPlace}} <br>
-         <strong>Included in the price: </strong> {{event.included}} <br>
+         <strong>Price:                     </strong> <br>
+         <strong>Avaible places:            </strong> {{event.numPlaces}} <br>
+         <strong>Meeting place:             </strong> {{event.meetingPlace}} <br>
+         <strong>Included in the price:     </strong> {{event.included}} <br>
          <strong>Not included in the price: </strong> {{event.notIncluded}} <br>
 
 			</address>
@@ -64,7 +64,9 @@
 				</div>
 				<div class="col-md-2">
           <br>
-          <a class="btn btn-dark btn-md ml-0" href="#" role="button">Sign up!</a>
+          <a class="btn btn-dark btn-md ml-0"
+          routerLink="/data-check/{{id}}"
+           role="button">Sign up!</a>
 				</div>
 			</div>
 		</div>
