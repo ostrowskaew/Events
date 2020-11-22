@@ -5,7 +5,7 @@ import { User } from '../user/User'
 export class Reservation {
   idReservation: number;
   payed: boolean;
-  evento: Evento;
+  event: Evento;
   user: User;
 
 }

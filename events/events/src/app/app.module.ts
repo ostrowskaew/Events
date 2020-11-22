@@ -44,6 +44,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { DataCheckComponent } from './data-check/data-check.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +76,9 @@ import { DataCheckComponent } from './data-check/data-check.component';
     BoardUserComponent,
     ProfileComponent,
     HomeComponent,
-    DataCheckComponent
+    DataCheckComponent,
+    ConfirmationDialogComponent,
+    SuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +89,7 @@ import { DataCheckComponent } from './data-check/data-check.component';
     MatButtonModule,
     MatSidenavModule,
     MatRadioModule,
+    MatDialogModule,
     MatIconModule,
     MatListModule,
     NgxMaterialTimepickerModule,

@@ -10,7 +10,7 @@
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container py-3 my-3">
-      <h1 class="font-weight-bold text-center white-text pb-2">My events</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">Admin Board</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -20,14 +20,29 @@
           <div class="card" *ngIf="currentUser; else loggedOut">
             <div class="card-body z-depth-2 px-4">
               <form>
-                <mat-list>
-                <div *ngFor="let res of reservations">
-                  <div *ngIf= "res.user.idUser == currUser.idUser">
-                    {{ res.event.nameEvent }}
-                    <mat-divider></mat-divider>
-                  </div>
+                <div class="card card-list">
+                    <table class="table">
+                        <tr>
+                          <th>Name</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Payed</th>
+                        </tr>
+                      <tbody>
+                        <tr *ngFor="let reservation of reservations"
+                         routerLink="/event-detail/{{reservation.event.idEvent}}">
+                          <td>{{reservation.event.nameEvent }}</td>
+                          <td>{{reservation.event.dateStart | date:'dd/MM/yyyy'}}</td>
+                          <td>{{reservation.event.dateEnd | date:'dd/MM/yyyy'}}</td>
+                          <td>{{reservation.payed}}</td>
+
+                      </tr>
+
+                      </tbody>
+                    </table>
+
                 </div>
-              </mat-list>
+
               </form>
             </div>
             <!--/.Form-->

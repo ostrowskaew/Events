@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Evento } from '../database-components/evento/Evento';
@@ -9,6 +10,10 @@ import { EventoService } from '../services/evento.service';
 import { ReservationService } from '../services/reservation.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
+import {MatButtonModule} from '@angular/material/button';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-data-check',
@@ -30,7 +35,8 @@ export class DataCheckComponent implements OnInit {
     private eventoService: EventoService,
     private token: TokenStorageService,
     private userService: UserDataService,
-    private reservationService: ReservationService) { }
+    private reservationService: ReservationService,
+    private dialog: MatDialog) { }
 
 
 
@@ -65,6 +71,28 @@ export class DataCheckComponent implements OnInit {
     this.reservation = new Reservation();
     this.reservationService.addReservation(this.reservation, this.id, this.currUser.idUser)
     .subscribe(data => console.log(data), error => console.log(error));
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Are you sure you want to make a reservation?"
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log('Yes clicked');
+        this.makeReservation();
+        this.openInfo();
+        }
+    });
+  }
+
+  openInfo(): void {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '350px',
+      data: "You signed up successfuly for the event " + this.event.nameEvent + "!"
+    });
+
   }
 
 }

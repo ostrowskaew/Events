@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Evento } from '../database-components/evento/Evento';
 import { Reservation } from '../database-components/reservation/Reservation';
 import { CurrentUser } from '../database-components/user/CurrentUser';
 import { User } from '../database-components/user/user';
+import { EventoService } from '../services/evento.service';
 import { ReservationService } from '../services/reservation.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
@@ -15,25 +17,33 @@ import { UserService } from '../services/user.service';
 })
 export class BoardUserComponent implements OnInit {
   currentUser: CurrentUser;
-  users: Observable<User[]>;
   currUser : User;
-  reservations : Observable<Reservation[]>;
+  reservations : Reservation[];
+  events: Evento[];
 
 
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
-    private reservationService: ReservationService) { }
+    private reservationService: ReservationService,
+    private eventoService: EventoService) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-    this.users = this.userService.getUsers();
-    this.reservations = this.reservationService.getReservations();
     this.getUser();
+    this.reloadData();
   }
 
   getUser() {
     this.userService.getUser(this.currentUser.id).subscribe((res: User) => {
       this.currUser = res;
     });
+  }
+
+  reloadData() {
+    this.eventoService.getEventos()
+    .subscribe(ev => this.events = ev);
+    this.reservationService.getReservations()
+    .subscribe(res => this.reservations = res);
+
   }
 }
