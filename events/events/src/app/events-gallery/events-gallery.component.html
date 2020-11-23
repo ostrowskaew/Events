@@ -10,17 +10,8 @@
   routerLink="/event-detail/{{event.idEvent}}">
   <div class="gallery">
     <div class="desc">{{event.nameEvent}}</div>
+    <img src="http://localhost:8080/files/{{event.imageId}}" >
 </div>
 </a>
-
-<div class="card">
-  <div class="card-header">List of Files</div>
-  <ul
-    class="list-group list-group-flush"
-    *ngFor="let file of fileInfos | async"
-  >
-    <li class="list-group-item">
-      <img src="{{ file.url }}" alt="{{ file.name }}">
-    </li>
-  </ul>
 </div>
+
