@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Evento } from '../database-components/evento/Evento';
 import { EventoService } from '../services/evento.service';
 import { UploadFileService } from '../services/upload-file.service';
@@ -11,10 +12,13 @@ import { UploadFileService } from '../services/upload-file.service';
 })
 export class EventsGalleryComponent implements OnInit {
 
-  constructor(private eventService: EventoService) { }
+  constructor(private eventService: EventoService,
+    private uploadService: UploadFileService) { }
   events: Evento[] = [];
+  fileInfos: Observable<any>;
 
-  ngOnInit() {
+  ngOnInit(){
+    this.fileInfos = this.uploadService.getFiles();
     this.getMovies();
   }
 

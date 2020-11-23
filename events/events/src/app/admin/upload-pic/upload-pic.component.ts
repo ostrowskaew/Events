@@ -12,74 +12,46 @@ import { ImageFile } from './ImageFile';
 export class UploadPicComponent implements OnInit {
 
   selectedFiles: FileList;
-  progressInfos = [];
+  currentFile: File;
+  progress = 0;
   message = '';
-  fileInfos: Observable<ImageFile>;
-  images: ImageFile[];
-  response : string;
+
+  fileInfos: Observable<any>;
+
+  constructor(private uploadService: UploadFileService) { }
 
   @Output() lastId : number;
   @Output() idChanged: EventEmitter<number> =   new EventEmitter();
 
-  constructor(private uploadService: UploadFileService) { }
-
-
-  selectFiles(event) {
-    this.progressInfos = [];
-
-    const files = event.target.files;
-    let isImage = true;
-
-    for (let i = 0; i < files.length; i++) {
-      if (files.item(i).type.match('image.*')) {
-        continue;
-      } else {
-        isImage = false;
-        alert('invalid format!');
-        break;
-      }
-    }
-
-    if (isImage) {
-      this.selectedFiles = event.target.files;
-    } else {
-      this.selectedFiles = undefined;
-      event.srcElement.percentage = null;
-    }
+  ngOnInit(){
+    this.fileInfos = this.uploadService.getFiles();
   }
 
-  ngOnInit() {
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
+  upload() {
+    this.progress = 0;
 
-  uploadFiles() {
-    this.message = '';
-
-    for (let i = this.selectedFiles.length-1; i < this.selectedFiles.length; i++) {
-      this.upload(i, this.selectedFiles[i]);
-    }
-  }
-
-
-  upload(idx, file) {
-    this.progressInfos[idx] = { value: 0, fileName: file.name };
-
-    this.uploadService.upload(file)
-    .subscribe(
+    this.currentFile = this.selectedFiles.item(0);
+    this.uploadService.upload(this.currentFile).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
-          this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
+          this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
-         this.response = HttpResponse.toString();
-         this.fileInfos = this.uploadService.getFiles();
-         this.lastId = +event.body.message;
-         this.idChanged.emit(this.lastId);
-
+          this.lastId = +event.body.message;
+          this.idChanged.emit(this.lastId);
+          this.fileInfos = this.uploadService.getFiles();
         }
       },
       err => {
-        this.progressInfos[idx].percentage = 0;
-      })
-      ;
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
+
+    this.selectedFiles = undefined;
   }
+
 }
