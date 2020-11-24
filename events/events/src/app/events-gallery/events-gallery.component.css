@@ -1,13 +1,40 @@
 div.gallery {
   margin: 5px;
-  border: 1px solid darkgray;
+  border: 1px solid rgb(202, 202, 202);
   float: left;
   width: 32%;
-  -ms-flex: 32%; /* IE10 */
+  -ms-flex: 32%;
   flex: 32%;
   padding: 0 4px;
+  height:25em;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  position:relative;
+  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius:16px;
+  overflow:hidden;
+  -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
 }
 
+body
+{
+  background-color:#f2f2f2;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+*
+{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 div.gallery:hover {
   border: 1px solid rgb(119, 119, 119);
 }
@@ -20,11 +47,14 @@ div.gallery img {
 }
 
 div.desc {
-  padding: 15px;
+  padding: 5px;
   text-align: center;
   color: rgb(85, 85, 85);
   text-decoration: solid;
   text-transform: uppercase;
+  margin:0px;
+  font-size:1.4em;
+  font-weight:500;
 }
 
 div.date {
@@ -32,6 +62,7 @@ div.date {
   text-align: center;
   color: rgb(110, 110, 110);
   text-decoration: solid;
+  font-size:12px;
 }
 
 
