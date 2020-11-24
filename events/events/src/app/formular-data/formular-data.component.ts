@@ -53,10 +53,12 @@ export class FormularDataComponent implements OnInit {
 
   save() {
     this.form.idUser = this.currentUser.id;
+
     this.userService.addUser(this.form, this.idCountry)
       .subscribe(
         data => {
           console.log(data);
+          console.log(this.idCountry);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
           this.location.back();

@@ -10,8 +10,6 @@ import { EventoService } from '../services/evento.service';
 import { ReservationService } from '../services/reservation.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
-import {MatButtonModule} from '@angular/material/button';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
@@ -40,11 +38,20 @@ export class DataCheckComponent implements OnInit {
 
 
 
+    ngOnInit() {
+      this.currentUser = this.token.getUser();
+      this.getId();
+       this.getEvent();
+       this.getUser();
+    }
+
+
   getId() {
     this.url = this.router.url;
     var splitted = this.url.split("/", 3);
     this.url = splitted[2];
     this.id = + this.url;
+
   }
 
   getEvent(): void {
@@ -53,18 +60,11 @@ export class DataCheckComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.currentUser = this.token.getUser();
-    this.users = this.userService.getUsers();
-    this.getUser();
-    this.getId();
-    this.getEvent();
-  }
-
   getUser() {
     this.userService.getUser(this.currentUser.id).subscribe((res: User) => {
       this.currUser = res;
     });
+
   }
 
   makeReservation() {
@@ -74,6 +74,13 @@ export class DataCheckComponent implements OnInit {
   }
 
   openDialog(): void {
+
+    if(this.currUser.nameUser
+      && this.currUser.surname != null
+      && this.currUser.cardNum != null
+      && this.currUser.idPassport != null
+      && this.currUser.nationality != null
+      && this.currUser.phoneNum != null){
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data: "Are you sure you want to make a reservation?"
@@ -82,17 +89,22 @@ export class DataCheckComponent implements OnInit {
       if(result) {
         console.log('Yes clicked');
         this.makeReservation();
-        this.openInfo();
+        this.openInfo("You signed up successfuly for the event !");
         }
     });
   }
+  else {
+    this.openInfo("Incorrect data. Fill all your data to make a reservation!")
+  }
+  }
 
-  openInfo(): void {
+  openInfo(message: string): void {
     const dialogRef = this.dialog.open(SuccessDialogComponent, {
       width: '350px',
-      data: "You signed up successfuly for the event " + this.event.nameEvent + "!"
+      data: message
     });
 
   }
+
 
 }
