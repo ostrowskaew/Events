@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DataCheckComponent } from './data-check/data-check.component';
+import { EventSearchComponent } from './event-search/event-search.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user-events', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'search', component: EventSearchComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

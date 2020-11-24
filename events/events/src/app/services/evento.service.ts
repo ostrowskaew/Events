@@ -39,4 +39,11 @@ export class EventoService {
       const url = `${this.eventosUrl}/${idEvento}`;
       return this.http.delete<Evento>(url);
     }
+
+    searchEvent(term: string): Observable<Event[]> {
+      if (!term.trim()) {
+        return of([]);
+      }
+      return this.http.get<Event[]>(`${this.eventosUrl}/bytitle/${term}`);
+    }
 }

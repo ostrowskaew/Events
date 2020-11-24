@@ -46,4 +46,10 @@ public class EventController {
 	public void deleteEvent(@PathVariable int id) {
 		eventService.deleteEvent(id);
 	}
+
+	@RequestMapping("/events/bytitle/{term}")
+	public List<Event> getMovieByTitle(@PathVariable String term) {
+		return eventService.getEventByName(term);
+	}
+	
 }

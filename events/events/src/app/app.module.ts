@@ -47,6 +47,7 @@ import { DataCheckComponent } from './data-check/data-check.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+import { EventSearchComponent } from './event-search/event-search.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { SuccessDialogComponent } from './success-dialog/success-dialog.componen
     HomeComponent,
     DataCheckComponent,
     ConfirmationDialogComponent,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    EventSearchComponent
   ],
   imports: [
     BrowserModule,

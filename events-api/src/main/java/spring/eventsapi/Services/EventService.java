@@ -45,4 +45,6 @@ public class EventService {
 	public List<Event> getEventByName(String name) {
 		return eventRepository.findByNameEventIgnoreCaseContaining(name);
 	}
+
+	
 }

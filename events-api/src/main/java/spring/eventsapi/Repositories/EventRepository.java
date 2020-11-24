@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface EventRepository extends CrudRepository<Event, Integer> {
 
 	public List<Event> findByNameEventIgnoreCaseContaining(String name);
-
 }
