@@ -43,6 +43,7 @@ div.gallery img {
   height: 250px;
   margin-top: 8px;
   vertical-align: middle;
+  object-fit: cover;
 }
 
 div.desc {
