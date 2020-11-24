@@ -36,7 +36,7 @@
                           <td>{{evento.dateStart | date: 'dd/MM/yyyy'}}</td>
                           <td>
                             <button class="btn btn-light ">Edit</button>
-                          <button class="btn btn-dark " (click)="deleteEvento(evento.idEvent)">Delete</button>
+                          <button class="btn btn-dark "  (click)="openDialog(evento.idEvent)">Delete</button>
                         </td>
                       </tr>
 

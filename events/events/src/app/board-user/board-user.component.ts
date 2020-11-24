@@ -9,6 +9,8 @@ import { ReservationService } from '../services/reservation.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
 import { UserService } from '../services/user.service';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-board-user',
@@ -25,7 +27,8 @@ export class BoardUserComponent implements OnInit {
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
     private reservationService: ReservationService,
-    private eventoService: EventoService) { }
+    private eventoService: EventoService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
@@ -46,4 +49,6 @@ export class BoardUserComponent implements OnInit {
     .subscribe(res => this.reservations = res);
 
   }
+
+
 }

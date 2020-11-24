@@ -7,6 +7,8 @@ import { MessageService } from 'src/app/services/messages.service';
 import { Observable } from 'rxjs';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessDialogComponent } from 'src/app/success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-admin-add-evento',
@@ -25,7 +27,8 @@ export class AdminAddEventoComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     private eventoService: EventoService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
@@ -53,7 +56,7 @@ export class AdminAddEventoComponent implements OnInit {
     this.evento.imageId = this.idImage;
     this.eventoService.addEvento(this.evento)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.evento = new Evento();
+    this.openInfo();
     this.router.navigate(['/admin']);
   }
 
@@ -68,5 +71,13 @@ export class AdminAddEventoComponent implements OnInit {
 
   idChangedHandler(id: number) {
     this.idImage = id;
+  }
+
+  openInfo(): void {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '350px',
+      data: "You added event successfully"
+    });
+
   }
 }
