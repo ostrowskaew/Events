@@ -22,6 +22,11 @@ export class FormularDataComponent implements OnInit {
   user: User = new User();
   submitted = false;
   idCountry = 0;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  form: any = {};
+  errorMessage = '';
+
 
   constructor(private userService: UserDataService,
     private token: TokenStorageService,
@@ -47,10 +52,21 @@ export class FormularDataComponent implements OnInit {
   }
 
   save() {
-    this.user.idUser = this.currentUser.id;
-    this.userService.addUser(this.user, this.idCountry)
-      .subscribe(data => console.log(data), error => console.log(error));
-      this.location.back();
+    this.form.idUser = this.currentUser.id;
+    this.userService.addUser(this.form, this.idCountry)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.location.back();
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
+
   }
 
   onSubmit() {

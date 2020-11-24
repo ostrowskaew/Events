@@ -23,8 +23,11 @@
                 <mat-list>
                   <mat-list-item>
                     <label for="name" class="col-4 col-form-label">Name:</label>
-                    <div class="col-8">
+                    <div class="col-7" >
                       {{ currUser.nameUser }}
+                    </div>
+                    <div class="col-1">
+                    <button class="btn btn-light ">Edit</button>
                     </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -32,27 +35,36 @@
                     <label for="surname" class="col-4 col-form-label"
                       >Surname:</label
                     >
-                    <div class="col-8">
+                    <div class="col-7">
                       {{ currUser.surname }}
                     </div>
+                    <div class="col-1">
+                      <button class="btn btn-light ">Edit</button>
+                      </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                   <mat-list-item>
                     <label for="email" class="col-4 col-form-label"
                       >Email:</label
                     >
-                    <div class="col-8">
+                    <div class="col-7">
                       {{ currentUser.email }}
                     </div>
+                    <div class="col-1">
+                      <button class="btn btn-light ">Edit</button>
+                      </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                   <mat-list-item>
                     <label for="passport" class="col-4 col-form-label"
                       >Passport/ ID:</label
                     >
-                    <div class="col-8">
+                    <div class="col-7">
                       {{ currUser.idPassport }}
                     </div>
+                    <div class="col-1">
+                      <button class="btn btn-light ">Edit</button>
+                      </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
 
@@ -60,8 +72,12 @@
                     <label for="esn_card" class="col-4 col-form-label"
                       >ESN Card Number:</label
                     >
-                    <div class="col-8">
+                    <div class="col-7">
                       {{ currUser.cardNum }}
+                    </div>
+
+                   <div class="col-1">
+                    <button class="btn btn-light ">Edit</button>
                     </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -70,9 +86,12 @@
                     <label for="gender" class="col-4 col-form-label"
                       >Gender:</label
                     >
-                    <div class="col-8">
+                    <div class="col-7">
                       {{ currUser.sex }}
                     </div>
+                    <div class="col-1">
+                      <button class="btn btn-light ">Edit</button>
+                      </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
 
@@ -80,9 +99,12 @@
                     <label for="phone_num" class="col-4 col-form-label"
                       >Phone Number:</label
                     >
-                    <div class="col-8">
+                    <div class="col-7">
                       {{ currUser.phoneNum }}
                     </div>
+                    <div class="col-1">
+                      <button class="btn btn-light ">Edit</button>
+                      </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
 
@@ -90,9 +112,13 @@
                     <label for="country" class="col-4 col-form-label"
                       >Country:</label
                     >
-                    <div class="col-8">
-                      {{ currUser.nationality.country }}
-                    </div>
+                    <div class="col-7">
+                        {{ currUser.nationality.country}}
+                      </div>
+
+                    <div class="col-1">
+                      <button class="btn btn-light ">Edit</button>
+                      </div>
                   </mat-list-item>
                 </mat-list>
 

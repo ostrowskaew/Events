@@ -20,9 +20,14 @@
         <!--Grid column-->
         <div class="col-md-8 col-xl-5">
           <!--Form-->
-          <div class="card" [hidden]="submitted">
+          <div class="card">
             <div class="card-body z-depth-2 px-4">
-              <form (ngSubmit)="onSubmit()">
+              <form
+              *ngIf="!isSuccessful"
+                 name="form"
+                (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm"
+                novalidate>
                 <div class="form-group row">
                   <label for="name_input" class="col-4 col-form-label"
                     >Name:</label
@@ -33,9 +38,21 @@
                       name="name_input"
                       type="text"
                       required
-                      [(ngModel)]="user.nameUser"
+                      minlength="2"
+                      maxlength="20"
+                      #nameUser="ngModel"
+                      [(ngModel)]="form.nameUser"
                       class="form-control"
                     />
+                    <div class="alert-danger" *ngIf="f.submitted && nameUser.invalid">
+                      <div *ngIf="nameUser.errors.required">Username is required</div>
+                      <div *ngIf="nameUser.errors.minlength">
+                        Name must be at least 2 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        Name must be at most 20 characters
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -50,9 +67,20 @@
                       type="text"
                       class="form-control"
                       required
-                      [(ngModel)]="user.surname"
-
+                      minlength="2"
+                      maxlength="30"
+                      #surname="ngModel"
+                      [(ngModel)]="form.surname"
                     />
+                    <div class="alert-danger" *ngIf="f.submitted && surname.invalid">
+                      <div *ngIf="nameUser.errors.required">Surname is required</div>
+                      <div *ngIf="nameUser.errors.minlength">
+                        Surname must be at least 2 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        Surname must be at most 20 characters
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -68,8 +96,21 @@
                       class="form-control"
                       required
                       [(ngModel)]="user.idPassport"
-
+                      required
+                      minlength="6"
+                      maxlength="12"
+                      #idPassport="ngModel"
+                      [(ngModel)]="form.idPassport"
                     />
+                    <div class="alert-danger" *ngIf="f.submitted && idPassport.invalid">
+                      <div *ngIf="idPassport.errors.required">Id/passport number is required</div>
+                      <div *ngIf="idPassport.errors.minlength">
+                        Id/passport number must be at least 6 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        Id/passport number must be at most 12 characters
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -85,9 +126,20 @@
                       class="form-control"
                       required
                       [(ngModel)]="user.cardNum"
-
-
+                      minlength="11"
+                      maxlength="11"
+                      #cardNum="ngModel"
+                      [(ngModel)]="form.cardNum"
                     />
+                    <div class="alert-danger" *ngIf="f.submitted && cardNum.invalid">
+                      <div *ngIf="cardNum.errors.required">ESN card number is required</div>
+                      <div *ngIf="cardNum.errors.minlength">
+                        ESN card number must have 11 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        ESN card number must have 11 characters
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -103,7 +155,7 @@
                         type="radio"
                         class="custom-control-input"
                         value="female"
-                        [(ngModel)]="user.sex"
+                        [(ngModel)]="form.sex"
                       />
                       <label for="gender_input_0" class="custom-control-label"
                         >Female</label
@@ -118,8 +170,9 @@
                         type="radio"
                         class="custom-control-input"
                         value="male"
-                        [(ngModel)]="user.sex"
+                        [(ngModel)]="form.sex"
                       />
+
                       <label for="gender_input_1" class="custom-control-label"
                         >Male</label
                       >
@@ -138,9 +191,21 @@
                       type="text"
                       class="form-control"
                       required
-                      [(ngModel)]="user.phoneNum"
+                      [(ngModel)]="form.phoneNum"
+                      minlength="12"
+                      maxlength="12"
 
+                      #phoneNum="ngModel"
                     />
+                    <div class="alert-danger" *ngIf="f.submitted && phoneNum.invalid">
+                      <div *ngIf="phoneNum.errors.required">Phone number is required</div>
+                      <div *ngIf="phoneNum.errors.minlength">
+                        Phone number must contain + and 11 digits
+                      </div>
+                      <div *ngIf="phoneNum.errors.maxlength">
+                        Phone number must contain + and 11 digits
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row">

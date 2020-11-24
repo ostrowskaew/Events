@@ -48,6 +48,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
 import { EventSearchComponent } from './event-search/event-search.component';
+import { EditDataComponent } from './edit-data/edit-data.component';
+import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
@@ -80,10 +83,12 @@ import { EventSearchComponent } from './event-search/event-search.component';
     DataCheckComponent,
     ConfirmationDialogComponent,
     SuccessDialogComponent,
-    EventSearchComponent
+    EventSearchComponent,
+    EditDataComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
