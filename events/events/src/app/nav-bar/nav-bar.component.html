@@ -37,9 +37,7 @@
                     <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
                   </li>
                 </ul>
-                <li class="nav-item">
-                  <a href="/profile" class="nav-link" routerLink="profile">My data</a>
-                </li>
+
                 <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item" *ngIf="showAdminBoard">
                     <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
@@ -50,10 +48,15 @@
                     <a href="/user-events" class="nav-link" *ngIf="isLoggedIn" routerLink="user-events">My events</a>
                   </li>
                 </ul>
+                  <ul class="navbar-nav mr-auto" routerLinkActive="active">
+                  <li class="nav-item">
+                    <a href="/profile" class="nav-link" *ngIf="isLoggedIn" routerLink="profile">My data</a>
+                  </li>
+                </ul>
 
                 <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
                   <li class="nav-item">
-                    <a href class="nav-link" (click)="logout()">LogOut</a>
+                    <a href class="nav-link" (click)="logout()">Log out</a>
                   </li>
                 </ul>
 

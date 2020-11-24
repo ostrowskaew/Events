@@ -2,10 +2,10 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-sm-9">
-        <h1 class="font-weight-bold text-center dark-grey-text pb-2 ">Events</h1>
+      <div class="col-sm-11">
+        <h1 class="font-weight-bold text-center dark-grey-text pb-2 "> Events</h1>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-1">
         <app-event-search></app-event-search>
       </div>
   </div>
@@ -14,7 +14,7 @@
 <p class="lead text-center text-muted pt-2 mb-5">You can find all events in this section</p>
 
 <div class="row-12 ml-3 pl-2 grid-pad">
-  <a *ngFor="let event of events"
+  <div *ngFor="let event of events"
   routerLink="/event-detail/{{event.idEvent}}">
   <div class="gallery">
     <img src="http://localhost:8080/files/{{event.imageId}}">
@@ -24,3 +24,6 @@
     <div class="date">{{event.dateStart | date: 'dd/MM/yyyy'}} - {{event.dateEnd | date: 'dd/MM/yyyy'}}</div>
   </div>
   </div>
+
+</div>
+</div>

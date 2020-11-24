@@ -16,6 +16,7 @@ export class EventsGalleryComponent implements OnInit {
     private uploadService: UploadFileService) { }
   events: Evento[] = [];
   fileInfos: Observable<any>;
+  today: Date = new Date();
 
   ngOnInit(){
     this.fileInfos = this.uploadService.getFiles();
