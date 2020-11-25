@@ -13,7 +13,7 @@
           <div class="col-md-10 col-xl-10">
             <!--Form-->
             <div class="card">
-              <div [hidden]="submitted" class="card-body z-depth-2 px-4">
+              <div class="card-body z-depth-2 px-4">
                 <form (ngSubmit)="onSubmit()">
                 <div class="row mt-4">
                   <div class="col-md-6">
@@ -123,6 +123,4 @@
     <!-- Mask & flexbox options-->
   </section>
   <!-- Full Page Intro -->
-<div [hidden]="!submitted">
-    <h4>You submitted successfully!</h4>
-</div>
+

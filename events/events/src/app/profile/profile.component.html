@@ -1,9 +1,11 @@
 <section
   style="
-    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/90.jpg');
+    background-image: url('https://i.ibb.co/7nMFf1M/IMG-20200107-175634.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    width: 100%;
+    height: 100%;
   "
 >
   <!-- Mask & flexbox options-->
@@ -19,12 +21,12 @@
           <!--Form-->
           <div class="card" *ngIf="currentUser; else loggedOut">
             <div class="card-body z-depth-2 px-4">
-              <form>
+              <form *ngIf="currUser">
                 <mat-list>
                   <mat-list-item>
                     <label for="name" class="col-4 col-form-label">Name:</label>
                     <div class="col-7" >
-                      {{ currUser.nameUser }}
+                      <div *ngIf="currUser.nameUser">{{ currUser.nameUser }}</div>
                     </div>
                     <div class="col-1">
                     <button class="btn btn-light ">Edit</button>
@@ -36,7 +38,7 @@
                       >Surname:</label
                     >
                     <div class="col-7">
-                      {{ currUser.surname }}
+                      <div *ngIf="currUser.surname">{{ currUser.surname }}</div>
                     </div>
                     <div class="col-1">
                       <button class="btn btn-light ">Edit</button>
@@ -48,7 +50,7 @@
                       >Email:</label
                     >
                     <div class="col-7">
-                      {{ currentUser.email }}
+                      <div *ngIf="currentUser.email">{{ currentUser.email }}</div>
                     </div>
                     <div class="col-1">
                       <button class="btn btn-light ">Edit</button>
@@ -60,7 +62,7 @@
                       >Passport/ ID:</label
                     >
                     <div class="col-7">
-                      {{ currUser.idPassport }}
+                      <div *ngIf="currUser.idPassport">{{ currUser.idPassport }}</div>
                     </div>
                     <div class="col-1">
                       <button class="btn btn-light ">Edit</button>
@@ -73,7 +75,8 @@
                       >ESN Card Number:</label
                     >
                     <div class="col-7">
-                      {{ currUser.cardNum }}
+                      <div *ngIf="currUser.cardNum">{{ currUser.cardNum }}</div>
+
                     </div>
 
                    <div class="col-1">
@@ -87,7 +90,7 @@
                       >Gender:</label
                     >
                     <div class="col-7">
-                      {{ currUser.sex }}
+                      <div *ngIf="currUser.sex">{{ currUser.sex }}</div>
                     </div>
                     <div class="col-1">
                       <button class="btn btn-light ">Edit</button>
@@ -100,7 +103,7 @@
                       >Phone Number:</label
                     >
                     <div class="col-7">
-                      {{ currUser.phoneNum }}
+                      <div *ngIf="currUser.phoneNum">{{ currUser.phoneNum }}</div>
                     </div>
                     <div class="col-1">
                       <button class="btn btn-light ">Edit</button>
@@ -113,7 +116,7 @@
                       >Country:</label
                     >
                     <div class="col-7">
-                        {{ currUser.nationality.country}}
+                      <div *ngIf="currUser.nationality">{{ currUser.nationality.country}}</div>
                       </div>
 
                     <div class="col-1">

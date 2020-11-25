@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TokenStorageService } from './services/token-storage.service';
 
@@ -14,9 +15,10 @@ export class AppComponent {
   isLoggedIn = false;
   showAdminBoard = false;
   username: string;
+  footer: boolean;
 
   constructor(
-    public translate: TranslateService, private tokenStorageService: TokenStorageService
+    public translate: TranslateService, private tokenStorageService: TokenStorageService, private router: Router
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
@@ -33,6 +35,13 @@ export class AppComponent {
 
       this.username = user.username;
     }
+
+    this.router.events
+    .subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.footer = (event.url !== '/events-gallery')
+      }
+    });
   }
 
   public onToggleSidenav = () => {

@@ -1,5 +1,50 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<div
+  class="view jarallax"
+  data-jarallax='{"speed": 0.2}'
+  style="
+    background-image: url('https://i.ibb.co/7nMFf1M/IMG-20200107-175634.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+  "
+>
+  <!-- Mask & flexbox options-->
+  <div
+    class="mask rgba-black-light d-flex justify-content-center align-items-center"
+  >
+    <!-- Content -->
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-12 mb-4 white-text text-center">
+          <h1
+            class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
+            data-wow-delay="0.3s"
+          >
+            <strong>ESN Events</strong>
+          </h1>
+          <hr class="hr-light my-4 wow fadeInDown" />
+          <h5
+            class="text-uppercase mb-4 white-text wow fadeInDown"
+            data-wow-delay="0.4s"
+          >
+            <strong>Sign up for an event and live a wonderful adventure</strong>
+          </h5>
+          <button class="btn white" routerLink="/events-gallery">See events here!</button>
+
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Content -->
+  </div>
+  <!-- Mask & flexbox options-->
 </div>
+
+<script>
+  new WOW().init();
+</script>
