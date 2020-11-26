@@ -16,9 +16,9 @@ public class ExcelService {
   @Autowired
   ReservationRepository repository;
 
-  public ByteArrayInputStream load() {
+  public ByteArrayInputStream load(int idEvent) {
     List<Reservation> reservations =  new ArrayList<>();
-    repository.findAll().forEach(reservations::add);
+    repository.findByEventIdEvent(idEvent).forEach(reservations::add);
 
     ByteArrayInputStream in = ExcelHelper.reservationsToExcel(reservations);
     return in;

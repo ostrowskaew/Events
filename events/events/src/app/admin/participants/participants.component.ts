@@ -88,7 +88,7 @@ export class ParticipantsComponent implements OnInit {
   }
 
   downloadExcel(){
-      this.excelService.getExcel().subscribe(x => {
+      this.excelService.getExcel(this.currentEventId).subscribe(x => {
         const blob = new Blob([x], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
 
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {

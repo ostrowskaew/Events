@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 
 export class ExcelService {
-  private url = "http://localhost:8080/api/excel/download"
 
    httpOptions = {
     headers: new HttpHeaders({
@@ -20,7 +19,7 @@ export class ExcelService {
   constructor(private http: HttpClient) { }
 
 
-  getExcel(): Observable<Blob> {
-    return this.http.get(this.url, {responseType: 'blob'});
+  getExcel(idEvent: number): Observable<Blob> {
+    return this.http.get("http://localhost:8080/api/excel/download/"+idEvent, {responseType: 'blob'});
   }
 }
