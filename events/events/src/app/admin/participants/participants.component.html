@@ -22,7 +22,6 @@
           <div class="card" *ngIf="currentUser; else loggedOut">
             <div class="card-body z-depth-2 px-4">
               <form>
-
                 <div class="card card-list">
                     <table class="table">
                         <tr>
@@ -53,6 +52,7 @@
 
                           <td>
                           <button class="btn btn-dark "  (click)="openDialog(reservation.idReservation)">Delete</button>
+
                         </td>
                       </tr>
                     </ng-container>
@@ -60,6 +60,7 @@
                       </tbody>
                     </table>
                   <div class="card-footer white py-3 d-flex justify-content-between">
+                    <button class="btn btn-success px-3 my-0 ml-0"  (click)="downloadExcel()">Export</button>
                     <button class="btn btn-dark btn-md px-3 my-0 ml-0"  onclick="window.location.href='/admin'">Back</button>
                   </div>
                 </div>

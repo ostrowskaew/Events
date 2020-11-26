@@ -7,6 +7,7 @@ import { Reservation } from 'src/app/database-components/reservation/Reservation
 import { CurrentUser } from 'src/app/database-components/user/CurrentUser';
 import { User } from 'src/app/database-components/user/user';
 import { EventoService } from 'src/app/services/evento.service';
+import { ExcelService } from 'src/app/services/excel.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserDataService } from 'src/app/services/user-data.service';
@@ -29,7 +30,8 @@ export class ParticipantsComponent implements OnInit {
     private reservationService: ReservationService,
     private dialog: MatDialog,
     private userDataService: UserDataService,
-    private router: Router) { }
+    private router: Router,
+    private excelService: ExcelService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -83,5 +85,22 @@ export class ParticipantsComponent implements OnInit {
     .subscribe(res => this.reservations = res);
     this.userDataService.getUsers()
     .subscribe(us => this.users = us);
+  }
+
+  downloadExcel(){
+      this.excelService.getExcel().subscribe(x => {
+        const blob = new Blob([x], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveOrOpenBlob(blob);
+          return;
+        }
+        const data = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = data;
+        link.download = 'reservations.xls';
+        link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+
+      });
   }
 }
