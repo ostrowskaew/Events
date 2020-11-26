@@ -18,7 +18,7 @@ public class Reservation {
 	private int idReservation;
 
     @ManyToOne
-    private User user;
+    private UserData user;
 
     @ManyToOne
     private Event event;  
@@ -30,7 +30,7 @@ public class Reservation {
     }
 
 
-    public Reservation(boolean payed, User user, Event event) {
+    public Reservation(boolean payed, UserData user, Event event) {
         this.user = user;
         this.event = event;
         this.payed = payed;
@@ -45,11 +45,11 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public User getUser() {
+    public UserData getUser() {
         return this.user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserData user) {
         this.user = user;
     }
 

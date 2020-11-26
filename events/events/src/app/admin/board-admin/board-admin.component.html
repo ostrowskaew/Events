@@ -31,7 +31,8 @@
                           <th>Date</th>
                         </tr>
                       <tbody>
-                        <tr *ngFor="let evento of eventos | async">
+                        <tr *ngFor="let evento of eventos | async"
+                        routerLink="/participants/{{evento.idEvent}}">
                           <td>{{evento.idEvent}}</td>
                           <td>{{evento.nameEvent}}</td>
                           <td>{{evento.dateStart | date: 'dd/MM/yyyy'}}</td>

@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DataCheckComponent } from './data-check/data-check.component';
 import { EventSearchComponent } from './event-search/event-search.component';
+import { ParticipantsComponent } from './admin/participants/participants.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'reservations', component: ReservationComponent},
   { path: 'nationalities', component: NationalityComponent},
   { path: 'upload-pic', component: UploadPicComponent},
+  { path: 'participants/:id', component: ParticipantsComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

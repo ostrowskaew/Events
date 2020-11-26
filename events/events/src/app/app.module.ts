@@ -50,6 +50,7 @@ import { SuccessDialogComponent } from './success-dialog/success-dialog.componen
 import { EventSearchComponent } from './event-search/event-search.component';
 import { EditDataComponent } from './edit-data/edit-data.component';
 import { CommonModule } from '@angular/common';
+import { ParticipantsComponent } from './admin/participants/participants.component';
 
 
 
@@ -84,7 +85,8 @@ import { CommonModule } from '@angular/common';
     ConfirmationDialogComponent,
     SuccessDialogComponent,
     EventSearchComponent,
-    EditDataComponent
+    EditDataComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,

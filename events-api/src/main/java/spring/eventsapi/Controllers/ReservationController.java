@@ -2,7 +2,7 @@ package spring.eventsapi.Controllers;
 
 import spring.eventsapi.Services.EventService;
 import spring.eventsapi.Services.ReservationService;
-import spring.eventsapi.Services.UserService;
+import spring.eventsapi.Services.UserDataService;
 import spring.eventsapi.Models.Reservation;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class ReservationController {
 	private ReservationService reservationService;
 
 	@Autowired
-	private UserService userService;
+	private UserDataService userService;
 
 	@Autowired 
 	private EventService eventService;

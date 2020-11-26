@@ -27,8 +27,7 @@ export class BoardUserComponent implements OnInit {
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
     private reservationService: ReservationService,
-    private eventoService: EventoService,
-    private dialog: MatDialog) { }
+    private eventoService: EventoService) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();

@@ -32,10 +32,9 @@
                           <th>Payed</th>
                         </tr>
                       <tbody>
-                        <ng-container *ngFor="let reservation of reservations">
+                        <ng-container *ngFor="let reservation of reservations" | async>
                         <tr *ngIf="reservation.user.idUser == currentUser.id"
                          routerLink="/event-detail/{{reservation.event.idEvent}}">
-
                           <td>{{reservation.idReservation}}</td>
                           <td>{{reservation.event.nameEvent }}</td>
                           <td>{{reservation.event.dateStart | date:'dd/MM/yyyy'}}</td>
