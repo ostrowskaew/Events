@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { DataCheckComponent } from './data-check/data-check.component';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { ParticipantsComponent } from './admin/participants/participants.component';
+import { EditEventComponent } from './admin/edit-event/edit-event.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'data-check/:id', component: DataCheckComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'event-edit/:id', component: EditEventComponent },
   { path: 'user-events', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'search', component: EventSearchComponent },

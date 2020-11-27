@@ -32,13 +32,14 @@
                         </tr>
                       <tbody>
                         <tr *ngFor="let evento of eventos | async"
-                        routerLink="/participants/{{evento.idEvent}}">
+                        >
                           <td>{{evento.idEvent}}</td>
                           <td>{{evento.nameEvent}}</td>
                           <td>{{evento.dateStart | date: 'dd/MM/yyyy'}}</td>
                           <td>
-                            <button class="btn btn-light ">Edit</button>
+                          <button class="btn btn-light "  routerLink="/event-edit/{{evento.idEvent}}">Edit</button>
                           <button class="btn btn-dark "  (click)="openDialog(evento.idEvent)">Delete</button>
+                          <button class="btn btn-light " routerLink="/participants/{{evento.idEvent}}">Participants</button>
                         </td>
                       </tr>
 

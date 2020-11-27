@@ -1,0 +1,465 @@
+<div class="container mt-1">
+  <!--Section: Content-->
+  <section class="mx-md-2 dark-grey-text">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-12">
+        <div *ngIf="event">
+          <!-- Card -->
+          <div class="card card-cascade wider reverse">
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+              <div *ngIf="event.imageId">
+                <img
+                  class="card-img-top"
+                  src="http://localhost:8080/files/{{ event.imageId }}"
+                  alt=""
+                  style="object-fit: cover; width: 100%; height: 337px"
+                />
+              </div>
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center">
+              <!-- Title -->
+              <h3 class="font-weight-bold">
+                <div *ngIf="event.nameEvent && !nameChange">
+                  {{ event.nameEvent }}
+                </div>
+                <div *ngIf="nameChange">
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    minlength="4"
+                    maxlength="20"
+                    #nameEvent="ngModel"
+                    [(ngModel)]="copyEvent.nameEvent"
+                    class="form-control"
+                  />
+                  <div class="alert-danger" *ngIf="nameEvent.invalid">
+                    <div *ngIf="notIncluded.errors.minlength">
+                      Name must be at least 4 characters
+                    </div>
+                    <div *ngIf="nameEvent.errors.maxlength">
+                      Name must be at most 20 characters
+                    </div>
+                  </div>
+                </div>
+
+              </h3>
+
+              <!-- Data -->
+              <div class = "row">
+                <div class = "col-md-3"></div>
+                <div class = "col-md-3">
+              <div *ngIf="event.dateStart && !startDateChange">
+                {{ event.dateStart | date: "dd/MM/yyyy" }}
+              </div>
+              <div *ngIf="startDateChange">
+                <input class="form-control"
+                       placeholder="yyyy-mm-dd"
+                       name="dateStart"
+                       [(ngModel)]="dateStart"
+                       ngbDatepicker #d1="ngbDatepicker"
+                       >
+
+                  <button
+                    class=" row-8 col-3 btn btn-dark"
+                    (click)="d1.toggle()"
+                    type="button"><label>{{'Calendar' | translate}}</label>
+                  </button>
+                </div>
+              </div>
+
+
+                -
+              <div class = "col-md-3">
+                <div *ngIf="event.dateEnd && !endDateChange">
+                  {{ event.dateEnd | date: "dd/MM/yyyy" }}
+                </div>
+                <div *ngIf="endDateChange">
+                  <input class="form-control"
+                         placeholder="yyyy-mm-dd"
+                         name="dateEnd"
+                         [(ngModel)]="dateEnd"
+                         ngbDatepicker #d2="ngbDatepicker">
+                         <button
+                      class=" row-8 col-3 btn btn-dark btn-block"
+                      (click)="d2.toggle()"
+                      type="button"><label>{{'Calendar' | translate}}</label>
+                    </button>
+                </div>
+              </div>
+                      <div class = "col-md-3"></div>
+            </div>
+            <button
+                        class="btn btn-light"
+                        *ngIf="!nameChange"
+                        (click)="changeNameFun()"
+                      >
+                        Edit name
+                      </button>
+                      <button
+                        class="btn btn-light"
+                        *ngIf="nameChange"
+                        (click)="changeNameFun()"
+                      >
+                        Ok
+                      </button>
+
+                      <button
+                class="btn btn-dark"
+                *ngIf="!startDateChange"
+                (click)="changeDateStartFun()"
+              >
+                Edit From
+              </button>
+              <button
+                class="btn btn-dark"
+                *ngIf="startDateChange"
+                (click)="changeDateStartFun()"
+              >
+                Ok
+              </button>
+
+                      <button
+                      class="btn btn-light"
+                      *ngIf="!endDateChange"
+                      (click)="changeDateEndFun()"
+                    >
+                      Edit To
+                    </button>
+                    <button
+                      class="btn btn-light"
+                      *ngIf="endDateChange"
+                      (click)="changeDateEndFun()"
+                    >
+                      Ok
+                    </button>
+          </div>
+            <!-- Card content -->
+          </div>
+          <!-- Card -->
+
+          <div class="container-fluid pt-4">
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <address>
+                      <div class="row">
+                        <div class="col-md-4">
+                      <strong>Price: </strong>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-1">
+                      <button
+                        class="btn btn-light"
+                        *ngIf="!priceChange"
+                        (click)="changePriceFun()"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-light"
+                        *ngIf="priceChange"
+                        (click)="changePriceFun()"
+                      >
+                        Ok
+                      </button>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                      <strong>Avaible places: </strong>
+                    </div>
+                    <div class="col-md-6">
+                      <div *ngIf="event.numPlaces && !numPlacesChange">
+                        {{ event.numPlaces }}
+                      </div>
+                      <div *ngIf="numPlacesChange">
+                        <input
+                          id="numPlaces"
+                          name="numPlaces"
+                          type="text"
+                          #numPlaces="ngModel"
+                          [(ngModel)]="copyEvent.numPlaces"
+                          class="form-control"
+                        />
+
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <button
+                        class="btn btn-light"
+                        *ngIf="!numPlacesChange"
+                        (click)="changePlaceNumFun()"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-light"
+                        *ngIf="numPlacesChange"
+                        (click)="changePlaceNumFun()"
+                      >
+                        Ok
+                      </button>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                      <strong>Meeting place: </strong>
+                    </div>
+                    <div class="col-md-6">
+                      <div *ngIf="event.meetingPlace && !meetingPlaceChange">
+                        {{ event.meetingPlace }}
+                      </div>
+                      <div *ngIf="meetingPlaceChange">
+                        <input
+                          id="meetingPlace"
+                          name="incl"
+                          type="text"
+                          minlength="4"
+                          maxlength="30"
+                          #meetingPlace="ngModel"
+                          [(ngModel)]="copyEvent.meetingPlace"
+                          class="form-control"
+                        />
+                        <div class="alert-danger" *ngIf="meetingPlace.invalid">
+                          <div *ngIf="notIncluded.errors.minlength">
+                            Name must be at least 4 characters
+                          </div>
+                          <div *ngIf="meetingPlace.errors.maxlength">
+                            Name must be at most 30 characters
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="col-md-1">
+                      <button
+                        class="btn btn-light"
+                        *ngIf="!meetingPlaceChange"
+                        (click)="changeMeetingPlaceFun()"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-light"
+                        *ngIf="meetingPlaceChange"
+                        (click)="changeMeetingPlaceFun()"
+                      >
+                        Ok
+                      </button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                      <strong>Included in the price: </strong>
+                      </div>
+                      <div class="col-md-6">
+                      <div *ngIf="event.included && !includedChange">
+                        {{ event.included }}
+                      </div>
+                      <div *ngIf="includedChange">
+                        <input
+                          id="incl"
+                          name="incl"
+                          type="text"
+                          minlength="4"
+                          maxlength="50"
+                          #included="ngModel"
+                          [(ngModel)]="copyEvent.included"
+                          class="form-control"
+                        />
+                        <div class="alert-danger" *ngIf="included.invalid">
+                          <div *ngIf="notIncluded.errors.minlength">
+                            Name must be at least 4 characters
+                          </div>
+                          <div *ngIf="included.errors.maxlength">
+                            Name must be at most 50 characters
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="col-md-1">
+                      <button
+                        class="btn btn-light"
+                        *ngIf="!includedChange"
+                        (click)="changeInPriceFun()"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-light"
+                        *ngIf="includedChange"
+                        (click)="changeInPriceFun()"
+                      >
+                        Ok
+                      </button>
+                      </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                      <strong>Not included in the price: </strong>
+                      </div>
+                      <div class="col-md-6">
+                      <div *ngIf="event.notIncluded && !notIncludedChange">
+                        {{ event.notIncluded }}
+                      </div>
+                      <div *ngIf="notIncludedChange">
+                        <input
+                          id="notIncl"
+                          name="notIncl"
+                          type="text"
+                          minlength="4"
+                          maxlength="50"
+                          #notIncluded="ngModel"
+                          [(ngModel)]="copyEvent.notIncluded"
+                          class="form-control"
+                        />
+                        <div class="alert-danger" *ngIf="notIncluded.invalid">
+                          <div *ngIf="notIncluded.errors.minlength">
+                            Name must be at least 4 characters
+                          </div>
+                          <div *ngIf="notIncluded.errors.maxlength">
+                            Name must be at most 50 characters
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="col-md-1">
+                      <button
+                        class="btn btn-light"
+                        *ngIf="!notIncludedChange"
+                        (click)="changeNotInPriceFun()"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-light"
+                        *ngIf="notIncludedChange"
+                        (click)="changeNotInPriceFun()"
+                      >
+                        Ok
+                      </button>
+                      </div>
+                    </div>
+                    </address>
+                  </div>
+                  <div class="col-md-6">
+                    <address>
+
+                      <strong>Schedule: </strong>
+
+
+                        <div *ngIf="event.schedule && !scheduleChange">
+                          {{ event.schedule }}
+                        </div>
+                        <div *ngIf="scheduleChange">
+                          <textarea cols="70" rows="5"
+                            id="schedule"
+                            name="schedule"
+                            type="text"
+                            maxlength="250"
+                            #schedule="ngModel"
+                            [(ngModel)]="copyEvent.schedule"
+                            class="form-control"
+                          >
+                          <div class="alert-danger" *ngIf="schedule.invalid">
+                            <div *ngIf="notIncluded.errors.maxlength">
+                              Schedule must be at most 250 characters
+                            </div>
+                          </div>
+                          </textarea>
+                        </div>
+
+
+                      <button
+                      class="btn btn-light"
+                      *ngIf="!scheduleChange"
+                      (click)="changeScheduleFun()"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="btn btn-light"
+                      *ngIf="scheduleChange"
+                      (click)="changeScheduleFun()"
+                    >
+                      Ok
+                    </button>
+                    </address>
+                  </div>
+                </div>
+                <div class="row bg-light mt-4">
+                  <div class="col-md-10 pt-4">
+                    <div class = "row">
+                      <div class="col-md-10">
+
+                        <div *ngIf="event.description && !descriptionChange">
+                          {{ event.description }}
+                        </div>
+                        <div *ngIf="descriptionChange">
+                          <textarea cols="40" rows="5"
+                            id="description"
+                            name="description"
+                            type="text"
+                            maxlength="250"
+                            #description="ngModel"
+                            [(ngModel)]="copyEvent.description"
+                            class="form-control"
+                            >
+
+                          <div class="alert-danger" *ngIf="description.invalid">
+                            <div *ngIf="description.errors.maxlength">
+                              Description must be at most 250 characters
+                            </div>
+                          </div>
+                        </textarea>
+                        </div>
+                  </div>
+                  <div class="col-md-1">
+                    <button
+                      class="btn btn-light"
+                      *ngIf="!descriptionChange"
+                      (click)="changeDescriptionFun()"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="btn btn-light"
+                      *ngIf="descriptionChange"
+                      (click)="changeDescriptionFun()"
+                    >
+                      Ok
+                    </button>
+                  </div>
+                  </div>
+                </div>
+                  <div class="col-md-2">
+                    <br />
+                    <a
+                      class="btn btn-dark btn-md ml-0"
+                      routerLink="/admin"
+                      role="button"
+                      >Back</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+    </div>
+    <!-- Grid row -->
+
+    <hr class="mb-5 mt-4" />
+  </section>
+  <!--Section: Content-->
+</div>

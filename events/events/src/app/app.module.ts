@@ -51,6 +51,7 @@ import { EventSearchComponent } from './event-search/event-search.component';
 import { EditDataComponent } from './edit-data/edit-data.component';
 import { CommonModule } from '@angular/common';
 import { ParticipantsComponent } from './admin/participants/participants.component';
+import { EditEventComponent } from './admin/edit-event/edit-event.component';
 
 
 
@@ -86,7 +87,8 @@ import { ParticipantsComponent } from './admin/participants/participants.compone
     SuccessDialogComponent,
     EventSearchComponent,
     EditDataComponent,
-    ParticipantsComponent
+    ParticipantsComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,
