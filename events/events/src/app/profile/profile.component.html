@@ -26,10 +26,35 @@
                   <mat-list-item>
                     <label for="name" class="col-4 col-form-label">Name:</label>
                     <div class="col-7" >
-                      <div *ngIf="currUser.nameUser">{{ currUser.nameUser }}</div>
+                      <div *ngIf="(currUser.nameUser) && (!changeName)">
+                        {{ currUser.nameUser }}
+                      </div>
+                      <div *ngIf="changeName">
+                        <input
+                      id="name_input"
+                      name="name_input"
+                      type="text"
+                      required
+                      minlength="2"
+                      maxlength="20"
+                      #nameUser="ngModel"
+                      [(ngModel)]="copyUser.nameUser"
+                      class="form-control"
+                    />
+                    <div class="alert-danger" *ngIf=" nameUser.invalid">
+                      <div *ngIf="nameUser.errors.required">Username is required</div>
+                      <div *ngIf="nameUser.errors.minlength">
+                        Name must be at least 2 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        Name must be at most 20 characters
+                      </div>
+                    </div>
+                      </div>
                     </div>
                     <div class="col-1">
-                    <button class="btn btn-light ">Edit</button>
+                    <button class="btn btn-light" *ngIf="(!changeName)" (click)="changeNameFun()">Edit</button>
+                    <button class="btn btn-light" *ngIf="(changeName)" (click)="changeNameFun()">Ok</button>
                     </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -38,11 +63,34 @@
                       >Surname:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="currUser.surname">{{ currUser.surname }}</div>
+                      <div *ngIf="(currUser.surname) && (!surnameChange)">{{ currUser.surname }}</div>
+                      <div *ngIf="surnameChange">
+                      <input
+                      id="surname_input"
+                      name="surname_input"
+                      type="text"
+                      class="form-control"
+                      required
+                      minlength="2"
+                      maxlength="30"
+                      #surname="ngModel"
+                      [(ngModel)]="copyUser.surname"
+                    />
+                    <div class="alert-danger" *ngIf="surname.invalid">
+                      <div *ngIf="nameUser.errors.required">Surname is required</div>
+                      <div *ngIf="nameUser.errors.minlength">
+                        Surname must be at least 2 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        Surname must be at most 20 characters
+                      </div>
+                    </div>
+                    </div>
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light ">Edit</button>
-                      </div>
+                      <button class="btn btn-light" *ngIf="(!surnameChange)" (click)="changeSurnameFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(surnameChange)" (click)="changeSurnameFun()">Ok</button>
+                    </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                   <mat-list-item>
@@ -52,9 +100,6 @@
                     <div class="col-7">
                       <div *ngIf="currentUser.email">{{ currentUser.email }}</div>
                     </div>
-                    <div class="col-1">
-                      <button class="btn btn-light ">Edit</button>
-                      </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                   <mat-list-item>
@@ -62,10 +107,36 @@
                       >Passport/ ID:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="currUser.idPassport">{{ currUser.idPassport }}</div>
+                      <div *ngIf="(currUser.idPassport) && (!idPassportChaneg)">{{ currUser.idPassport }}</div>
+                      <div *ngIf="idPassportChaneg">
+                        <input
+                      id="passport"
+                      name="passport"
+                      type="text"
+                      class="form-control"
+                      required
+                      [(ngModel)]="copyUser.idPassport"
+                      required
+                      minlength="6"
+                      maxlength="12"
+                      #idPassport="ngModel"
+                    />
+                    <div class="alert-danger" *ngIf="idPassport.invalid">
+                      <div *ngIf="idPassport.errors.required">Id/passport number is required</div>
+                      <div *ngIf="idPassport.errors.minlength">
+                        Id/passport number must be at least 6 characters
+                      </div>
+                      <div *ngIf="nameUser.errors.maxlength">
+                        Id/passport number must be at most 12 characters
+                      </div>
+                    </div>
+                    </div>
+
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light ">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!idPassportChaneg)" (click)="changeIdPassportFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(idPassportChaneg)" (click)="changeIdPassportFun()">Ok</button>
+
                       </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -75,12 +146,35 @@
                       >ESN Card Number:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="currUser.cardNum">{{ currUser.cardNum }}</div>
-
+                      <div *ngIf="(currUser.cardNum) && (!cardNumChange)">{{ currUser.cardNum }}</div>
+                      <div *ngIf="cardNumChange">
+                        <input
+                        id="esnCard"
+                        name="esnCard"
+                        type="text"
+                        class="form-control"
+                        required
+                        [(ngModel)]="copyUser.cardNum"
+                        minlength="11"
+                        maxlength="11"
+                        #cardNum="ngModel"
+                      />
+                      <div class="alert-danger" *ngIf="cardNum.invalid">
+                        <div *ngIf="cardNum.errors.required">ESN card number is required</div>
+                        <div *ngIf="cardNum.errors.minlength">
+                          ESN card number must have 11 characters
+                        </div>
+                        <div *ngIf="nameUser.errors.maxlength">
+                          ESN card number must have 11 characters
+                        </div>
+                      </div>
+                      </div>
                     </div>
 
                    <div class="col-1">
-                    <button class="btn btn-light ">Edit</button>
+                    <button class="btn btn-light" *ngIf="(!cardNumChange)" (click)="changeCardNumFun()">Edit</button>
+                    <button class="btn btn-light" *ngIf="(cardNumChange)" (click)="changeCardNumFun()">Ok</button>
+
                     </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -90,10 +184,46 @@
                       >Gender:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="currUser.sex">{{ currUser.sex }}</div>
+                      <div *ngIf="(currUser.sex) && (!sexChange)">{{ currUser.sex }}</div>
+                      <div *ngIf="sexChange">
+                        <div
+                      class="custom-control custom-radio custom-control-inline"
+                    >
+                      <input
+                        name="gender_input"
+                        id="gender_input_0"
+                        type="radio"
+                        class="custom-control-input"
+                        value="female"
+                        [(ngModel)]="copyUser.sex"
+                      />
+                      <label for="gender_input_0" class="custom-control-label"
+                        >Female</label
+                      >
+                    </div>
+                    <div
+                      class="custom-control custom-radio custom-control-inline"
+                    >
+                      <input
+                        name="gender_input"
+                        id="gender_input_1"
+                        type="radio"
+                        class="custom-control-input"
+                        value="male"
+                        [(ngModel)]="copyUser.sex"
+                      />
+
+                      <label for="gender_input_1" class="custom-control-label"
+                        >Male</label
+                      >
+                    </div>
+
+                      </div>
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light ">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!sexChange)" (click)="changeSexFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(sexChange)" (click)="changeSexFun()">Ok</button>
+
                       </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -103,10 +233,35 @@
                       >Phone Number:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="currUser.phoneNum">{{ currUser.phoneNum }}</div>
+                      <div *ngIf="(currUser.phoneNum) && (!phoneNumChange)">{{ currUser.phoneNum }}</div>
+                      <div *ngIf="(currUser.phoneNum) && (phoneNumChange)">
+                        <input
+                      id="phoneNum"
+                      name="phoneNum"
+                      type="text"
+                      class="form-control"
+                      required
+                      [(ngModel)]="copyUser.phoneNum"
+                      minlength="12"
+                      maxlength="12"
+
+                      #phoneNum="ngModel"
+                    />
+                    <div class="alert-danger" *ngIf="phoneNum.invalid">
+                      <div *ngIf="phoneNum.errors.required">Phone number is required</div>
+                      <div *ngIf="phoneNum.errors.minlength">
+                        Phone number must contain + and 11 digits
+                      </div>
+                      <div *ngIf="phoneNum.errors.maxlength">
+                        Phone number must contain + and 11 digits
+                      </div>
+                    </div>
+                    </div>
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light ">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!phoneNumChange)" (click)="changePhoneNumFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(phoneNumChange)" (click)="changePhoneNumFun()">Ok</button>
+
                       </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
@@ -116,22 +271,34 @@
                       >Country:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="currUser.nationality">{{ currUser.nationality.country}}</div>
+                      <div *ngIf="(currUser.nationality) && (!nationalityChange)">{{ currUser.nationality.country}}</div>
+                      <div *ngIf="nationalityChange">
+                        <select
+                      id="country"
+                      name="country"
+                      [(ngModel)]="copyUser.nationality.idNationality"
+                      class="form-control"
+                    >
+                      <option
+                        *ngFor="let co of countries | async"
+                        [value]="co.idNationality"
+                      >
+                        {{ co.country }}
+                      </option>
+                    </select>
                       </div>
+                    </div>
 
                     <div class="col-1">
-                      <button class="btn btn-light ">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!nationalityChange)" (click)="changeNationalityFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(nationalityChange)" (click)="changeNationalityFun()">Ok</button>
+
                       </div>
                   </mat-list-item>
                 </mat-list>
 
                 <div class="text-center my-3">
-                  <button
-                    class="btn btn-dark btn-block"
-                    onclick="window.location.href='/formular-data'"
-                  >
-                    Edit
-                  </button>
+
                 </div>
               </form>
             </div>
