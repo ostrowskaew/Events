@@ -26,9 +26,10 @@ export class EditEventComponent implements OnInit {
   includedChange = false;
   scheduleChange = false;
   descriptionChange = false;
-  imageChanege = false;
+  imageChange = false;
   dateStart: NgbDate;
   dateEnd: NgbDate;
+  idImage: number;
 
   constructor(
     private router: Router,
@@ -203,5 +204,21 @@ export class EditEventComponent implements OnInit {
       this.endDateChange = false;
       window.location.reload();
     }
+  }
+
+  changeImageFun() {
+    if (!this.imageChange){
+      this.copyEventData();
+      this.imageChange = true;
+    }
+    else {
+      this.save();
+      this.imageChange = false;
+      window.location.reload();
+    }
+  }
+
+  idChangedHandler(id: number) {
+    this.copyEvent.imageId = id;
   }
 }

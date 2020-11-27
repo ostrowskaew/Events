@@ -138,6 +138,25 @@
                     >
                       Ok
                     </button>
+
+                    <button
+                    class="btn btn-dark"
+                    *ngIf="!imageChange"
+                    (click)="changeImageFun()"
+                  >
+                    Edit Image
+                  </button>
+                  <button
+                    class="btn btn-dark"
+                    *ngIf="imageChange"
+                    (click)="changeImageFun()"
+                  >
+                    Ok
+                  </button>
+
+                  <div *ngIf="imageChange">
+                    <app-upload-pic (idChanged)="idChangedHandler($event)"></app-upload-pic>
+                  </div>
           </div>
             <!-- Card content -->
           </div>
