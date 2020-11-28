@@ -1,10 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ActivatedRouteSnapshot, ParamMap, Params, PRIMARY_OUTLET, Router, RouterStateSnapshot, UrlSegment, UrlSegmentGroup, UrlTree } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Evento } from '../database-components/evento/Evento';
 import { ReservationComponent } from '../database-components/reservation/reservation.component';
+import { CurrentUser } from '../database-components/user/CurrentUser';
 import { EventoService } from '../services/evento.service';
 import { ReservationService } from '../services/reservation.service';
+import { TokenStorageService } from '../services/token-storage.service';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-event-detail',
@@ -17,17 +21,23 @@ export class EventDetailComponent implements OnInit {
   url : string;
   reservationNumber: number;
   avaiblePlaces: number;
+  currentUser: CurrentUser;
 
   constructor(
     private router: Router,
     private eventoService: EventoService,
-    private reservationService: ReservationService) { }
+    private reservationService: ReservationService,
+    private token: TokenStorageService,
+    private dialog: MatDialog) { }
+
 
   async ngOnInit() {
+    this.currentUser = this.token.getUser();
    this.getId();
    await this.getEvent();
    await this.countReservations();
    this.countAvaiblePlaces();
+
   }
 
   countAvaiblePlaces(){
@@ -51,13 +61,34 @@ export class EventDetailComponent implements OnInit {
 
   }
 
-  countReservations() :Promise<Number>{
+  countReservations() :Promise<number>{
     return this.reservationService.countReservationsByEvent(this.id).pipe(
       tap(data => {
         this.reservationNumber = data;
       }),
     ).toPromise();
+  }
 
+  openInfo(message: string): void {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '350px',
+      data: message
+    });
 
+  }
+
+  signUpCheck(){
+    if((this.currentUser != null) && (this.avaiblePlaces != 0 )) {
+      this.router.navigate(['data-check/'+ this.id]);
+    }
+    else{
+      if (!this.currentUser) {
+        this.openInfo("Log in to sign up for the event!");
+      }
+      else {
+        this.openInfo("Sorry! No places avaible");
+      }
+
+    }
   }
 }

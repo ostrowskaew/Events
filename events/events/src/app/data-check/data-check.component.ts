@@ -12,6 +12,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-data-check',
@@ -27,6 +28,8 @@ export class DataCheckComponent implements OnInit {
   users: Observable<User[]>;
   currUser : User;
   reservation: Reservation;
+  avaiblePlaces: number;
+  reservationNumber : number;
 
   constructor(
     private router: Router,
@@ -34,15 +37,18 @@ export class DataCheckComponent implements OnInit {
     private token: TokenStorageService,
     private userService: UserDataService,
     private reservationService: ReservationService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+    ) { }
 
 
 
-    ngOnInit() {
+    async ngOnInit() {
       this.currentUser = this.token.getUser();
       this.getId();
-       this.getEvent();
+       await this.getEvent();
        this.getUser();
+       await this.countReservations();
+    this.countAvaiblePlaces();
     }
 
 
@@ -54,10 +60,25 @@ export class DataCheckComponent implements OnInit {
 
   }
 
-  getEvent(): void {
-    this.eventoService.getEvento(this.id)
-    .subscribe(ev => this.event = ev);
+  getEvent(): Promise<Evento> {
+    return this.eventoService.getEvento(this.id).pipe(
+      tap(data => {
+        this.event = data;
+      }),
+    ).toPromise();
 
+  }
+
+  countReservations() :Promise<number>{
+    return this.reservationService.countReservationsByEvent(this.id).pipe(
+      tap(data => {
+        this.reservationNumber = data;
+      }),
+    ).toPromise();
+  }
+
+  countAvaiblePlaces(){
+    this.avaiblePlaces = this.event.numPlaces - this.reservationNumber;
   }
 
   getUser() {
@@ -80,7 +101,8 @@ export class DataCheckComponent implements OnInit {
       && this.currUser.cardNum != null
       && this.currUser.idPassport != null
       && this.currUser.nationality != null
-      && this.currUser.phoneNum != null){
+      && this.currUser.phoneNum != null
+      && this.avaiblePlaces != 0){
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data: "Are you sure you want to make a reservation?"
@@ -92,6 +114,9 @@ export class DataCheckComponent implements OnInit {
         this.openInfo("You signed up successfuly for the event !");
         }
     });
+  }
+  else if(this.avaiblePlaces == 0 ){
+    this.openInfo("Sorry! No places avaible")
   }
   else {
     this.openInfo("Incorrect data. Fill all your data to make a reservation!")
