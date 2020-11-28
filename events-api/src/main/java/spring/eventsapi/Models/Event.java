@@ -43,6 +43,9 @@ public class Event {
 
 	@Column(name="description")
 	private String description;
+
+	@Column(name="price")
+	private int price;
 	
 	@Column(name="imageId")
 	private int imageId;
@@ -52,11 +55,12 @@ public class Event {
 	}
 
 
-	public Event(String nameEvent, Date dateStart, Date dateEnd, String meetingPlace,
+	public Event(String nameEvent,int price, Date dateStart, Date dateEnd, String meetingPlace,
 	String notIncluded, String included, int numPlaces, String schedule, String description, int imageId) {
 		this.nameEvent = nameEvent;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
+		this.price = price;
 		this.meetingPlace = meetingPlace;
 		this.notIncluded = notIncluded;
 		this.included = included;
@@ -83,6 +87,16 @@ public class Event {
 	public void setNameEvent(String name) {
 		this.nameEvent = name;
 	}
+
+
+	public int getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 
 	public Date getDateStart() {
 		return this.dateStart;

@@ -11,4 +11,5 @@ export class Evento {
   schedule: string;
   description: string;
   imageId: number;
+  price: number;
 }

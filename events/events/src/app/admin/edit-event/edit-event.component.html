@@ -173,7 +173,20 @@
                       <strong>Price: </strong>
                     </div>
                     <div class="col-md-6">
+                      <div *ngIf="event.price && !priceChange">
+                        {{ event.price }} euro
+                      </div>
+                      <div *ngIf="priceChange">
+                        <input
+                          id="price"
+                          name="price"
+                          type="text"
+                          #price="ngModel"
+                          [(ngModel)]="copyEvent.price"
+                          class="form-control"
+                        />
 
+                      </div>
                     </div>
                     <div class="col-md-1">
                       <button

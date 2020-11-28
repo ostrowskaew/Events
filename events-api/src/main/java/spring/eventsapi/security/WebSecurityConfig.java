@@ -63,7 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/nationalities").permitAll()
 			.antMatchers("/files/**").permitAll()
 			.antMatchers("/reservation/count/**").permitAll()
-			
 			.antMatchers("/usersData/**").permitAll()
 			.antMatchers("/api/excel/**").permitAll()
 			.anyRequest().authenticated();
