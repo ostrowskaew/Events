@@ -4,6 +4,7 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { EventoService } from 'src/app/services/evento.service';
+import { UploadFileService } from 'src/app/services/upload-file.service';
 
 @Component({
   selector: 'app-edit-event',
@@ -34,7 +35,8 @@ export class EditEventComponent implements OnInit {
   constructor(
     private router: Router,
     private eventoService: EventoService,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    private uploadService: UploadFileService) {
       translate.addLangs(['en', 'pl']);
       translate.setDefaultLang('en');
     }
@@ -219,6 +221,7 @@ export class EditEventComponent implements OnInit {
   }
 
   idChangedHandler(id: number) {
+    this.uploadService.deleteFiles(this.copyEvent.imageId);
     this.copyEvent.imageId = id;
   }
 }

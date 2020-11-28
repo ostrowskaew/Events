@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/events/**").permitAll()
 			.antMatchers("/events").permitAll()
 			.antMatchers("/nationalities").permitAll()
-			.antMatchers("/files").permitAll()
+			.antMatchers("/files/**").permitAll()
 			.antMatchers("/usersData/**").permitAll()
 			.antMatchers("/api/excel/**").permitAll()
 			.anyRequest().authenticated();

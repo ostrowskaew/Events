@@ -30,4 +30,8 @@ public class FileImageService {
   public Stream<FileImage> getAllFiles() {
     return fileDBRepository.findAll().stream();
   }
+
+  public void deleteFileImage(int id) {
+		fileDBRepository.deleteById(id);
+	}
 }
