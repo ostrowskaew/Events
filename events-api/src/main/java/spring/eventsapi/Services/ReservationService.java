@@ -41,4 +41,8 @@ public class ReservationService {
 	public void deleteReservation(int id) {
 		reservationRepository.deleteById(id);
 	}
+
+	public int countByEvent(int idEvent) {
+		return reservationRepository.countByEventIdEvent(idEvent).intValue();
+	}
 }

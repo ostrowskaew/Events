@@ -27,6 +27,10 @@ export class ReservationService {
      return this.http.get<Reservation>(url);
   }
 
+  countReservationsByEvent(idEvent: number): Observable<number>{
+    const url = `${this.reservationUrl}/count/${idEvent}`;
+    return this.http.get<number>(url);
+  }
 
 /** POST: add a new reservation to the server */
 addReservation(reservation: Reservation, idEvent : number, idUser : number): Observable<Object> {

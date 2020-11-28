@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, ParamMap, Params, PRIMARY_OUTLET, Router, RouterStateSnapshot, UrlSegment, UrlSegmentGroup, UrlTree } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { Evento } from '../database-components/evento/Evento';
+import { ReservationComponent } from '../database-components/reservation/reservation.component';
 import { EventoService } from '../services/evento.service';
+import { ReservationService } from '../services/reservation.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -12,14 +15,23 @@ export class EventDetailComponent implements OnInit {
   event: Evento;
   id: number;
   url : string;
+  reservationNumber: number;
+  avaiblePlaces: number;
 
   constructor(
     private router: Router,
-    private eventoService: EventoService) { }
+    private eventoService: EventoService,
+    private reservationService: ReservationService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
    this.getId();
-   this.getEvent();
+   await this.getEvent();
+   await this.countReservations();
+   this.countAvaiblePlaces();
+  }
+
+  countAvaiblePlaces(){
+    this.avaiblePlaces = this.event.numPlaces - this.reservationNumber;
   }
 
   getId() {
@@ -29,9 +41,23 @@ export class EventDetailComponent implements OnInit {
     this.id = + this.url;
   }
 
-  getEvent(): void {
-    this.eventoService.getEvento(this.id)
-    .subscribe(ev => this.event = ev);
+  getEvent(): Promise<Evento> {
+    return this.eventoService.getEvento(this.id)
+    .pipe(
+      tap(data => {
+        this.event = data;
+      }),
+    ).toPromise();
+
+  }
+
+  countReservations() :Promise<Number>{
+    return this.reservationService.countReservationsByEvent(this.id).pipe(
+      tap(data => {
+        this.reservationNumber = data;
+      }),
+    ).toPromise();
+
 
   }
 }

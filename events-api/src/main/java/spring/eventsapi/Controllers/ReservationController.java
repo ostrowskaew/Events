@@ -51,4 +51,9 @@ public class ReservationController {
 	public void deleteReservation(@PathVariable int id) {
 		reservationService.deleteReservation(id);
 	}
+
+	@RequestMapping("/reservation/count/{eventId}")
+	public int countReservationsByEvent(@PathVariable int eventId){
+		return reservationService.countByEvent(eventId);
+	}
 }
