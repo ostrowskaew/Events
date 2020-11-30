@@ -40,10 +40,10 @@ export class EventoService {
       return this.http.delete<Evento>(url);
     }
 
-    searchEvent(term: string): Observable<Event[]> {
+    searchEvent(term: string): Observable<Evento[]> {
       if (!term.trim()) {
         return of([]);
       }
-      return this.http.get<Event[]>(`${this.eventosUrl}/bytitle/${term}`);
+      return this.http.get<Evento[]>(`${this.eventosUrl}/bytitle/${term}`);
     }
 }
