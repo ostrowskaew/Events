@@ -17,7 +17,7 @@
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
         <!--Grid column-->
-        <div class="col-xl-10 col-xl-10">
+        <div class="col-xl-12 col-xl-12">
           <!--Form-->
           <div class="card" *ngIf="currentUser; else loggedOut">
             <div class="card-body z-depth-2 px-4">
@@ -41,7 +41,8 @@
                           <tr *ngIf="(reservation.event.idEvent == currentEventId)
                           && (reservation.user != null)">
                           <td>{{reservation.idReservation}}</td>
-                          <td>{{reservation.payed}}</td>
+                          <td>{{reservation.payed}}
+                          <button class="btn btn-success px-1 my-0 ml-0"  (click)="changePaymentStatus(reservation.idReservation)">{{'Change' | translate}}</button></td>
                           <td >{{reservation.user.nameUser}}</td>
                           <td >{{reservation.user.surname}}</td>
                           <td >{{reservation.user.idPassport}}</td>

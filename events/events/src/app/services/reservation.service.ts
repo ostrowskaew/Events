@@ -22,7 +22,7 @@ export class ReservationService {
     return this.http.get(this.reservationsUrl);
   }
 
-  getReservation(id: number): Observable<Object> {
+  getReservation(id: number): Observable<Reservation> {
      const url = `${this.reservationUrl}/${id}`;
      return this.http.get<Reservation>(url);
   }

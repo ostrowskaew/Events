@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { tap } from 'rxjs/operators';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { Reservation } from 'src/app/database-components/reservation/Reservation';
@@ -24,6 +25,7 @@ export class ParticipantsComponent implements OnInit {
   currentUser: CurrentUser;
   currentEventId: number;
   users: User[];
+  reservation: Reservation;
 
 
   constructor(private token: TokenStorageService,
@@ -69,6 +71,35 @@ export class ParticipantsComponent implements OnInit {
         this.openInfo();
         }
     });
+  }
+
+  async changePaymentStatus(id: number){
+    await this.getReservation(id);
+    console.log(this.reservation.idReservation);
+
+    if(!this.reservation.payed){
+      this.reservation.payed = true
+    }
+    else{
+      this.reservation.payed = false;
+    }
+    this.addReservation();
+    window.location.reload();
+
+  }
+
+  addReservation(){
+    this.reservationService.addReservation(this.reservation, this.reservation.event.idEvent, this.reservation.user.idUser)
+    .subscribe(data => console.log(data), error => console.log(error));
+  }
+
+  getReservation(id: number): Promise<Reservation>{
+    return this.reservationService.getReservation(id)
+    .pipe(
+      tap(data => {
+        this.reservation = data;
+      }),
+    ).toPromise();
   }
 
   openInfo(): void {
