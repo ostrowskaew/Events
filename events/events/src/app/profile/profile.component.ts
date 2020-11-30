@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Nationality } from '../database-components/nationality/Nationality';
 import { CurrentUser } from '../database-components/user/CurrentUser';
@@ -29,7 +30,15 @@ export class ProfileComponent implements OnInit {
 
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
-    private nationalityService: NationalityService) { }
+    private nationalityService: NationalityService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
   ngOnInit() {
     this.reloadData();

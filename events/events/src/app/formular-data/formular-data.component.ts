@@ -9,6 +9,7 @@ import { NationalityService } from '../services/nationality.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
 import { Location } from '@angular/common'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-formular-data',
@@ -31,7 +32,15 @@ export class FormularDataComponent implements OnInit {
   constructor(private userService: UserDataService,
     private token: TokenStorageService,
     private nationalityService: NationalityService,
-    private location: Location) { }
+    private location: Location,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();

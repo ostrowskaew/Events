@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-map-localize',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapLocalizeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public translate: TranslateService
+    ) {
+      translate.addLangs(['en', 'pl']);
+      translate.setDefaultLang('en');
+    }
+    switchLang(lang: string) {
+      this.translate.use(lang);
+    }
 
   ngOnInit(): void {
   }

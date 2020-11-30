@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
 import { Evento } from 'src/app/database-components/evento/Evento';
@@ -18,9 +19,14 @@ export class BoardAdminComponent implements OnInit {
   currentUser: CurrentUser;
   eventos: Observable<Evento[]>;
 
-  constructor(private token: TokenStorageService,
+  constructor(
+    public translate: TranslateService,
+    private token: TokenStorageService,
     private eventoService: EventoService,
-    private dialog: MatDialog ) { }
+    private dialog: MatDialog ) {
+      translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+    }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
@@ -31,6 +37,9 @@ export class BoardAdminComponent implements OnInit {
   reloadData() {
     this.eventos = this.eventoService.getEventos();
 
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   deleteEvento(id: number) {

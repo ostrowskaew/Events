@@ -12,7 +12,7 @@
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container py-3 my-3">
-      <h1 class="font-weight-bold text-center white-text pb-2">My data</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">{{'My data' | translate}}</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -24,7 +24,7 @@
               <form *ngIf="currUser">
                 <mat-list>
                   <mat-list-item>
-                    <label for="name" class="col-4 col-form-label">Name:</label>
+                    <label for="name" class="col-4 col-form-label">{{'Name' | translate}}:</label>
                     <div class="col-7" >
                       <div *ngIf="(currUser.nameUser) && (!changeName)">
                         {{ currUser.nameUser }}
@@ -42,25 +42,25 @@
                       class="form-control"
                     />
                     <div class="alert-danger" *ngIf=" nameUser.invalid">
-                      <div *ngIf="nameUser.errors.required">Username is required</div>
+                      <div *ngIf="nameUser.errors.required">{{'Name required' | translate}}</div>
                       <div *ngIf="nameUser.errors.minlength">
-                        Name must be at least 2 characters
+                        {{'Name least' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        Name must be at most 20 characters
+                        {{'Name most' | translate}}
                       </div>
                     </div>
                       </div>
                     </div>
                     <div class="col-1">
-                    <button class="btn btn-light" *ngIf="(!changeName)" (click)="changeNameFun()">Edit</button>
+                    <button class="btn btn-light" *ngIf="(!changeName)" (click)="changeNameFun()">{{'Edit' | translate}}</button>
                     <button class="btn btn-light" *ngIf="(changeName)" (click)="changeNameFun()">Ok</button>
                     </div>
                   </mat-list-item>
                   <mat-divider></mat-divider>
                   <mat-list-item>
                     <label for="surname" class="col-4 col-form-label"
-                      >Surname:</label
+                      >{{'Surname' | translate}}:</label
                     >
                     <div class="col-7">
                       <div *ngIf="(currUser.surname) && (!surnameChange)">{{ currUser.surname }}</div>
@@ -77,18 +77,18 @@
                       [(ngModel)]="copyUser.surname"
                     />
                     <div class="alert-danger" *ngIf="surname.invalid">
-                      <div *ngIf="nameUser.errors.required">Surname is required</div>
+                      <div *ngIf="nameUser.errors.required">{{'Surname required' | translate}}</div>
                       <div *ngIf="nameUser.errors.minlength">
-                        Surname must be at least 2 characters
+                        {{'Surname least' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        Surname must be at most 20 characters
+                        {{'Surname most' | translate}}
                       </div>
                     </div>
                     </div>
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light" *ngIf="(!surnameChange)" (click)="changeSurnameFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!surnameChange)" (click)="changeSurnameFun()">{{'Edit' | translate}}</button>
                       <button class="btn btn-light" *ngIf="(surnameChange)" (click)="changeSurnameFun()">Ok</button>
                     </div>
                   </mat-list-item>
@@ -104,7 +104,7 @@
                   <mat-divider></mat-divider>
                   <mat-list-item>
                     <label for="passport" class="col-4 col-form-label"
-                      >Passport/ ID:</label
+                      >{{'ID/ Passport' | translate}}:</label
                     >
                     <div class="col-7">
                       <div *ngIf="(currUser.idPassport) && (!idPassportChaneg)">{{ currUser.idPassport }}</div>
@@ -122,19 +122,19 @@
                       #idPassport="ngModel"
                     />
                     <div class="alert-danger" *ngIf="idPassport.invalid">
-                      <div *ngIf="idPassport.errors.required">Id/passport number is required</div>
+                      <div *ngIf="idPassport.errors.required">{{'Id required' | translate}}</div>
                       <div *ngIf="idPassport.errors.minlength">
-                        Id/passport number must be at least 6 characters
+                        {{'Id least' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        Id/passport number must be at most 12 characters
+                        {{'Id most' | translate}}
                       </div>
                     </div>
                     </div>
 
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light" *ngIf="(!idPassportChaneg)" (click)="changeIdPassportFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!idPassportChaneg)" (click)="changeIdPassportFun()">{{'Edit' | translate}}</button>
                       <button class="btn btn-light" *ngIf="(idPassportChaneg)" (click)="changeIdPassportFun()">Ok</button>
 
                       </div>
@@ -143,7 +143,7 @@
 
                   <mat-list-item>
                     <label for="esn_card" class="col-4 col-form-label"
-                      >ESN Card Number:</label
+                      >{{'ESN card' | translate}}:</label
                     >
                     <div class="col-7">
                       <div *ngIf="(currUser.cardNum) && (!cardNumChange)">{{ currUser.cardNum }}</div>
@@ -160,19 +160,19 @@
                         #cardNum="ngModel"
                       />
                       <div class="alert-danger" *ngIf="cardNum.invalid">
-                        <div *ngIf="cardNum.errors.required">ESN card number is required</div>
+                        <div *ngIf="cardNum.errors.required">{{'ESN required' | translate}}ESN card number is required</div>
                         <div *ngIf="cardNum.errors.minlength">
-                          ESN card number must have 11 characters
+                          {{'ESN most' | translate}}ESN card number must have 11 characters
                         </div>
                         <div *ngIf="nameUser.errors.maxlength">
-                          ESN card number must have 11 characters
+                          {{'ESN most' | translate}}ESN card number must have 11 characters
                         </div>
                       </div>
                       </div>
                     </div>
 
                    <div class="col-1">
-                    <button class="btn btn-light" *ngIf="(!cardNumChange)" (click)="changeCardNumFun()">Edit</button>
+                    <button class="btn btn-light" *ngIf="(!cardNumChange)" (click)="changeCardNumFun()">{{'Edit' | translate}}</button>
                     <button class="btn btn-light" *ngIf="(cardNumChange)" (click)="changeCardNumFun()">Ok</button>
 
                     </div>
@@ -181,7 +181,7 @@
 
                   <mat-list-item>
                     <label for="gender" class="col-4 col-form-label"
-                      >Gender:</label
+                      >{{'Gender' | translate}}:</label
                     >
                     <div class="col-7">
                       <div *ngIf="(currUser.sex) && (!sexChange)">{{ currUser.sex }}</div>
@@ -198,7 +198,7 @@
                         [(ngModel)]="copyUser.sex"
                       />
                       <label for="gender_input_0" class="custom-control-label"
-                        >Female</label
+                        >{{'Female' | translate}}</label
                       >
                     </div>
                     <div
@@ -214,14 +214,14 @@
                       />
 
                       <label for="gender_input_1" class="custom-control-label"
-                        >Male</label
+                        >{{'Male' | translate}}</label
                       >
                     </div>
 
                       </div>
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light" *ngIf="(!sexChange)" (click)="changeSexFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!sexChange)" (click)="changeSexFun()">{{'Edit' | translate}}</button>
                       <button class="btn btn-light" *ngIf="(sexChange)" (click)="changeSexFun()">Ok</button>
 
                       </div>
@@ -230,7 +230,7 @@
 
                   <mat-list-item>
                     <label for="phone_num" class="col-4 col-form-label"
-                      >Phone Number:</label
+                      >{{'Phone Number' | translate}}:</label
                     >
                     <div class="col-7">
                       <div *ngIf="(currUser.phoneNum) && (!phoneNumChange)">{{ currUser.phoneNum }}</div>
@@ -248,18 +248,18 @@
                       #phoneNum="ngModel"
                     />
                     <div class="alert-danger" *ngIf="phoneNum.invalid">
-                      <div *ngIf="phoneNum.errors.required">Phone number is required</div>
+                      <div *ngIf="phoneNum.errors.required">{{'Phone required' | translate}}Phone number is required</div>
                       <div *ngIf="phoneNum.errors.minlength">
-                        Phone number must contain + and 11 digits
+                        {{'Phone most' | translate}}
                       </div>
                       <div *ngIf="phoneNum.errors.maxlength">
-                        Phone number must contain + and 11 digits
+                        {{'Phone most' | translate}}
                       </div>
                     </div>
                     </div>
                     </div>
                     <div class="col-1">
-                      <button class="btn btn-light" *ngIf="(!phoneNumChange)" (click)="changePhoneNumFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!phoneNumChange)" (click)="changePhoneNumFun()">{{'Edit' | translate}}</button>
                       <button class="btn btn-light" *ngIf="(phoneNumChange)" (click)="changePhoneNumFun()">Ok</button>
 
                       </div>
@@ -268,7 +268,7 @@
 
                   <mat-list-item>
                     <label for="country" class="col-4 col-form-label"
-                      >Country:</label
+                      >{{'Country' | translate}}:</label
                     >
                     <div class="col-7">
                       <div *ngIf="(currUser.nationality) && (!nationalityChange)">{{ currUser.nationality.country}}</div>
@@ -290,7 +290,7 @@
                     </div>
 
                     <div class="col-1">
-                      <button class="btn btn-light" *ngIf="(!nationalityChange)" (click)="changeNationalityFun()">Edit</button>
+                      <button class="btn btn-light" *ngIf="(!nationalityChange)" (click)="changeNationalityFun()">{{'Edit' | translate}}</button>
                       <button class="btn btn-light" *ngIf="(nationalityChange)" (click)="changeNationalityFun()">Ok</button>
 
                       </div>

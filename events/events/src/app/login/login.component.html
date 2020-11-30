@@ -18,7 +18,7 @@
       #f="ngForm"
       novalidate
     >
-    <p class="h4 ">Sign in</p>
+    <p class="h4 ">{{'Sign In' | translate}}</p>
 
         <input
           type="text"
@@ -35,7 +35,7 @@
           role="alert"
           *ngIf="f.submitted && username.invalid"
         >
-          Username is required!
+        {{'Username required' | translate}}
         </div>
         <input
           type="password"
@@ -52,14 +52,14 @@
           role="alert"
           *ngIf="f.submitted && password.invalid"
         >
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">{{'Password required' | translate}}</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            {{'Password least' | translate}}
           </div>
         </div>
 
 
-        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+        <button class="btn btn-info btn-block my-4" type="submit">{{'Sign In' | translate}}</button>
 
       <div class="form-group">
         <div
@@ -67,7 +67,7 @@
           role="alert"
           *ngIf="f.submitted && isLoginFailed"
         >
-          Login failed: {{ errorMessage }}
+        {{'Login failed' | translate}}: {{ errorMessage }}
         </div>
       </div>
     </form>

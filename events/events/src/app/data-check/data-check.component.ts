@@ -13,6 +13,7 @@ import { UserDataService } from '../services/user-data.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { tap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-data-check',
@@ -37,8 +38,15 @@ export class DataCheckComponent implements OnInit {
     private token: TokenStorageService,
     private userService: UserDataService,
     private reservationService: ReservationService,
-    private dialog: MatDialog
-    ) { }
+    private dialog: MatDialog,
+    public translate: TranslateService
+    ) {
+      translate.addLangs(['en', 'pl']);
+      translate.setDefaultLang('en');
+    }
+    switchLang(lang: string) {
+      this.translate.use(lang);
+    }
 
 
 

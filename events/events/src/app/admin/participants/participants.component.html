@@ -12,7 +12,7 @@
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container py-3 my-3">
-      <h1 class="font-weight-bold text-center white-text pb-2">Particpants</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">{{'Prticipants' | translate}}</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -25,15 +25,15 @@
                 <div class="card card-list">
                     <table class="table">
                         <tr>
-                          <th>Reservation</th>
-                          <th>Payed</th>
-                          <th>Name</th>
-                          <th>Surname</th>
-                          <th>ID/ Passport</th>
-                          <th>ESN card number</th>
-                          <th>Phone number</th>
-                          <th>Gender</th>
-                          <th>Nationality</th>
+                          <th>{{'Reservation' | translate}}</th>
+                          <th>{{'Payed' | translate}}</th>
+                          <th>{{'Name' | translate}}</th>
+                          <th>{{'Surname' | translate}}</th>
+                          <th>{{'ID/ Passport' | translate}}</th>
+                          <th>{{'ESN card number' | translate}}</th>
+                          <th>{{'Phone number' | translate}}</th>
+                          <th>{{'Gender' | translate}}</th>
+                          <th>{{'Nationality' | translate}}</th>
 
                         </tr>
                       <tbody>
@@ -51,7 +51,7 @@
                           <td *ngIf="reservation.user.nationality">{{reservation.user.nationality.country}}</td>
 
                           <td>
-                          <button class="btn btn-dark "  (click)="openDialog(reservation.idReservation)">Delete</button>
+                          <button class="btn btn-dark "  (click)="openDialog(reservation.idReservation)">{{'Delete' | translate}}</button>
 
                         </td>
                       </tr>
@@ -60,8 +60,8 @@
                       </tbody>
                     </table>
                   <div class="card-footer white py-3 d-flex justify-content-between">
-                    <button class="btn btn-success px-3 my-0 ml-0"  (click)="downloadExcel()">Export</button>
-                    <button class="btn btn-dark btn-md px-3 my-0 ml-0"  onclick="window.location.href='/admin'">Back</button>
+                    <button class="btn btn-success px-3 my-0 ml-0"  (click)="downloadExcel()">{{'Export' | translate}}</button>
+                    <button class="btn btn-dark btn-md px-3 my-0 ml-0"  onclick="window.location.href='/admin'">{{'Back' | translate}}</button>
                   </div>
                 </div>
 

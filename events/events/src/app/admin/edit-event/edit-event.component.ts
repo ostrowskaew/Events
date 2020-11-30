@@ -33,6 +33,7 @@ export class EditEventComponent implements OnInit {
   idImage: number;
 
   constructor(
+
     private router: Router,
     private eventoService: EventoService,
     public translate: TranslateService,

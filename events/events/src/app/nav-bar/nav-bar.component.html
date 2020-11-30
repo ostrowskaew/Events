@@ -21,10 +21,10 @@
 						<li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
                 <div class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-                    My profile
+                  {{'My profile' | translate}}
                 </div>
                 <div class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-                  Log In
+                  {{'Sign In' | translate}}
                 </div>
               </a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -32,29 +32,29 @@
                 <app-login></app-login>
                 <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
                   <li class="nav-item">
-                    <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+                    <a href="/register" class="nav-link" routerLink="register">{{'Sign Up' | translate}}</a>
                   </li>
                 </ul>
 
                 <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item" *ngIf="showAdminBoard">
-                    <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+                    <a href="/admin" class="nav-link" routerLink="admin">{{'Admin Board' | translate}}</a>
                   </li>
                 </ul>
                 <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item">
-                    <a href="/user-events" class="nav-link" *ngIf="isLoggedIn" routerLink="user-events">My events</a>
+                    <a href="/user-events" class="nav-link" *ngIf="isLoggedIn" routerLink="user-events">{{'My events' | translate}}</a>
                   </li>
                 </ul>
                   <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item">
-                    <a href="/profile" class="nav-link" *ngIf="isLoggedIn" routerLink="profile">My data</a>
+                    <a href="/profile" class="nav-link" *ngIf="isLoggedIn" routerLink="profile">{{'My data' | translate}}</a>
                   </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
                   <li class="nav-item">
-                    <a href class="nav-link" (click)="logout()">Log out</a>
+                    <a href class="nav-link" (click)="logout()">{{'Log Out' | translate}}</a>
                   </li>
                 </ul>
 

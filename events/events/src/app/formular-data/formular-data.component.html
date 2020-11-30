@@ -14,7 +14,7 @@
     <!-- Content -->
     <div class="container py-3 my-3">
       <h1 class="font-weight-bold text-center white-text pb-2">
-        Fill Your data
+        {{'Fill Your data' | translate}}
       </h1>
 
       <!--Grid row-->
@@ -32,7 +32,7 @@
                 novalidate>
                 <div class="form-group row">
                   <label for="name_input" class="col-4 col-form-label"
-                    >Name:</label
+                    >{{'Name' | translate}}:</label
                   >
                   <div class="col-8">
                     <input
@@ -48,12 +48,12 @@
                       value="Name"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && nameUser.invalid">
-                      <div *ngIf="nameUser.errors.required">Username is required</div>
+                      <div *ngIf="nameUser.errors.required">{{'Name required' | translate}}</div>
                       <div *ngIf="nameUser.errors.minlength">
-                        Name must be at least 2 characters
+                        {{'Name least' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        Name must be at most 20 characters
+                        {{'Name most' | translate}}
                       </div>
                     </div>
                   </div>
@@ -61,7 +61,7 @@
 
                 <div class="form-group row">
                   <label for="surname_input" class="col-4 col-form-label"
-                    >Surname:</label
+                    >{{'Surname' | translate}}:</label
                   >
                   <div class="col-8">
                     <input
@@ -76,12 +76,12 @@
                       [(ngModel)]="form.surname"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && surname.invalid">
-                      <div *ngIf="nameUser.errors.required">Surname is required</div>
+                      <div *ngIf="nameUser.errors.required">{{'Surname reqired' | translate}}</div>
                       <div *ngIf="nameUser.errors.minlength">
-                        Surname must be at least 2 characters
+                        {{'Surname least' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        Surname must be at most 20 characters
+                        {{'Surname most' | translate}}
                       </div>
                     </div>
                   </div>
@@ -89,7 +89,7 @@
 
                 <div class="form-group row">
                   <label for="passport" class="col-4 col-form-label"
-                    >Passport:</label
+                    >{{'ID/ Passport' | translate}}:</label
                   >
                   <div class="col-8">
                     <input
@@ -106,12 +106,12 @@
                       [(ngModel)]="form.idPassport"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && idPassport.invalid">
-                      <div *ngIf="idPassport.errors.required">Id/passport number is required</div>
+                      <div *ngIf="idPassport.errors.required">{{'Id required' | translate}}</div>
                       <div *ngIf="idPassport.errors.minlength">
-                        Id/passport number must be at least 6 characters
+                        {{'Id least' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        Id/passport number must be at most 12 characters
+                        {{'Id most' | translate}}
                       </div>
                     </div>
                   </div>
@@ -119,7 +119,7 @@
 
                 <div class="form-group row">
                   <label for="esnCard" class="col-4 col-form-label"
-                    >ESN Card Number:</label
+                    >{{'ESN card' | translate}}:</label
                   >
                   <div class="col-8">
                     <input
@@ -135,19 +135,19 @@
                       [(ngModel)]="form.cardNum"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && cardNum.invalid">
-                      <div *ngIf="cardNum.errors.required">ESN card number is required</div>
+                      <div *ngIf="cardNum.errors.required">{{'ESN required' | translate}}</div>
                       <div *ngIf="cardNum.errors.minlength">
-                        ESN card number must have 11 characters
+                        {{'ESN most' | translate}}
                       </div>
                       <div *ngIf="nameUser.errors.maxlength">
-                        ESN card number must have 11 characters
+                        {{'ESN most' | translate}}
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-4">Gender:</label>
+                  <label class="col-4">{{'Gender' | translate}}:</label>
                   <div class="col-8">
                     <div
                       class="custom-control custom-radio custom-control-inline"
@@ -161,7 +161,7 @@
                         [(ngModel)]="form.sex"
                       />
                       <label for="gender_input_0" class="custom-control-label"
-                        >Female</label
+                        >{{'Female' | translate}}</label
                       >
                     </div>
                     <div
@@ -177,7 +177,7 @@
                       />
 
                       <label for="gender_input_1" class="custom-control-label"
-                        >Male</label
+                        >{{'Male' | translate}}</label
                       >
                     </div>
                   </div>
@@ -185,7 +185,7 @@
 
                 <div class="form-group row">
                   <label for="phoneNum" class="col-4 col-form-label"
-                    >Phone Number:</label
+                    >{{'Phone Number' | translate}}:</label
                   >
                   <div class="col-8">
                     <input
@@ -201,19 +201,19 @@
                       #phoneNum="ngModel"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && phoneNum.invalid">
-                      <div *ngIf="phoneNum.errors.required">Phone number is required</div>
+                      <div *ngIf="phoneNum.errors.required">{{'Phone required' | translate}}</div>
                       <div *ngIf="phoneNum.errors.minlength">
-                        Phone number must contain + and 11 digits
+                        {{'Phone most' | translate}}
                       </div>
                       <div *ngIf="phoneNum.errors.maxlength">
-                        Phone number must contain + and 11 digits
+                        {{'Phone most' | translate}}
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="country_input" class="col-4 col-form-label"
-                    >Coutry:</label
+                    >{{'Coutry' | translate}}:</label
                   >
                   <div class="col-8">
                     <select
@@ -233,7 +233,7 @@
                 </div>
 
                 <div class="text-center my-3">
-                  <button class="btn btn-dark btn-block">Send</button>
+                  <button class="btn btn-dark btn-block">{{'Send' | translate}}</button>
                 </div>
               </form>
             </div>

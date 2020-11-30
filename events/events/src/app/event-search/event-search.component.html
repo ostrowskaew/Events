@@ -1,5 +1,5 @@
 <div id="search-component">
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Search..." />
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="{{'Search' | translate}}" />
   <ul class="search-result">
     <li *ngFor="let evento of eventos$ | async" >
       <a routerLink="/event-detail/{{evento.idEvent}}">

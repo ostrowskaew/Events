@@ -20,7 +20,7 @@ export class NavBarComponent {
     private breakpointObserver: BreakpointObserver,
     private tokenStorageService: TokenStorageService
   ) {
-    translate.addLangs(['en', 'pl']);
+    translate.addLangs(['en', 'es']);
     translate.setDefaultLang('en');
   }
 

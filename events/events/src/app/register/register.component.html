@@ -1,12 +1,17 @@
 
 <!-- Full Page Intro -->
-<section style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/90.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<section style="background-image: url('https://i.ibb.co/7nMFf1M/IMG-20200107-175634.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+width: 100%;
+    height: 100%;">
   <!-- Mask & flexbox options-->
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container py-5 my-5">
 
-      <h1 class="font-weight-bold text-center white-text pb-2">Sign Up!</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">{{'Sign Up' | translate}}!</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -16,7 +21,6 @@
           <div class="card">
             <div class="card-body z-depth-2 px-4">
               <form
-                *ngIf="!isSuccessful"
                  name="form"
                 (ngSubmit)="f.form.valid && onSubmit()"
                 #f="ngForm"
@@ -24,7 +28,7 @@
               >
 
               <div class="md-form mt-3">
-                <i class="fa prefix grey-text"><label for="username">Your Username</label></i>
+                <i class="fa prefix grey-text"><label for="username">{{'Username' | translate}}</label></i>
                 <input
                   type="text"
                   class="form-control"
@@ -36,12 +40,12 @@
                   #username="ngModel"
                   />
                   <div class="alert-danger" *ngIf="f.submitted && username.invalid">
-                    <div *ngIf="username.errors.required">Username is required</div>
+                    <div *ngIf="username.errors.required">{{'Username required' | translate}}</div>
                     <div *ngIf="username.errors.minlength">
-                      Username must be at least 3 characters
+                      {{'Username least' | translate}}
                     </div>
                     <div *ngIf="username.errors.maxlength">
-                      Username must be at most 20 characters
+                      {{'Username most' | translate}}
                     </div>
                   </div>
               </div>
@@ -58,15 +62,15 @@
                   #email="ngModel"
                 />
                 <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-                  <div *ngIf="email.errors.required">Email is required</div>
+                  <div *ngIf="email.errors.required"> {{'Email required' | translate}}</div>
                     <div *ngIf="email.errors.email">
-                       Email must be a valid email address
+                      {{'Email valid' | translate}}
                    </div>
                   </div>
                 </div>
 
               <div class="md-form">
-                <i class="fas prefix grey-text"><label for="password">Password</label></i>
+                <i class="fas prefix grey-text"><label for="password">{{'Password' | translate}}</label></i>
                 <input
                 type="password"
                 class="form-control"
@@ -77,14 +81,17 @@
                 #password="ngModel"
               />
               <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.required">{{'Password required' | translate}}</div>
                 <div *ngIf="password.errors.minlength">
-                  Password must be at least 6 characters
+                  {{'Password least' | translate}}
                 </div>
               </div>
             </div>
               <div class="text-center my-3">
-                <button class="btn btn-dark btn-block" >Sign Up</button>
+                <button class="btn btn-dark btn-block" >{{'Sign Up' | translate}}</button>
+              </div>
+              <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                {{'Signup failed' | translate}}!<br />{{ errorMessage }}
               </div>
             </form>
             </div>

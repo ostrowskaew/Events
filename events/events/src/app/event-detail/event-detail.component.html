@@ -47,18 +47,18 @@
 			<div class="row">
 				<div class="col-md-6">
           <address>
-         <strong>Price:                     </strong> <br>
-         <strong>Total places:            </strong> {{event.numPlaces}} <br>
-         <strong>Avaible places:            </strong> {{this.avaiblePlaces}} <br>
-         <strong>Meeting place:             </strong> {{event.meetingPlace}} <br>
-         <strong>Included in the price:     </strong> {{event.included}} <br>
-         <strong>Not included in the price: </strong> {{event.notIncluded}} <br>
+         <strong>{{'Price' | translate}}:                     </strong> <br>
+         <strong>{{'Total places' | translate}}:            </strong> {{event.numPlaces}} <br>
+         <strong>{{'Avaible places' | translate}}:            </strong> {{this.avaiblePlaces}} <br>
+         <strong>{{'Meeting place' | translate}}:             </strong> {{event.meetingPlace}} <br>
+         <strong>{{'Inc In Price' | translate}}:     </strong> {{event.included}} <br>
+         <strong>{{'Not Inc In Price' | translate}}: </strong> {{event.notIncluded}} <br>
 
 			</address>
 				</div>
 				<div class="col-md-6">
           <address>
-         <strong>Schedule: </strong><br>
+         <strong>{{'Schedule' | translate}}:    </strong><br>
          {{event.schedule}}
 			</address>
 				</div>
@@ -71,7 +71,7 @@
 				<div class="col-md-2">
           <br>
           <a class="btn btn-dark btn-md ml-0" (click)="signUpCheck()"
-           >Sign up!</a>
+           >{{'Sign Up' | translate}}!   </a>
 				</div>
 			</div>
 		</div>

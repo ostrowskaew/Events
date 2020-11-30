@@ -12,7 +12,7 @@
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container py-3 my-3">
-      <h1 class="font-weight-bold text-center white-text pb-2">Admin Board</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">{{'My events' | translate}}</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -25,11 +25,11 @@
                 <div class="card card-list">
                     <table class="table">
                         <tr>
-                          <th>Reservation id</th>
-                          <th>Name</th>
-                          <th>From</th>
-                          <th>To</th>
-                          <th>Payed</th>
+                          <th>{{'Reservation id' | translate}}</th>
+                          <th>{{'Name' | translate}}</th>
+                          <th>{{'From' | translate}}</th>
+                          <th>{{'To' | translate}}</th>
+                          <th>{{'Payed' | translate}}</th>
                         </tr>
                       <tbody>
                         <ng-container *ngFor="let reservation of reservations" | async>
@@ -62,4 +62,4 @@
   </div>
 </section>
 
-<ng-template #loggedOut> Please login. </ng-template>
+<ng-template #loggedOut> {{'Please Log in' | translate}} </ng-template>

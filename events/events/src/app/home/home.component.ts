@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,7 +10,15 @@ import { UserService } from '../services/user.service';
 export class HomeComponent implements OnInit {
   content: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
   ngOnInit() {
     this.userService.getPublicContent().subscribe(

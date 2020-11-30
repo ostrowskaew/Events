@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { Reservation } from 'src/app/database-components/reservation/Reservation';
@@ -28,16 +29,24 @@ export class ParticipantsComponent implements OnInit {
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
     private reservationService: ReservationService,
+    public translate: TranslateService,
     private dialog: MatDialog,
     private userDataService: UserDataService,
     private router: Router,
-    private excelService: ExcelService) { }
+    private excelService: ExcelService) {
+      translate.addLangs(['en', 'pl']);
+      translate.setDefaultLang('en');
+    }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.getIdReservation();
     this.reloadData();
 
+  }
+
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   getIdReservation() {

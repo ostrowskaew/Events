@@ -1,5 +1,6 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/upload-file.service';
 import { FileHandle } from '../file-handle';
@@ -18,7 +19,11 @@ export class UploadPicComponent implements OnInit {
 
   fileInfos: Observable<any>;
 
-  constructor(private uploadService: UploadFileService) { }
+  constructor(private uploadService: UploadFileService,
+    public translate: TranslateService) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+   }
 
   @Output() lastId : number;
   @Output() idChanged: EventEmitter<number> =   new EventEmitter();
@@ -29,6 +34,9 @@ export class UploadPicComponent implements OnInit {
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   upload() {

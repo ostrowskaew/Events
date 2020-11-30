@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-11">
-        <h1 class="font-weight-bold text-center dark-grey-text pb-2 "> Events</h1>
+        <h1 class="font-weight-bold text-center dark-grey-text pb-2 ">{{'Events' | translate}}</h1>
       </div>
       <div class="col-sm-1">
         <app-event-search></app-event-search>
@@ -11,7 +11,7 @@
   </div>
 </div>
 <hr class="w-header my-6">
-<p class="lead text-center text-muted pt-2 mb-5">You can find all events in this section</p>
+<p class="lead text-center text-muted pt-2 mb-5">{{'All events' | translate}}</p>
 
 <div class="row-12 ml-3 pl-2 grid-pad">
   <div *ngFor="let event of events"

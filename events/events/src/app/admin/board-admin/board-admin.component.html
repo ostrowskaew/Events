@@ -12,7 +12,7 @@
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container py-3 my-3">
-      <h1 class="font-weight-bold text-center white-text pb-2">Admin Board</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">{{'Admin Board' | translate}}</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -26,9 +26,9 @@
                 <div class="card card-list">
                     <table class="table">
                         <tr>
-                          <th>Id</th>
-                          <th>Name</th>
-                          <th>Date</th>
+                          <th>{{'Id' | translate}}</th>
+                          <th>{{'Name' | translate}}</th>
+                          <th>{{'Date' | translate}}</th>
                         </tr>
                       <tbody>
                         <tr *ngFor="let evento of eventos | async"
@@ -37,16 +37,16 @@
                           <td>{{evento.nameEvent}}</td>
                           <td>{{evento.dateStart | date: 'dd/MM/yyyy'}}</td>
                           <td>
-                          <button class="btn btn-light "  routerLink="/event-edit/{{evento.idEvent}}">Edit</button>
-                          <button class="btn btn-dark "  (click)="openDialog(evento.idEvent)">Delete</button>
-                          <button class="btn btn-light " routerLink="/participants/{{evento.idEvent}}">Participants</button>
+                          <button class="btn btn-light "  routerLink="/event-edit/{{evento.idEvent}}">{{'Edit' | translate}}</button>
+                          <button class="btn btn-dark "  (click)="openDialog(evento.idEvent)">{{'Delete' | translate}}</button>
+                          <button class="btn btn-light " routerLink="/participants/{{evento.idEvent}}">{{'Participants' | translate}}</button>
                         </td>
                       </tr>
 
                       </tbody>
                     </table>
                   <div class="card-footer white py-3 d-flex justify-content-between">
-                    <button class="btn btn-dark btn-md px-3 my-0 ml-0"  onclick="window.location.href='/admin/admin-add-event'">Add event</button>
+                    <button class="btn btn-dark btn-md px-3 my-0 ml-0"  onclick="window.location.href='/admin/admin-add-event'">{{'Add event' | translate}}</button>
                   </div>
                 </div>
 
@@ -64,4 +64,4 @@
   </div>
 </section>
 
-<ng-template #loggedOut> Please login. </ng-template>
+<ng-template #loggedOut> {{'Please Log in' | translate}}</ng-template>

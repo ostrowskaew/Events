@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ActivatedRouteSnapshot, ParamMap, Params, PRIMARY_OUTLET, Router, RouterStateSnapshot, UrlSegment, UrlSegmentGroup, UrlTree } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs/operators';
 import { Evento } from '../database-components/evento/Evento';
 import { ReservationComponent } from '../database-components/reservation/reservation.component';
@@ -28,7 +29,15 @@ export class EventDetailComponent implements OnInit {
     private eventoService: EventoService,
     private reservationService: ReservationService,
     private token: TokenStorageService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
 
   async ngOnInit() {

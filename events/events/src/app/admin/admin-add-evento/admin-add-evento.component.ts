@@ -25,15 +25,17 @@ export class AdminAddEventoComponent implements OnInit {
   idImage: number;
 
   constructor(
-    public translate: TranslateService,
     private eventoService: EventoService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public translate: TranslateService
   ) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
   }
-
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
 
   ngOnInit(): void {
@@ -41,9 +43,7 @@ export class AdminAddEventoComponent implements OnInit {
    this.idImage = 0;
   }
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
+
 
   refreshPage(): void {
     window.location.reload();

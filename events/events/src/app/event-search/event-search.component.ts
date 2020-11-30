@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Evento } from '../database-components/evento/Evento';
@@ -14,7 +15,15 @@ export class EventSearchComponent implements OnInit {
   eventos$: Observable<Evento[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private eventService: EventoService) {}
+  constructor(private eventService: EventoService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
   search(term: string): void {
     this.searchTerms.next(term);

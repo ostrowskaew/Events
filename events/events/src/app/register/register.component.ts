@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { User } from '../database-components/user/user';
 import { AuthService } from '../services/auth.service';
 import { UserDataService } from '../services/user-data.service';
 import { UserService } from '../services/user.service';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +21,16 @@ export class RegisterComponent implements OnInit {
   id: number;
   user: User = new User();
 
-  constructor(private authService: AuthService, private userService: UserDataService) { }
+  constructor(private authService: AuthService, private userService: UserDataService,
+    public translate: TranslateService,
+    private dialog: MatDialog
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
   ngOnInit(): void {
   }
@@ -49,12 +61,24 @@ export class RegisterComponent implements OnInit {
     this.userService.addUser(this.user, 0).subscribe(
       data => {
         console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.openInfo("Registration was successfull")
       },
       err => {
-        console.log(err.error.message);
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
 
       }
     );
+  }
+
+  openInfo(message: string): void {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '350px',
+      data: message
+    });
+
   }
 
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Evento } from '../database-components/evento/Evento';
 import { EventoService } from '../services/evento.service';
@@ -13,7 +14,16 @@ import { UploadFileService } from '../services/upload-file.service';
 export class EventsGalleryComponent implements OnInit {
 
   constructor(private eventService: EventoService,
-    private uploadService: UploadFileService) { }
+    private uploadService: UploadFileService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
+
   events: Evento[] = [];
   fileInfos: Observable<any>;
   today: Date = new Date();

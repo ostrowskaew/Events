@@ -40,10 +40,10 @@
                   />
                   <div class="alert-danger" *ngIf="nameEvent.invalid">
                     <div *ngIf="notIncluded.errors.minlength">
-                      Name must be at least 4 characters
+                      {{'Name too short' | translate}}
                     </div>
                     <div *ngIf="nameEvent.errors.maxlength">
-                      Name must be at most 20 characters
+                      {{'Name too long' | translate}}
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
                         *ngIf="!nameChange"
                         (click)="changeNameFun()"
                       >
-                        Edit name
+                      {{'Edit name' | translate}}
                       </button>
                       <button
                         class="btn btn-light"
@@ -114,7 +114,7 @@
                 *ngIf="!startDateChange"
                 (click)="changeDateStartFun()"
               >
-                Edit From
+              {{'Edit From' | translate}}
               </button>
               <button
                 class="btn btn-dark"
@@ -129,7 +129,7 @@
                       *ngIf="!endDateChange"
                       (click)="changeDateEndFun()"
                     >
-                      Edit To
+                    {{'Edit To' | translate}}
                     </button>
                     <button
                       class="btn btn-light"
@@ -144,7 +144,7 @@
                     *ngIf="!imageChange"
                     (click)="changeImageFun()"
                   >
-                    Edit Image
+                  {{'Edit Image' | translate}}
                   </button>
                   <button
                     class="btn btn-dark"
@@ -170,7 +170,7 @@
                     <address>
                       <div class="row">
                         <div class="col-md-4">
-                      <strong>Price: </strong>
+                      <strong>{{'Price' | translate}}:</strong>
                     </div>
                     <div class="col-md-6">
                       <div *ngIf="event.price && !priceChange">
@@ -194,7 +194,7 @@
                         *ngIf="!priceChange"
                         (click)="changePriceFun()"
                       >
-                        Edit
+                      {{'Edit' | translate}}
                       </button>
                       <button
                         class="btn btn-light"
@@ -207,7 +207,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-4">
-                      <strong>Total places: </strong>
+                      <strong>{{'Total places' | translate}}: </strong>
                     </div>
                     <div class="col-md-6">
                       <div *ngIf="event.numPlaces && !numPlacesChange">
@@ -231,7 +231,7 @@
                         *ngIf="!numPlacesChange"
                         (click)="changePlaceNumFun()"
                       >
-                        Edit
+                      {{'Edit' | translate}}
                       </button>
                       <button
                         class="btn btn-light"
@@ -244,7 +244,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-4">
-                      <strong>Meeting place: </strong>
+                      <strong>{{'Meeting Place' | translate}}: </strong>
                     </div>
                     <div class="col-md-6">
                       <div *ngIf="event.meetingPlace && !meetingPlaceChange">
@@ -263,10 +263,10 @@
                         />
                         <div class="alert-danger" *ngIf="meetingPlace.invalid">
                           <div *ngIf="notIncluded.errors.minlength">
-                            Name must be at least 4 characters
+                            {{'Meeting place too short' | translate}}
                           </div>
                           <div *ngIf="meetingPlace.errors.maxlength">
-                            Name must be at most 30 characters
+                            {{'Meeting place too long' | translate}}
                           </div>
                         </div>
                       </div>
@@ -277,7 +277,7 @@
                         *ngIf="!meetingPlaceChange"
                         (click)="changeMeetingPlaceFun()"
                       >
-                        Edit
+                      {{'Edit' | translate}}
                       </button>
                       <button
                         class="btn btn-light"
@@ -290,7 +290,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-4">
-                      <strong>Included in the price: </strong>
+                      <strong>{{'Inc Price' | translate}}: </strong>
                       </div>
                       <div class="col-md-6">
                       <div *ngIf="event.included && !includedChange">
@@ -309,10 +309,10 @@
                         />
                         <div class="alert-danger" *ngIf="included.invalid">
                           <div *ngIf="notIncluded.errors.minlength">
-                            Name must be at least 4 characters
+                            {{'At least 4' | translate}}
                           </div>
                           <div *ngIf="included.errors.maxlength">
-                            Name must be at most 50 characters
+                            {{'At most 50' | translate}}
                           </div>
                         </div>
                       </div>
@@ -323,7 +323,7 @@
                         *ngIf="!includedChange"
                         (click)="changeInPriceFun()"
                       >
-                        Edit
+                      {{'Edit' | translate}}
                       </button>
                       <button
                         class="btn btn-light"
@@ -336,7 +336,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-4">
-                      <strong>Not included in the price: </strong>
+                      <strong>{{'Not Inc Price' | translate}}: </strong>
                       </div>
                       <div class="col-md-6">
                       <div *ngIf="event.notIncluded && !notIncludedChange">
@@ -355,10 +355,10 @@
                         />
                         <div class="alert-danger" *ngIf="notIncluded.invalid">
                           <div *ngIf="notIncluded.errors.minlength">
-                            Name must be at least 4 characters
+                            {{'At least 4' | translate}}
                           </div>
                           <div *ngIf="notIncluded.errors.maxlength">
-                            Name must be at most 50 characters
+                            {{'At most 50' | translate}}
                           </div>
                         </div>
                       </div>
@@ -369,7 +369,7 @@
                         *ngIf="!notIncludedChange"
                         (click)="changeNotInPriceFun()"
                       >
-                        Edit
+                      {{'Edit' | translate}}
                       </button>
                       <button
                         class="btn btn-light"
@@ -385,7 +385,7 @@
                   <div class="col-md-6">
                     <address>
 
-                      <strong>Schedule: </strong>
+                      <strong>{{'Schedule' | translate}}: </strong>
 
 
                         <div *ngIf="event.schedule && !scheduleChange">
@@ -403,7 +403,7 @@
                           >
                           <div class="alert-danger" *ngIf="schedule.invalid">
                             <div *ngIf="notIncluded.errors.maxlength">
-                              Schedule must be at most 250 characters
+                              {{'At most 250' | translate}}
                             </div>
                           </div>
                           </textarea>
@@ -415,7 +415,7 @@
                       *ngIf="!scheduleChange"
                       (click)="changeScheduleFun()"
                     >
-                      Edit
+                    {{'Edit' | translate}}
                     </button>
                     <button
                       class="btn btn-light"
@@ -448,7 +448,7 @@
 
                           <div class="alert-danger" *ngIf="description.invalid">
                             <div *ngIf="description.errors.maxlength">
-                              Description must be at most 250 characters
+                              {{'At most 250' | translate}}
                             </div>
                           </div>
                         </textarea>
@@ -460,7 +460,7 @@
                       *ngIf="!descriptionChange"
                       (click)="changeDescriptionFun()"
                     >
-                      Edit
+                    {{'Edit' | translate}}
                     </button>
                     <button
                       class="btn btn-light"
@@ -478,7 +478,7 @@
                       class="btn btn-dark btn-md ml-0"
                       routerLink="/admin"
                       role="button"
-                      >Back</a
+                      >{{'Back' | translate}}</a
                     >
                   </div>
                 </div>

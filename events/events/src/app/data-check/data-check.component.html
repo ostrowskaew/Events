@@ -10,7 +10,7 @@
   <div class="mask d-flex justify-content-center align-items-center">
     <!-- Content -->
     <div class="container my-5">
-      <h1 class="font-weight-bold text-center white-text pb-2">Check data</h1>
+      <h1 class="font-weight-bold text-center white-text pb-2">{{'Check data' | translate}}</h1>
 
       <!--Grid row-->
       <div class="row d-flex align-items-center justify-content-center">
@@ -25,7 +25,7 @@
                 <div class= "col-md-6">
                   <mat-list>
                     <mat-list-item>
-                      <label for="name" class="col-4 col-form-label">Name:</label>
+                      <label for="name" class="col-4 col-form-label">{{'Name' | translate}}:</label>
                       <div class="col-8">
                         <div *ngIf="currUser.nameUser"> {{ currUser.nameUser }} </div>
                       </div>
@@ -33,7 +33,7 @@
                     <mat-divider></mat-divider>
                     <mat-list-item>
                       <label for="surname" class="col-4 col-form-label"
-                        >Surname:</label
+                        >{{'Surname' | translate}}:</label
                       >
                       <div class="col-8">
                         <div *ngIf="currUser.surname"> {{ currUser.surname }} </div>
@@ -42,7 +42,7 @@
                     <mat-divider></mat-divider>
                     <mat-list-item>
                       <label for="email" class="col-4 col-form-label"
-                        >Email:</label
+                        >{{'Email' | translate}}:</label
                       >
                       <div class="col-8">
                       <div *ngIf="currentUser.email"> {{ currentUser.email }} </div>
@@ -52,7 +52,7 @@
                     <mat-divider></mat-divider>
                     <mat-list-item>
                       <label for="passport" class="col-4 col-form-label"
-                        >Passport/ ID:</label
+                        >{{'ID/ Passport' | translate}}:</label
                       >
                       <div class="col-8">
                         <div *ngIf="currUser.idPassport"> {{ currUser.idPassport }} </div>
@@ -62,7 +62,7 @@
 
                     <mat-list-item>
                       <label for="esn_card" class="col-4 col-form-label"
-                        >ESN Card Number:</label
+                        >{{'ESN card' | translate}}:</label
                       >
                       <div class="col-8">
                         <div *ngIf="currUser.cardNum"> {{ currUser.cardNum }} </div>
@@ -72,7 +72,7 @@
 
                     <mat-list-item>
                       <label for="gender" class="col-4 col-form-label"
-                        >Gender:</label
+                        >{{'Gender' | translate}}:</label
                       >
                       <div class="col-8">
                         <div *ngIf="currUser.sex"> {{ currUser.sex }} </div>
@@ -84,7 +84,7 @@
 
                     <mat-list-item>
                       <label for="phone_num" class="col-4 col-form-label"
-                        >Phone Number:</label
+                        >{{'Phone Number' | translate}}:</label
                       >
                       <div class="col-8">
                         <div *ngIf="currUser.phoneNum">{{currUser.phoneNum}} </div>
@@ -94,7 +94,7 @@
 
                     <mat-list-item>
                       <label for="country" class="col-4 col-form-label"
-                        >Country:</label
+                        >{{'Country' | translate}}:</label
                       >
                       <div class="col-8">
                         <div *ngIf="currUser.nationality!=null">{{currUser.nationality.country}}</div>
@@ -108,7 +108,7 @@
                   <div class ="col-md-6">
                     <mat-list>
                       <mat-list-item>
-                        <label for="nameE" class="col-4 col-form-label">Name:</label>
+                        <label for="nameE" class="col-4 col-form-label">{{'Name' | translate}}:</label>
                         <div class="col-8">
                           <div *ngIf="event.nameEvent"> {{ event.nameEvent }} </div>
                         </div>
@@ -116,7 +116,7 @@
                       <mat-divider></mat-divider>
                       <mat-list-item>
                         <label for="dateStart" class="col-4 col-form-label"
-                          >From:</label
+                          >{{'From' | translate}}:</label
                         >
                         <div class="col-8">
                           <div *ngIf="event.dateStart"> {{ event.dateStart | date :"dd/MM/yyyy" }} </div>
@@ -126,7 +126,7 @@
                       <mat-divider></mat-divider>
                       <mat-list-item>
                         <label for="dateEnd" class="col-4 col-form-label"
-                          >To:</label
+                          >{{'To' | translate}}:</label
                         >
                         <div class="col-8">
                           <div *ngIf="event.dateEnd"> {{ event.dateEnd | date :"dd/MM/yyyy" }} </div>
@@ -136,7 +136,7 @@
                       <mat-divider></mat-divider>
                       <mat-list-item>
                         <label for="price" class="col-4 col-form-label"
-                          >Price:</label
+                          >{{'Price' | translate}}:</label
                         >
                         <div class="col-8">
 
@@ -146,7 +146,7 @@
 
                       <mat-list-item>
                         <label for="meetingPlace" class="col-4 col-form-label"
-                          >Meeting Place:</label
+                          >{{'Meeting place' | translate}}:</label
                         >
                         <div class="col-8">
                           <div *ngIf="event.meetingPlace"> {{ event.meetingPlace}} </div>
@@ -157,7 +157,7 @@
 
                       <mat-list-item>
                         <label for="included" class="col-4 col-form-label"
-                          >Included:</label
+                          >{{'Inc In Price' | translate}}:</label
                         >
                         <div class="col-8">
                           <div *ngIf="event.included"> {{ event.included}} </div>
@@ -168,7 +168,7 @@
 
                       <mat-list-item>
                         <label for="not_inc" class="col-4 col-form-label"
-                          >Not included:</label
+                          >{{'Not Inc In Price' | translate}}:</label
                         >
                         <div class="col-8">
                           <div *ngIf="event.notIncluded"> {{ event.notIncluded}} </div>
@@ -183,14 +183,14 @@
                     class="btn btn-dark btn mr-2"
                     onclick="window.location.href='/formular-data'"
                   >
-                    Edit data
+                  {{'Edit' | translate}}
                   </button>
 
                     <button
                       class="btn btn-success btn"
                       (click)="openDialog()"
                     >
-                      Sign Up!
+                    {{'Sign Up' | translate}}
                     </button>
                     </div>
               </form>
@@ -208,4 +208,4 @@
   </div>
 </section>
 
-<ng-template #loggedOut> Please login. </ng-template>
+<ng-template #loggedOut> {{'Please Log in' | translate}} </ng-template>

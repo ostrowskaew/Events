@@ -11,6 +11,7 @@ import { UserDataService } from '../services/user-data.service';
 import { UserService } from '../services/user.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-board-user',
@@ -25,9 +26,13 @@ export class BoardUserComponent implements OnInit {
 
 
   constructor(private token: TokenStorageService,
+    public translate: TranslateService,
     private userService: UserDataService,
     private reservationService: ReservationService,
-    private eventoService: EventoService) { }
+    private eventoService: EventoService) {
+      translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+    }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
