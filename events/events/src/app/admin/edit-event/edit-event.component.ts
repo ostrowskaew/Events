@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { UploadFileService } from 'src/app/services/upload-file.service';
+import { SuccessDialogComponent } from 'src/app/success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-edit-event',
@@ -37,7 +39,8 @@ export class EditEventComponent implements OnInit {
     private router: Router,
     private eventoService: EventoService,
     public translate: TranslateService,
-    private uploadService: UploadFileService) {
+    private uploadService: UploadFileService,
+    private dialog :MatDialog) {
       translate.addLangs(['en', 'pl']);
       translate.setDefaultLang('en');
     }
@@ -189,8 +192,7 @@ export class EditEventComponent implements OnInit {
       this.startDateChange = true;
     }
     else {
-      this.copyEvent.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day )
-      this.save();
+      this.checkIfDateStartIsCorrect();
       this.startDateChange = false;
       window.location.reload();
     }
@@ -202,12 +204,50 @@ export class EditEventComponent implements OnInit {
       this.endDateChange = true;
     }
     else {
-      this.copyEvent.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day )
-      this.save();
+      this.checkIfDateEndtIsCorrect();
       this.endDateChange = false;
       window.location.reload();
     }
   }
+
+  checkIfDateStartIsCorrect(){
+    var today = new Date();
+    var dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day + 1 );
+
+    if(dateStart <= today) {
+      this.openInfo("Upssss. Date cannot be earlier than tomorrow");
+      }
+    else{
+      this.copyEvent.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day )
+      this.save();
+    }
+  }
+
+  openInfo(message: string): void {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '350px',
+      data: message
+    });
+
+  }
+
+  checkIfDateEndtIsCorrect(){
+    var today = new Date();
+    var dateStart = this.event.dateStart;
+    var dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day + 1 );
+
+    if(dateEnd <= today) {
+      this.openInfo("Upssss. Date cannot be earlier than tomorrow");
+      }
+    else if(dateEnd < dateStart){
+      this.openInfo("Upssss. Date when event starts cannot be later than when it ends")
+    }
+    else{
+      this.copyEvent.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day )
+      this.save();
+    }
+  }
+
 
   changeImageFun() {
     if (!this.imageChange){

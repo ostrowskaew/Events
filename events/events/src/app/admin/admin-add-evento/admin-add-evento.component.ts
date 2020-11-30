@@ -43,6 +43,21 @@ export class AdminAddEventoComponent implements OnInit {
    this.idImage = 0;
   }
 
+  checkIfDateIsCorrect(){
+    var today = new Date();
+    var dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day + 1 );
+    var dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day + 1 );
+
+    if(dateStart <= today) {
+      this.openInfo("Upssss. Date cannot be earlier than tomorrow");
+      }
+    else if(dateEnd < dateStart){
+      this.openInfo("Upssss. Date when event starts cannot be later than when it ends")
+    }
+    else{
+      this.save();
+    }
+  }
 
 
   refreshPage(): void {
@@ -56,13 +71,13 @@ export class AdminAddEventoComponent implements OnInit {
     this.evento.imageId = this.idImage;
     this.eventoService.addEvento(this.evento)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.openInfo();
+    this.openInfo("You added event successfully");
     this.router.navigate(['/admin']);
   }
 
   onSubmit() {
     this.submitted = true;
-    this.save();
+    this.checkIfDateIsCorrect();
   }
 
   reloadData() {
@@ -73,10 +88,10 @@ export class AdminAddEventoComponent implements OnInit {
     this.idImage = id;
   }
 
-  openInfo(): void {
+  openInfo(message: string): void {
     const dialogRef = this.dialog.open(SuccessDialogComponent, {
       width: '350px',
-      data: "You added event successfully"
+      data: message
     });
 
   }
