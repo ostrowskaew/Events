@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Nationality } from '../database-components/nationality/Nationality';
 import { CurrentUser } from '../database-components/user/CurrentUser';
 import { User } from '../database-components/user/user';
+import { LanguageService } from '../services/language.service';
 import { NationalityService } from '../services/nationality.service';
 
 import { TokenStorageService } from '../services/token-storage.service';
@@ -27,21 +28,20 @@ export class ProfileComponent implements OnInit {
   phoneNumChange = false;
   sexChange = false;
   nationalityChange = false;
+  lang: string = 'en';
 
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
     private nationalityService: NationalityService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public languageService: LanguageService
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
-  }
-  switchLang(lang: string) {
-    this.translate.use(lang);
   }
 
   ngOnInit() {
     this.reloadData();
+    this.languageService.Data.subscribe(data => this.lang = data);
+    console.log(this.lang);
   }
 
   reloadData(){

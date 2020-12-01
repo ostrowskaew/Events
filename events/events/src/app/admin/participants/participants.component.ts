@@ -10,6 +10,7 @@ import { CurrentUser } from 'src/app/database-components/user/CurrentUser';
 import { User } from 'src/app/database-components/user/user';
 import { EventoService } from 'src/app/services/evento.service';
 import { ExcelService } from 'src/app/services/excel.service';
+import { LanguageService } from 'src/app/services/language.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserDataService } from 'src/app/services/user-data.service';
@@ -26,6 +27,7 @@ export class ParticipantsComponent implements OnInit {
   currentEventId: number;
   users: User[];
   reservation: Reservation;
+  lang = "en";
 
 
   constructor(private token: TokenStorageService,
@@ -35,7 +37,8 @@ export class ParticipantsComponent implements OnInit {
     private dialog: MatDialog,
     private userDataService: UserDataService,
     private router: Router,
-    private excelService: ExcelService) {
+    private excelService: ExcelService,
+    private languageService : LanguageService) {
       translate.addLangs(['en', 'pl']);
       translate.setDefaultLang('en');
     }
@@ -43,6 +46,7 @@ export class ParticipantsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.getIdReservation();
+    this.languageService.Data.subscribe(data => this.lang = data);
     this.reloadData();
 
   }

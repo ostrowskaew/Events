@@ -49,7 +49,8 @@
                           <td >{{reservation.user.cardNum}}</td>
                           <td >{{reservation.user.phoneNum}}</td>
                           <td >{{reservation.user.sex}}</td>
-                          <td *ngIf="reservation.user.nationality">{{reservation.user.nationality.country}}</td>
+                          <td *ngIf="reservation.user.nationality && lang == 'en'">{{reservation.user.nationality.country}}</td>
+                          <td *ngIf="reservation.user.nationality && lang == 'es'">{{reservation.user.nationality.countrySp}}</td>
 
                           <td>
                           <button class="btn btn-dark "  (click)="openDialog(reservation.idReservation)">{{'Delete' | translate}}</button>

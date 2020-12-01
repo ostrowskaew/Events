@@ -8,12 +8,15 @@
               <tr>
                   <th>Id</th>
                   <th>Country</th>
+
               </tr>
           </thead>
           <tbody>
               <tr *ngFor="let nationality of nationalities | async">
                   <td>{{nationality.idNationality}}</td>
                   <td>{{nationality.country}}</td>
+                  <td>{{nationality.countrySp}}</td>
+
                   <td><button (click)="deleteNationality(nationality.idNationality)">Delete</button></td>
               </tr>
           </tbody>
@@ -27,6 +30,8 @@
         <div class="form-group">
             <label for="name">First Name</label>
             <input type="text" class="form-control" id="country" required [(ngModel)]="nationality.country" name="country">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" id="countrySp" required [(ngModel)]="nationality.countrySp" name="countrySp">
         </div>
 
         <button type="submit" class="btn btn-success">Submit</button>

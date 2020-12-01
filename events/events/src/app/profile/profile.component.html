@@ -271,7 +271,8 @@
                       >{{'Country' | translate}}:</label
                     >
                     <div class="col-7">
-                      <div *ngIf="(currUser.nationality) && (!nationalityChange)">{{ currUser.nationality.country}}</div>
+                      <div *ngIf="(currUser.nationality) && (!nationalityChange)&& (lang == 'en')">{{ currUser.nationality.country}}</div>
+                      <div *ngIf="(currUser.nationality) && (!nationalityChange)&& (lang == 'es')">{{ currUser.nationality.countrySp}}</div>
                       <div *ngIf="nationalityChange">
                         <select
                       id="country"
@@ -283,10 +284,12 @@
                         *ngFor="let co of countries | async"
                         [value]="co.idNationality"
                       >
-                        {{ co.country }}
+                        <div *ngIf="lang == 'en'">{{ co.country }}</div>
+                        <div *ngIf="lang == 'es'">{{ co.countrySp }}</div>
                       </option>
                     </select>
                       </div>
+
                     </div>
 
                     <div class="col-1">

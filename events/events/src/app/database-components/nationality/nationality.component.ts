@@ -14,7 +14,8 @@ export class NationalityComponent implements OnInit {
   submitted = false;
   nationality: Nationality = new Nationality();
 
-  constructor(private nationalityService: NationalityService) { }
+  constructor(private nationalityService: NationalityService
+   ) { }
 
   ngOnInit() {
     this.reloadData();

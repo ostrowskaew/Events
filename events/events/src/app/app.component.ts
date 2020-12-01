@@ -16,12 +16,11 @@ export class AppComponent {
   showAdminBoard = false;
   username: string;
   footer: boolean;
+  languange: string = 'en';
 
   constructor(
     public translate: TranslateService, private tokenStorageService: TokenStorageService, private router: Router
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
   }
 
   ngOnInit() {
@@ -47,8 +46,8 @@ export class AppComponent {
   public onToggleSidenav = () => {
   }
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
+  languageChange(lang: string){
+    this.languange = lang;
   }
   title = 'events';
 

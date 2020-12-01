@@ -1,7 +1,8 @@
 <app-nav-bar
   [isLoggedIn] = isLoggedIn
   [showAdminBoard] = showAdminBoard
-  [username] = "username" >
+  [username] = "username"
+  (langChange)="languageChange($event)" >
 </app-nav-bar>
 
 <router-outlet></router-outlet>

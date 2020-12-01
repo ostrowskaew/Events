@@ -10,6 +10,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 import { UserDataService } from '../services/user-data.service';
 import { Location } from '@angular/common'
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-formular-data',
@@ -27,24 +28,23 @@ export class FormularDataComponent implements OnInit {
   isSignUpFailed = false;
   form: any = {};
   errorMessage = '';
+  lang = 'en';
 
 
   constructor(private userService: UserDataService,
     private token: TokenStorageService,
     private nationalityService: NationalityService,
     private location: Location,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private languageService: LanguageService
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
-  }
-  switchLang(lang: string) {
-    this.translate.use(lang);
+
   }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
     this.newUser();
+    this.languageService.Data.subscribe(data => this.lang = data);
     this.reloadData();
   }
 

@@ -99,8 +99,8 @@
                         >{{'Country' | translate}}:</label
                       >
                       <div class="col-8">
-                        <div *ngIf="currUser.nationality!=null">{{currUser.nationality.country}}</div>
-
+                        <div *ngIf="currUser.nationality!=null && lang=='en'">{{currUser.nationality.country}}</div>
+                        <div *ngIf="currUser.nationality!=null && lang=='es'">{{currUser.nationality.countrySp}}</div>
                       </div>
                     </mat-list-item>
                   </mat-list>

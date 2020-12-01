@@ -185,7 +185,7 @@
 
                 <div class="form-group row">
                   <label for="phoneNum" class="col-4 col-form-label"
-                    >{{'Phone Number' | translate}}:</label
+                    >{{'Phone number' | translate}}:</label
                   >
                   <div class="col-8">
                     <input
@@ -213,7 +213,7 @@
                 </div>
                 <div class="form-group row">
                   <label for="country_input" class="col-4 col-form-label"
-                    >{{'Coutry' | translate}}:</label
+                    >{{'Country' | translate}}:</label
                   >
                   <div class="col-8">
                     <select
@@ -226,7 +226,8 @@
                         *ngFor="let co of countries | async"
                         [value]="co.idNationality"
                       >
-                        {{ co.country }}
+                        <div *ngIf="lang=='en'">{{ co.country }}</div>
+                        <div *ngIf="lang=='es'">{{ co.countrySp }}</div>
                       </option>
                     </select>
                   </div>

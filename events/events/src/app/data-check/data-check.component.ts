@@ -14,6 +14,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-data-check',
@@ -31,6 +32,7 @@ export class DataCheckComponent implements OnInit {
   reservation: Reservation;
   avaiblePlaces: number;
   reservationNumber : number;
+  lang = 'en';
 
   constructor(
     private router: Router,
@@ -39,20 +41,16 @@ export class DataCheckComponent implements OnInit {
     private userService: UserDataService,
     private reservationService: ReservationService,
     private dialog: MatDialog,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public languageService : LanguageService
     ) {
-      translate.addLangs(['en', 'pl']);
-      translate.setDefaultLang('en');
     }
-    switchLang(lang: string) {
-      this.translate.use(lang);
-    }
-
 
 
     async ngOnInit() {
       this.currentUser = this.token.getUser();
       this.getId();
+      this.languageService.Data.subscribe(data => this.lang = data);
        await this.getEvent();
        this.getUser();
        await this.countReservations();

@@ -1,5 +1,6 @@
 package spring.eventsapi.Models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,10 @@ public class Nationality {
 	private int idNationality;
 	
 	@Column(name="country")
-	private String country;
+    private String country;
+    
+    @Column(name="countrySp")
+    private String countrySp;
         
 
     public Nationality() {
@@ -24,8 +28,10 @@ public class Nationality {
     }
 
 
-    public Nationality(String country) {
+
+    public Nationality(String country, String countrySp) {
         this.country = country;
+        this.countrySp = countrySp;
     }
 
 
@@ -50,6 +56,16 @@ public class Nationality {
     public String toString() {
         return getCountry();
     }
+
+
+    public String getCountrySp() {
+        return this.countrySp;
+    }
+
+    public void setCountrySp(String countrySp) {
+        this.countrySp = countrySp;
+    }
+
 
     
 }
