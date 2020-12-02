@@ -21,8 +21,7 @@ export class UploadPicComponent implements OnInit {
 
   constructor(private uploadService: UploadFileService,
     public translate: TranslateService) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
+
    }
 
   @Output() lastId : number;

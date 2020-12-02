@@ -39,8 +39,7 @@ export class ParticipantsComponent implements OnInit {
     private router: Router,
     private excelService: ExcelService,
     private languageService : LanguageService) {
-      translate.addLangs(['en', 'pl']);
-      translate.setDefaultLang('en');
+
     }
 
   ngOnInit(): void {

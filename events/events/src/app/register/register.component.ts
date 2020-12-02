@@ -25,8 +25,7 @@ export class RegisterComponent implements OnInit {
     public translate: TranslateService,
     private dialog: MatDialog
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
+
   }
   switchLang(lang: string) {
     this.translate.use(lang);

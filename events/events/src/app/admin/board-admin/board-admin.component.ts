@@ -24,8 +24,7 @@ export class BoardAdminComponent implements OnInit {
     private token: TokenStorageService,
     private eventoService: EventoService,
     private dialog: MatDialog ) {
-      translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
+
     }
 
   ngOnInit() {

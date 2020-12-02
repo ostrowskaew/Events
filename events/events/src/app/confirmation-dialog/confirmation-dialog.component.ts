@@ -13,8 +13,7 @@ export class ConfirmationDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string,
       public translate: TranslateService) {
-        translate.addLangs(['en', 'pl']);
-      translate.setDefaultLang('en');
+
     }
     switchLang(lang: string) {
       this.translate.use(lang);

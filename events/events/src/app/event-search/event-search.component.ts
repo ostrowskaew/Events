@@ -18,8 +18,7 @@ export class EventSearchComponent implements OnInit {
   constructor(private eventService: EventoService,
     public translate: TranslateService
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
+
   }
   switchLang(lang: string) {
     this.translate.use(lang);

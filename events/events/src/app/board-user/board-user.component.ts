@@ -30,8 +30,7 @@ export class BoardUserComponent implements OnInit {
     private userService: UserDataService,
     private reservationService: ReservationService,
     private eventoService: EventoService) {
-      translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
+
     }
 
   ngOnInit() {

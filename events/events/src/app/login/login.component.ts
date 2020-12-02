@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
     private tokenStorage: TokenStorageService,
     public translate: TranslateService
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
+
   }
   switchLang(lang: string) {
     this.translate.use(lang);

@@ -10,8 +10,7 @@ export class FooterComponent implements OnInit {
 
   constructor(public translate: TranslateService
     ) {
-      translate.addLangs(['en', 'pl']);
-      translate.setDefaultLang('en');
+
     }
     switchLang(lang: string) {
       this.translate.use(lang);
