@@ -1,5 +1,6 @@
 package spring.eventsapi.Services;
 
+import spring.eventsapi.Repositories.EventEsRepository;
 import spring.eventsapi.Repositories.EventRepository;
 import spring.eventsapi.Models.Event;
 
@@ -15,6 +16,8 @@ public class EventService {
 	
     @Autowired
 	private EventRepository eventRepository;
+
+	@Autowired EventEsRepository eventEsRepository;
 	
 	public List<Event> getAllEvents(){
 		List<Event> events = new ArrayList<>();
@@ -33,8 +36,8 @@ public class EventService {
 		}
 	}
 	
-	public void addEvent(Event event) {
-		eventRepository.save(event);
+	public Event addEvent(Event event) {
+		return eventRepository.save(event);
 	}
 
 	

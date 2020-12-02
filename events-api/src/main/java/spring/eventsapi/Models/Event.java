@@ -2,10 +2,13 @@ package spring.eventsapi.Models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -50,6 +53,11 @@ public class Event {
 	@Column(name="imageId")
 	private int imageId;
 
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "eventEs", referencedColumnName = "idEvent")
+	private EventEs eventEs;
+	
 
 	public Event() {
 	}
@@ -68,6 +76,8 @@ public class Event {
 		this.schedule = schedule;
 		this.description = description;
 		this.imageId = imageId;
+		this.eventEs = new EventEs();
+		this.eventEs.setIdEvent(this.idEvent);
 	}
 
 
@@ -168,6 +178,15 @@ public class Event {
 
 	public void setImageId(int image) {
 		this.imageId = image;
+	}
+
+
+	public EventEs getEventEs() {
+		return this.eventEs;
+	}
+
+	public void setEventEs(EventEs eventEs) {
+		this.eventEs = eventEs;
 	}
 
 

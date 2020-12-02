@@ -5,7 +5,6 @@ import { map, shareReplay } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Output, EventEmitter } from '@angular/core';
-import * as myGlobals from '../globals';
 import { LanguageService } from '../services/language.service';
 
 

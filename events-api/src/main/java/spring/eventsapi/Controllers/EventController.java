@@ -1,6 +1,8 @@
 package spring.eventsapi.Controllers;
 
 import spring.eventsapi.Models.Event;
+import spring.eventsapi.Models.EventEs;
+import spring.eventsapi.Services.EventEsService;
 import spring.eventsapi.Services.EventService;
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class EventController {
 	
 	@Autowired
 	private EventService eventService;
+
+	@Autowired
+	private EventEsService eventEsService;
 	
 	@RequestMapping("/events")
 	public List<Event> getAllEvents() {
@@ -32,8 +37,13 @@ public class EventController {
 	
 
 	@RequestMapping(method=RequestMethod.POST, value="/events")
-	public void addEvent(@RequestBody Event event) {
-		eventService.addEvent(event);
+	public int addEvent(@RequestBody Event event) {
+		EventEs eventEs = new EventEs();
+		eventEsService.addEventEs(eventEs);
+     	
+		 int messageId = eventService.addEvent(event).getIdEvent();
+		 
+		return messageId;
 	}
 
 	@RequestMapping("/events/byname/{term}")

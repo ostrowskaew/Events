@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Evento } from '../database-components/evento/Evento';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './messages.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -29,8 +29,8 @@ export class EventoService {
 
 
   /** POST: add a new evento to the server */
-    addEvento(evento: Object): Observable<Object> {
-      return this.http.post(this.eventosUrl, evento);
+    addEvento(evento: Object): Observable<number> {
+      return this.http.post<number>(this.eventosUrl, evento);
     }
 
 

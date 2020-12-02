@@ -72,7 +72,6 @@ export class AdminAddEventoComponent implements OnInit {
     this.eventoService.addEvento(this.evento)
       .subscribe(data => console.log(data), error => console.log(error));
     this.openInfo("You added event successfully");
-    this.router.navigate(['/admin']);
   }
 
   onSubmit() {
