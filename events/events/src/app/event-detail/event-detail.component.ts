@@ -32,11 +32,6 @@ export class EventDetailComponent implements OnInit {
     private dialog: MatDialog,
     public translate: TranslateService
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
-  }
-  switchLang(lang: string) {
-    this.translate.use(lang);
   }
 
 

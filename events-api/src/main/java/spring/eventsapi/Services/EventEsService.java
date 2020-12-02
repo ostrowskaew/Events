@@ -33,8 +33,8 @@ public class EventEsService {
 		}
 	}
 	
-	public void addEventEs(EventEs event) {
-		eventRepository.save(event);
+	public EventEs addEventEs(EventEs event) {
+		return eventRepository.save(event);
 	}
 
 	

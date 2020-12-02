@@ -34,8 +34,6 @@ public class EventEs {
 	@Column(name="description")
 	private String description;
 
-	@OneToOne(mappedBy = "eventEs")
-    private Event event;
 
 	public EventEs() {
 	}
@@ -112,15 +110,6 @@ public class EventEs {
 	public String toString() {
 		return getNameEvent();							
 			
-	}
-
-
-	public Event getEvent() {
-		return this.event;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
 	}
 
 

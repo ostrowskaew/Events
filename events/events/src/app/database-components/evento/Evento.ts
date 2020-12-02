@@ -1,4 +1,5 @@
-
+import { EventoService } from 'src/app/services/evento.service';
+import { EventoEs } from '../evento/EventoEs';
 export class Evento {
   idEvent : number;
   nameEvent : string;
@@ -12,4 +13,5 @@ export class Evento {
   description: string;
   imageId: number;
   price: number;
+  eventEs : EventoEs;
 }

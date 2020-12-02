@@ -39,9 +39,9 @@ public class EventController {
 	@RequestMapping(method=RequestMethod.POST, value="/events")
 	public int addEvent(@RequestBody Event event) {
 		EventEs eventEs = new EventEs();
-		eventEsService.addEventEs(eventEs);
-     	
-		 int messageId = eventService.addEvent(event).getIdEvent();
+		int messageId = eventEsService.addEventEs(eventEs).getIdEvent();
+     	event.setEventEs(eventEsService.getEventEs(messageId));
+		eventService.addEvent(event).getIdEvent();
 		 
 		return messageId;
 	}

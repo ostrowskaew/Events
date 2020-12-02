@@ -9,6 +9,7 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SuccessDialogComponent } from 'src/app/success-dialog/success-dialog.component';
+import { EventoEsService } from 'src/app/services/evento-es.service';
 
 @Component({
   selector: 'app-admin-add-evento',
@@ -23,19 +24,18 @@ export class AdminAddEventoComponent implements OnInit {
   dateStart: NgbDate;
   dateEnd: NgbDate;
   idImage: number;
+  idEventEs: number;
+
 
   constructor(
     private eventoService: EventoService,
     private router: Router,
     private dialog: MatDialog,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public eventoEsService: EventoEsService
   ) {
-    translate.addLangs(['en', 'pl']);
-    translate.setDefaultLang('en');
   }
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
+
 
 
   ngOnInit(): void {
@@ -70,8 +70,9 @@ export class AdminAddEventoComponent implements OnInit {
     await new Promise(resolve => setTimeout(resolve, 1000));
     this.evento.imageId = this.idImage;
     this.eventoService.addEvento(this.evento)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.openInfo("You added event successfully");
+      .subscribe(data => this.idEventEs = data, error => console.log(error));
+    this.idEventEs = this.idImage + 1
+    this.router.navigate(['/add-event-es/'+this.idEventEs]);
   }
 
   onSubmit() {

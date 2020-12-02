@@ -64,7 +64,7 @@ public class Event {
 
 
 	public Event(String nameEvent,int price, Date dateStart, Date dateEnd, String meetingPlace,
-	String notIncluded, String included, int numPlaces, String schedule, String description, int imageId) {
+	String notIncluded, String included, int numPlaces, String schedule, String description, int imageId, EventEs eventEs) {
 		this.nameEvent = nameEvent;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
@@ -76,8 +76,7 @@ public class Event {
 		this.schedule = schedule;
 		this.description = description;
 		this.imageId = imageId;
-		this.eventEs = new EventEs();
-		this.eventEs.setIdEvent(this.idEvent);
+		this.eventEs = eventEs;
 	}
 
 

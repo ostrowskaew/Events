@@ -21,6 +21,7 @@ import { DataCheckComponent } from './data-check/data-check.component';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { ParticipantsComponent } from './admin/participants/participants.component';
 import { EditEventComponent } from './admin/edit-event/edit-event.component';
+import { AddEventoEsComponent } from './admin/add-evento-es/add-evento-es.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'data-check/:id', component: DataCheckComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'event-edit/:id', component: EditEventComponent },
+  { path: 'add-event-es/:id', component: AddEventoEsComponent },
   { path: 'user-events', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'search', component: EventSearchComponent },

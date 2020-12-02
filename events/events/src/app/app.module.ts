@@ -52,6 +52,7 @@ import { EditDataComponent } from './edit-data/edit-data.component';
 import { CommonModule } from '@angular/common';
 import { ParticipantsComponent } from './admin/participants/participants.component';
 import { EditEventComponent } from './admin/edit-event/edit-event.component';
+import { AddEventoEsComponent } from './admin/add-evento-es/add-evento-es.component';
 
 
 
@@ -88,7 +89,8 @@ import { EditEventComponent } from './admin/edit-event/edit-event.component';
     EventSearchComponent,
     EditDataComponent,
     ParticipantsComponent,
-    EditEventComponent
+    EditEventComponent,
+    AddEventoEsComponent
   ],
   imports: [
     BrowserModule,
