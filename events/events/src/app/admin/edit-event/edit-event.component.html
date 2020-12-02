@@ -35,7 +35,7 @@
                     minlength="4"
                     maxlength="20"
                     #nameEvent="ngModel"
-                    [(ngModel)]="copyEvent.nameEvent"
+                    [(ngModel)]="event.nameEvent"
                     class="form-control"
                   />
                   <div class="alert-danger" *ngIf="nameEvent.invalid">
@@ -182,7 +182,7 @@
                           name="price"
                           type="text"
                           #price="ngModel"
-                          [(ngModel)]="copyEvent.price"
+                          [(ngModel)]="event.price"
                           class="form-control"
                         />
 
@@ -190,14 +190,14 @@
                     </div>
                     <div class="col-md-1">
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="!priceChange"
                         (click)="changePriceFun()"
                       >
                       {{'Edit' | translate}}
                       </button>
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="priceChange"
                         (click)="changePriceFun()"
                       >
@@ -219,7 +219,7 @@
                           name="numPlaces"
                           type="text"
                           #numPlaces="ngModel"
-                          [(ngModel)]="copyEvent.numPlaces"
+                          [(ngModel)]="event.numPlaces"
                           class="form-control"
                         />
 
@@ -227,14 +227,14 @@
                     </div>
                     <div class="col-md-1">
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="!numPlacesChange"
                         (click)="changePlaceNumFun()"
                       >
                       {{'Edit' | translate}}
                       </button>
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="numPlacesChange"
                         (click)="changePlaceNumFun()"
                       >
@@ -258,7 +258,7 @@
                           minlength="4"
                           maxlength="30"
                           #meetingPlace="ngModel"
-                          [(ngModel)]="copyEvent.meetingPlace"
+                          [(ngModel)]="event.meetingPlace"
                           class="form-control"
                         />
                         <div class="alert-danger" *ngIf="meetingPlace.invalid">
@@ -273,14 +273,14 @@
                       </div>
                       <div class="col-md-1">
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="!meetingPlaceChange"
                         (click)="changeMeetingPlaceFun()"
                       >
                       {{'Edit' | translate}}
                       </button>
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="meetingPlaceChange"
                         (click)="changeMeetingPlaceFun()"
                       >
@@ -304,7 +304,7 @@
                           minlength="4"
                           maxlength="50"
                           #included="ngModel"
-                          [(ngModel)]="copyEvent.included"
+                          [(ngModel)]="event.included"
                           class="form-control"
                         />
                         <div class="alert-danger" *ngIf="included.invalid">
@@ -319,14 +319,14 @@
                       </div>
                       <div class="col-md-1">
                       <button
-                        class="btn btn-light"
-                        *ngIf="!includedChange"
+                        class="btn btn-light mt-1"
+                        *ngIf="!includedChange "
                         (click)="changeInPriceFun()"
                       >
                       {{'Edit' | translate}}
                       </button>
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="includedChange"
                         (click)="changeInPriceFun()"
                       >
@@ -350,7 +350,7 @@
                           minlength="4"
                           maxlength="50"
                           #notIncluded="ngModel"
-                          [(ngModel)]="copyEvent.notIncluded"
+                          [(ngModel)]="event.notIncluded"
                           class="form-control"
                         />
                         <div class="alert-danger" *ngIf="notIncluded.invalid">
@@ -365,14 +365,14 @@
                       </div>
                       <div class="col-md-1">
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="!notIncludedChange"
                         (click)="changeNotInPriceFun()"
                       >
                       {{'Edit' | translate}}
                       </button>
                       <button
-                        class="btn btn-light"
+                        class="btn btn-light mt-1"
                         *ngIf="notIncludedChange"
                         (click)="changeNotInPriceFun()"
                       >
@@ -398,7 +398,7 @@
                             type="text"
                             maxlength="250"
                             #schedule="ngModel"
-                            [(ngModel)]="copyEvent.schedule"
+                            [(ngModel)]="event.schedule"
                             class="form-control"
                           >
                           <div class="alert-danger" *ngIf="schedule.invalid">
@@ -411,14 +411,14 @@
 
 
                       <button
-                      class="btn btn-light"
+                      class="btn btn-light mt-1"
                       *ngIf="!scheduleChange"
                       (click)="changeScheduleFun()"
                     >
                     {{'Edit' | translate}}
                     </button>
                     <button
-                      class="btn btn-light"
+                      class="btn btn-light mt-1"
                       *ngIf="scheduleChange"
                       (click)="changeScheduleFun()"
                     >
@@ -442,7 +442,7 @@
                             type="text"
                             maxlength="250"
                             #description="ngModel"
-                            [(ngModel)]="copyEvent.description"
+                            [(ngModel)]="event.description"
                             class="form-control"
                             >
 
@@ -456,14 +456,14 @@
                   </div>
                   <div class="col-md-1">
                     <button
-                      class="btn btn-light"
+                      class="btn btn-light mt-1"
                       *ngIf="!descriptionChange"
                       (click)="changeDescriptionFun()"
                     >
                     {{'Edit' | translate}}
                     </button>
                     <button
-                      class="btn btn-light"
+                      class="btn btn-light mt-1"
                       *ngIf="descriptionChange"
                       (click)="changeDescriptionFun()"
                     >
@@ -475,10 +475,16 @@
                   <div class="col-md-2">
                     <br />
                     <a
-                      class="btn btn-dark btn-md ml-0"
+                      class="btn btn-dark btn-block btn-md ml-0 mb-1"
                       routerLink="/admin"
                       role="button"
                       >{{'Back' | translate}}</a
+                    >
+                    <a
+                      class="btn btn-dark btn-md ml-0"
+                      routerLink="/add-event-es/{{idEventEs}}"
+                      role="button"
+                      >{{'Edit spanish' | translate}}</a
                     >
                   </div>
                 </div>

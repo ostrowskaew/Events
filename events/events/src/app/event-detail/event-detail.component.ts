@@ -7,6 +7,7 @@ import { Evento } from '../database-components/evento/Evento';
 import { ReservationComponent } from '../database-components/reservation/reservation.component';
 import { CurrentUser } from '../database-components/user/CurrentUser';
 import { EventoService } from '../services/evento.service';
+import { LanguageService } from '../services/language.service';
 import { ReservationService } from '../services/reservation.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
@@ -23,6 +24,7 @@ export class EventDetailComponent implements OnInit {
   reservationNumber: number;
   avaiblePlaces: number;
   currentUser: CurrentUser;
+  lang: string = 'en';
 
   constructor(
     private router: Router,
@@ -30,13 +32,15 @@ export class EventDetailComponent implements OnInit {
     private reservationService: ReservationService,
     private token: TokenStorageService,
     private dialog: MatDialog,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public languageService: LanguageService
   ) {
   }
 
 
   async ngOnInit() {
     this.currentUser = this.token.getUser();
+    this.languageService.Data.subscribe(data => this.lang = data);
    this.getId();
    await this.getEvent();
    await this.countReservations();

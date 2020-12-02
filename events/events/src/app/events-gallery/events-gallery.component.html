@@ -20,7 +20,8 @@
     <img src="http://localhost:8080/files/{{event.imageId}}">
     <div class="property-description">
       <hr>
-    <div class="desc">{{event.nameEvent}}</div>
+    <div class="desc" *ngIf="lang == 'en'">{{event.nameEvent}}</div>
+    <div class="desc" *ngIf="lang == 'es'">{{event.eventEs.nameEvent}}</div>
     <div class="date">{{event.dateStart | date: 'dd/MM/yyyy'}} - {{event.dateEnd | date: 'dd/MM/yyyy'}}</div>
   </div>
   </div>

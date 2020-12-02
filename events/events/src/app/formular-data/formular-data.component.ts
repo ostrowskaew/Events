@@ -36,7 +36,7 @@ export class FormularDataComponent implements OnInit {
     private nationalityService: NationalityService,
     private location: Location,
     public translate: TranslateService,
-    private languageService: LanguageService
+    public languageService: LanguageService
   ) {
 
   }

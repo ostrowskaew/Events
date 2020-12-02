@@ -46,6 +46,13 @@ public class EventController {
 		return messageId;
 	}
 
+	@RequestMapping(method=RequestMethod.POST, value="/events/edit")
+	public int editEvent(@RequestBody Event event) {
+		eventService.addEvent(event);
+		 int messageId = 1;
+		return messageId;
+	}
+
 	@RequestMapping("/events/byname/{term}")
 	public List<Event> getEventByTitle(@PathVariable String term) {
 		return eventService.getEventByName(term);

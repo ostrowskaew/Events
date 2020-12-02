@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { tap } from 'rxjs/operators';
 import { Evento } from 'src/app/database-components/evento/Evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { UploadFileService } from 'src/app/services/upload-file.service';
@@ -18,7 +19,6 @@ export class EditEventComponent implements OnInit {
   event: Evento;
   id: number;
   url : string;
-  copyEvent: Evento;
   nameChange =false;
   startDateChange = false;
   endDateChange = false;
@@ -33,6 +33,7 @@ export class EditEventComponent implements OnInit {
   dateStart: NgbDate;
   dateEnd: NgbDate;
   idImage: number;
+  idEventEs: number;
 
   constructor(
 
@@ -41,13 +42,12 @@ export class EditEventComponent implements OnInit {
     public translate: TranslateService,
     private uploadService: UploadFileService,
     private dialog :MatDialog) {
-      translate.addLangs(['en', 'pl']);
-      translate.setDefaultLang('en');
     }
 
-  ngOnInit(): void {
+  async ngOnInit() {
    this.getId();
-   this.getEvent();
+   await this.getEvent();
+   this.idEventEs = this.event.eventEs.idEvent;
   }
 
   getId() {
@@ -57,29 +57,20 @@ export class EditEventComponent implements OnInit {
     this.id = + this.url;
   }
 
-  getEvent(): void {
-    this.eventoService.getEvento(this.id)
-    .subscribe(ev => this.event = ev);
+  getEvent(): Promise<Evento> {
+    return this.eventoService.getEvento(this.id)
+    .pipe(
+      tap(data => {
+        this.event = data;
+      }),
+    ).toPromise();
 
   }
 
-  copyEventData(){
-    this.copyEvent = new Evento();
-    this.copyEvent.idEvent = this.event.idEvent;
-    this.copyEvent.nameEvent = this.event.nameEvent;
-    this.copyEvent.dateStart = this.event.dateStart;
-    this.copyEvent.dateEnd = this.event.dateEnd;
-    this.copyEvent.numPlaces = this.event.numPlaces;
-    this.copyEvent.meetingPlace = this.event.meetingPlace;
-    this.copyEvent.included = this.event.included;
-    this.copyEvent.notIncluded = this.event.notIncluded;
-    this.copyEvent.schedule = this.event.schedule;
-    this.copyEvent.description = this.event.description;
-    this.copyEvent.imageId = this.event.imageId;
-  }
+
 
   save() {
-    this.eventoService.addEvento(this.copyEvent)
+    this.eventoService.editEvent(this.event)
       .subscribe(
         data => {
           console.log(data);
@@ -92,7 +83,6 @@ export class EditEventComponent implements OnInit {
 
   changeNameFun() {
     if (!this.nameChange){
-      this.copyEventData();
       this.nameChange = true;
     }
     else {
@@ -104,7 +94,6 @@ export class EditEventComponent implements OnInit {
 
   changeMeetingPlaceFun() {
     if (!this.meetingPlaceChange){
-      this.copyEventData();
       this.meetingPlaceChange = true;
     }
     else {
@@ -116,7 +105,6 @@ export class EditEventComponent implements OnInit {
 
   changePlaceNumFun() {
     if (!this.numPlacesChange){
-      this.copyEventData();
       this.numPlacesChange = true;
     }
     else {
@@ -128,7 +116,6 @@ export class EditEventComponent implements OnInit {
 
   changeInPriceFun() {
     if (!this.includedChange){
-      this.copyEventData();
       this.includedChange = true;
     }
     else {
@@ -140,7 +127,6 @@ export class EditEventComponent implements OnInit {
 
   changeNotInPriceFun() {
     if (!this.notIncludedChange){
-      this.copyEventData();
       this.notIncludedChange = true;
     }
     else {
@@ -152,7 +138,6 @@ export class EditEventComponent implements OnInit {
 
   changePriceFun() {
     if (!this.priceChange){
-      this.copyEventData();
       this.priceChange = true;
     }
     else {
@@ -164,7 +149,6 @@ export class EditEventComponent implements OnInit {
 
   changeScheduleFun() {
     if (!this.scheduleChange){
-      this.copyEventData();
       this.scheduleChange = true;
     }
     else {
@@ -176,7 +160,6 @@ export class EditEventComponent implements OnInit {
 
   changeDescriptionFun() {
     if (!this.descriptionChange){
-      this.copyEventData();
       this.descriptionChange = true;
     }
     else {
@@ -188,7 +171,6 @@ export class EditEventComponent implements OnInit {
 
   changeDateStartFun() {
     if (!this.startDateChange){
-      this.copyEventData();
       this.startDateChange = true;
     }
     else {
@@ -200,7 +182,6 @@ export class EditEventComponent implements OnInit {
 
   changeDateEndFun() {
     if (!this.endDateChange){
-      this.copyEventData();
       this.endDateChange = true;
     }
     else {
@@ -218,7 +199,7 @@ export class EditEventComponent implements OnInit {
       this.openInfo("Upssss. Date cannot be earlier than tomorrow");
       }
     else{
-      this.copyEvent.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day )
+      this.event.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day )
       this.save();
     }
   }
@@ -243,7 +224,7 @@ export class EditEventComponent implements OnInit {
       this.openInfo("Upssss. Date when event starts cannot be later than when it ends")
     }
     else{
-      this.copyEvent.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day )
+      this.event.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day )
       this.save();
     }
   }
@@ -251,7 +232,6 @@ export class EditEventComponent implements OnInit {
 
   changeImageFun() {
     if (!this.imageChange){
-      this.copyEventData();
       this.imageChange = true;
     }
     else {
@@ -262,7 +242,7 @@ export class EditEventComponent implements OnInit {
   }
 
   idChangedHandler(id: number) {
-    this.uploadService.deleteFiles(this.copyEvent.imageId);
-    this.copyEvent.imageId = id;
+    this.uploadService.deleteFiles(this.event.imageId);
+    this.event.imageId = id;
   }
 }

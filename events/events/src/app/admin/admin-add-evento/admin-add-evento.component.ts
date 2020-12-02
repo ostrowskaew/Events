@@ -65,14 +65,24 @@ export class AdminAddEventoComponent implements OnInit {
   }
 
   async save() {
-    this.evento.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day + 1 )
-    this.evento.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day + 1 )
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    this.evento.imageId = this.idImage;
-    this.eventoService.addEvento(this.evento)
-      .subscribe(data => this.idEventEs = data, error => console.log(error));
-    this.idEventEs = this.idImage + 1
-    this.router.navigate(['/add-event-es/'+this.idEventEs]);
+
+    if(this.idImage != 0 && isNaN(this.evento.numPlaces)  && isNaN(this.evento.price)){
+      this.evento.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day + 1 )
+      this.evento.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day + 1 )
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      this.evento.imageId = this.idImage;
+      this.eventoService.addEvento(this.evento)
+        .subscribe(data => this.idEventEs = data, error => console.log(error));
+      this.idEventEs = this.idImage + 1
+      this.router.navigate(['/add-event-es/'+this.idEventEs]);
+    }
+    else if(this.idImage ==0){
+      this.openInfo("Adding image is required!")
+    }
+    else {
+      this.openInfo("Data is incorrect!")
+    }
+
   }
 
   onSubmit() {

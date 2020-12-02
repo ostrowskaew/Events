@@ -75,7 +75,8 @@ export class AddEventoEsComponent implements OnInit {
     await new Promise(resolve => setTimeout(resolve, 1000));
     this.eventoEsService.addEvento(this.eventoEs)
     .toPromise();
-    this.openInfo("You added event successfully");
+    this.openInfo("You saved event successfully");
+    this.router.navigate(['/admin']);
   }
 
 

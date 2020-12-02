@@ -33,6 +33,11 @@ export class EventoService {
       return this.http.post<number>(this.eventosUrl, evento);
     }
 
+    editEvent(event: Evento): Observable<number>{
+      const url = `${this.eventosUrl}/edit`;
+      return this.http.post<number>(url, event);
+    }
+
 
 
     deleteEvento(idEvento: number): Observable<any> {

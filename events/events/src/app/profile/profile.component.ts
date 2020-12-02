@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
   users: Observable<User[]>;
   countries : Observable<Nationality[]>;
   currUser : User;
-  copyUser: User;
   changeName = false;
   surnameChange = false;
   idPassportChaneg = false;
@@ -29,6 +28,7 @@ export class ProfileComponent implements OnInit {
   sexChange = false;
   nationalityChange = false;
   lang: string = 'en';
+  idCountry = 0;
 
   constructor(private token: TokenStorageService,
     private userService: UserDataService,
@@ -57,23 +57,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-
-  copyUserData(){
-    this.copyUser = new User();
-    this.copyUser.idUser = this.currUser.idUser;
-    this.copyUser.nameUser = this.currUser.nameUser;
-    this.copyUser.surname = this.currUser.surname;
-    this.copyUser.idPassport = this.currUser.idPassport;
-    this.copyUser.cardNum = this.currUser.cardNum;
-    this.copyUser.phoneNum = this.currUser.phoneNum;
-    this.copyUser.sex = this.currUser.sex;
-    this.copyUser.nationality = this.currUser.nationality;
-    console.log(this.copyUser.nameUser);
-    console.log(this.copyUser.idUser);
-  }
-
   save() {
-    this.userService.addUser(this.copyUser, this.copyUser.nationality.idNationality)
+
+    if(this.currUser.nationality != null && this.idCountry == 0){
+      this.idCountry = this.currUser.nationality.idNationality
+    }
+
+      this.userService.addUser(this.currUser, this.idCountry)
       .subscribe(
         data => {
           console.log(data);
@@ -82,11 +72,13 @@ export class ProfileComponent implements OnInit {
           console.log(err);
         }
       );
+
+
+
   }
 
   changeNameFun() {
     if (!this.changeName){
-      this.copyUserData();
       this.changeName = true;
     }
     else {
@@ -98,7 +90,6 @@ export class ProfileComponent implements OnInit {
 
   changeSurnameFun() {
     if (!this.surnameChange){
-      this.copyUserData();
       this.surnameChange = true;
     }
     else {
@@ -110,7 +101,6 @@ export class ProfileComponent implements OnInit {
 
   changeIdPassportFun() {
     if (!this.idPassportChaneg){
-      this.copyUserData();
       this.idPassportChaneg = true;
     }
     else {
@@ -122,7 +112,6 @@ export class ProfileComponent implements OnInit {
 
   changePhoneNumFun() {
     if (!this.phoneNumChange){
-      this.copyUserData();
       this.phoneNumChange = true;
     }
     else {
@@ -134,7 +123,6 @@ export class ProfileComponent implements OnInit {
 
   changeCardNumFun() {
     if (!this.cardNumChange){
-      this.copyUserData();
       this.cardNumChange = true;
     }
     else {
@@ -146,7 +134,6 @@ export class ProfileComponent implements OnInit {
 
   changeSexFun() {
     if (!this.sexChange){
-      this.copyUserData();
       this.sexChange = true;
     }
     else {
@@ -158,7 +145,6 @@ export class ProfileComponent implements OnInit {
 
   changeNationalityFun() {
     if (!this.nationalityChange){
-      this.copyUserData();
       this.nationalityChange = true;
     }
     else {
