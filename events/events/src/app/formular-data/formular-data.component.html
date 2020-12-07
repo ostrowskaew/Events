@@ -76,11 +76,11 @@
                       [(ngModel)]="form.surname"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && surname.invalid">
-                      <div *ngIf="nameUser.errors.required">{{'Surname reqired' | translate}}</div>
-                      <div *ngIf="nameUser.errors.minlength">
+                      <div *ngIf="surname.errors.required">{{'Surname reqired' | translate}}</div>
+                      <div *ngIf="surname.errors.minlength">
                         {{'Surname least' | translate}}
                       </div>
-                      <div *ngIf="nameUser.errors.maxlength">
+                      <div *ngIf="surname.errors.maxlength">
                         {{'Surname most' | translate}}
                       </div>
                     </div>
@@ -110,7 +110,7 @@
                       <div *ngIf="idPassport.errors.minlength">
                         {{'Id least' | translate}}
                       </div>
-                      <div *ngIf="nameUser.errors.maxlength">
+                      <div *ngIf="idPassport.errors.maxlength">
                         {{'Id most' | translate}}
                       </div>
                     </div>
@@ -139,7 +139,7 @@
                       <div *ngIf="cardNum.errors.minlength">
                         {{'ESN most' | translate}}
                       </div>
-                      <div *ngIf="nameUser.errors.maxlength">
+                      <div *ngIf="cardNum.errors.maxlength">
                         {{'ESN most' | translate}}
                       </div>
                     </div>

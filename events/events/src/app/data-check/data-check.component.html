@@ -141,7 +141,7 @@
                           >{{'Price' | translate}}:</label
                         >
                         <div class="col-8">
-
+                          <div *ngIf="event.price"> {{ event.price}} </div>
                         </div>
                       </mat-list-item>
                       <mat-divider></mat-divider>
@@ -155,27 +155,7 @@
 
                         </div>
                       </mat-list-item>
-                      <mat-divider></mat-divider>
 
-                      <mat-list-item>
-                        <label for="included" class="col-4 col-form-label"
-                          >{{'Inc In Price' | translate}}:</label
-                        >
-                        <div class="col-8">
-                          <div *ngIf="event.included"> {{ event.included}} </div>
-
-                        </div>
-                      </mat-list-item>
-                      <mat-divider></mat-divider>
-
-                      <mat-list-item>
-                        <label for="not_inc" class="col-4 col-form-label"
-                          >{{'Not Inc In Price' | translate}}:</label
-                        >
-                        <div class="col-8">
-                          <div *ngIf="event.notIncluded"> {{ event.notIncluded}} </div>
-                        </div>
-                      </mat-list-item>
                     </mat-list>
 
                   </div>

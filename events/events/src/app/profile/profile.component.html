@@ -126,7 +126,7 @@
                       <div *ngIf="idPassport.errors.minlength">
                         {{'Id least' | translate}}
                       </div>
-                      <div *ngIf="nameUser.errors.maxlength">
+                      <div *ngIf="idPassport.errors.maxlength">
                         {{'Id most' | translate}}
                       </div>
                     </div>
@@ -160,12 +160,12 @@
                         #cardNum="ngModel"
                       />
                       <div class="alert-danger" *ngIf="cardNum.invalid">
-                        <div *ngIf="cardNum.errors.required">{{'ESN required' | translate}}ESN card number is required</div>
+                        <div *ngIf="cardNum.errors.required">{{'ESN required' | translate}}</div>
                         <div *ngIf="cardNum.errors.minlength">
-                          {{'ESN most' | translate}}ESN card number must have 11 characters
+                          {{'ESN most' | translate}}
                         </div>
-                        <div *ngIf="nameUser.errors.maxlength">
-                          {{'ESN most' | translate}}ESN card number must have 11 characters
+                        <div *ngIf="cardNum.errors.maxlength">
+                          {{'ESN most' | translate}}
                         </div>
                       </div>
                       </div>

@@ -3,7 +3,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { UploadFileService } from 'src/app/services/upload-file.service';
-import { FileHandle } from '../file-handle';
 import { ImageFile } from './ImageFile';
 @Component({
   selector: 'app-upload-pic',

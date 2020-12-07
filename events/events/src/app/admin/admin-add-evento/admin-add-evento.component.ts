@@ -66,7 +66,7 @@ export class AdminAddEventoComponent implements OnInit {
 
   async save() {
 
-    if(this.idImage != 0 && isNaN(this.evento.numPlaces)  && isNaN(this.evento.price)){
+    if(this.idImage != 0){
       this.evento.dateStart = new Date(this.dateStart.year, this.dateStart.month -1, this.dateStart.day + 1 )
       this.evento.dateEnd = new Date(this.dateEnd.year, this.dateEnd.month -1, this.dateEnd.day + 1 )
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -79,9 +79,7 @@ export class AdminAddEventoComponent implements OnInit {
     else if(this.idImage ==0){
       this.openInfo("Adding image is required!")
     }
-    else {
-      this.openInfo("Data is incorrect!")
-    }
+
 
   }
 
