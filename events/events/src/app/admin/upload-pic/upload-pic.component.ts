@@ -14,8 +14,7 @@ export class UploadPicComponent implements OnInit {
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
-  message = '';
-
+  messageFail = '';
   fileInfos: Observable<any>;
 
   constructor(private uploadService: UploadFileService,
@@ -49,11 +48,12 @@ export class UploadPicComponent implements OnInit {
           this.lastId = +event.body.message;
           this.idChanged.emit(this.lastId);
           this.fileInfos = this.uploadService.getFiles();
+          this.messageFail = ''
         }
       },
       err => {
         this.progress = 0;
-        this.message = 'Could not upload the file!';
+        this.messageFail = 'Could not upload the file!';
         this.currentFile = undefined;
       });
 

@@ -118,6 +118,8 @@ export class DataCheckComponent implements OnInit {
         console.log('Yes clicked');
         this.makeReservation();
         this.openInfo("You signed up successfuly for the event !");
+        this.router.navigate(['/user-events']);
+
         }
     });
   }

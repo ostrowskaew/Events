@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from '../database-components/user/user';
 import { AuthService } from '../services/auth.service';
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private userService: UserDataService,
     public translate: TranslateService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
 
   }
@@ -63,6 +65,7 @@ export class RegisterComponent implements OnInit {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.openInfo("Registration was successfull")
+        this.router.navigate(['home']);
       },
       err => {
         this.errorMessage = err.error.message;

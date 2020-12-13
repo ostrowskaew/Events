@@ -11,15 +11,18 @@
 					</ul>
 
 					<ul class="navbar-nav ml-md-auto">
+            <li class="nav-item active"  *ngIf="showAdminBoard">
+              <a href="/admin" class="btn btn-light" routerLink="admin">{{'Admin Board' | translate}}</a>
+            </li>
 						<li class="nav-item active">
-							 <a class="nav-link" href="/events-gallery"><label>{{'Events' | translate}}</label><span class="sr-only">(current)</span></a>
+							 <a class="btn btn-light" href="/events-gallery"><label>{{'Events' | translate}}</label><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/contact"><label>{{'Contact' | translate}}</label><span class="sr-only">(current)</span></a>
+              <a class="btn btn-light" href="/contact"><label>{{'Contact' | translate}}</label><span class="sr-only">(current)</span></a>
            </li>
 
 						<li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
+               <a class="btn btn-light dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
                 <div class="navbar-nav ml-auto" *ngIf="isLoggedIn">
                   {{'My profile' | translate}}
                 </div>
@@ -32,23 +35,18 @@
                 <app-login></app-login>
                 <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
                   <li class="nav-item">
-                    <a href="/register" class="nav-link" routerLink="register">{{'Sign Up' | translate}}</a>
+                    <a href="/register" class="btn btn-white" routerLink="register">{{'Sign Up' | translate}}</a>
                   </li>
                 </ul>
 
                 <ul class="navbar-nav mr-auto" routerLinkActive="active">
-                  <li class="nav-item" *ngIf="showAdminBoard">
-                    <a href="/admin" class="nav-link" routerLink="admin">{{'Admin Board' | translate}}</a>
-                  </li>
-                </ul>
-                <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item">
-                    <a href="/user-events" class="nav-link" *ngIf="isLoggedIn" routerLink="user-events">{{'My events' | translate}}</a>
+                    <a href="/user-events" class="btn btn-white" *ngIf="isLoggedIn" routerLink="user-events">{{'My events' | translate}}</a>
                   </li>
                 </ul>
                   <ul class="navbar-nav mr-auto" routerLinkActive="active">
                   <li class="nav-item">
-                    <a href="/profile" class="nav-link" *ngIf="isLoggedIn" routerLink="profile">{{'My data' | translate}}</a>
+                    <a href="/profile" class="btn btn-white" *ngIf="isLoggedIn" routerLink="profile">{{'My data' | translate}}</a>
                   </li>
                 </ul>
 

@@ -15,6 +15,9 @@
   <input type="file" (change)="selectFile($event)" />
 </label>
 
+<div class = "row bg-danger" *ngIf="messageFail">{{messageFail}}</div>
+
+
 <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
   {{'Upload' | translate}}
 </button>
